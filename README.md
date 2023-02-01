@@ -1,2 +1,1 @@
-# RSClone
-RSS final project
+# 🚀 Human benchmark project!
