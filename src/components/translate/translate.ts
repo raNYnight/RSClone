@@ -1,7 +1,8 @@
 export const lang = {
   'en': {
     'main': {
-      'benchmark': 'Human Benchmark',
+      'benchmark': 'HUMAN BENCHMARK',
+      'main': 'MAIN',
       'dashboard': 'DASHBOARD',
       'sign': 'SIGN UP',
       'login': 'LOGIN',
@@ -112,7 +113,8 @@ export const lang = {
   },
   'ru': {
     'main': {
-      'benchmark': 'Эталон человека"',
+      'benchmark': 'ЭТАЛОН ЧЕЛОВЕКА',
+      'main': 'ГЛАВНАЯ',
       'dashboard': 'РЕЗУЛЬТАТЫ',
       'sign': 'ЗАРЕГИСТРИРОВАТЬСЯ',
       'login': 'ВХОД',

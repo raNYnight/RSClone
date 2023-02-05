@@ -1,9 +1,27 @@
+import './footer.css';
+import '../../assets/icons/logo.svg';
+
 export class FooterComponent {
   async getHtml(): Promise<string> {
-    return `<footer>
-      <a href="https://github.com/" class="git"></a>
-
-      <a href="https://rs.school/js/" class="rss"></a>
-    </footer>`;
+    return `<footer class='footer'>
+  <ul class="footer__ul">
+    <li class="footer__li">
+      <a href="https://github.com/ranynight" target="_blank">
+        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+      </a>
+      <a href="https://github.com/almondchips" target="_blank">
+        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+      </a>
+      <a href="https://github.com/IliasovDamir" target="_blank">
+        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+      </a>
+    </li>
+    <li class="footer__li">
+      <a href="https://rs.school/js/" target="_blank">
+       <img class="footer__logo-rs" src="https://rs.school/images/rs_school.svg" alt="RSSchool">
+      </a>
+    </li>
+  </ul>  
+  </footer>`;
   }
 }

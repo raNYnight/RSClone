@@ -5,14 +5,15 @@ import { SignupComponent } from '../components/pages/registation/signup';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 
+
 export async function build(page: string): Promise<void> {
   const main: HTMLElement = document.createElement('main');
   main.classList.add('main');
   document.body.innerHTML = '';
   main.innerHTML = '';
-  document.body.insertAdjacentHTML('afterbegin', await new FooterComponent().getHtml());
-  document.body.insertAdjacentElement('afterbegin', main);
   document.body.insertAdjacentHTML('afterbegin', await new HeaderComponent().getHtml());
+  document.body.insertAdjacentElement('beforeend', main);
+  document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
 
   if (page.startsWith('main')) {
     main.innerHTML = await new MainComponent().getHtml();

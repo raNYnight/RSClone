@@ -1,0 +1,143 @@
+main {
+
+}
+
+h1 {
+  margin: 20px auto;
+  color: #ffffff;
+  font-size: 60px;
+  text-align: center;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  font-weight: 300;
+  text-align: center;
+}
+
+.greeting {
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 15px;
+  background: rgb(43, 135, 209);
+}
+
+.greeting_svg {
+  width: 100px;
+  height: 100px;
+  animation: svg-animation 3s linear infinite;
+  fill: #ffffff;
+}
+
+@keyframes svg-animation {   
+  0% {     
+    opacity: 1;
+  }  
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.greeting_btn {
+  margin: 20px auto;
+}
+
+.greeting-a {
+  padding: 12px 30px;
+  background: rgb(255, 209, 84);
+  display: inline-block;
+  border: none;
+  border-radius: 3px;
+  transition: background 0.1s linear 0s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  color: rgb(51, 51, 51)
+}
+
+.greeting-a:hover {
+  background: #ffffff;
+}
+
+
+.games {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #e6e8f4;
+  max-width: 970px;
+  margin: 30px auto;
+  gap: 20px;
+}
+
+.games_a {
+  display: block; 
+  height: 300px;
+  border-radius: 5px;
+  background: #ffffff;
+  text-align: center;
+  padding: 15px;
+}
+
+.games_svg {
+  margin-top: 35px;
+  width: 50px;
+  height: 50px;
+  fill: #9bc9e1;
+}
+
+.games_a:hover {
+  transform: translateY(-10px);
+  box-shadow: rgb(0 0 0 / 20%) 0px 12px 15px;
+}
+
+.games_svg:hover {
+  fill: rgb(255, 209, 84);
+  transition: all 0.05s;
+}
+
+.games_h4 {
+ color:rgb(51, 51, 51);
+}
+
+@media (max-width: 425px) {
+  
+  h1 {    
+    font-size: 40px;
+  }
+
+  .greeting_svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .games {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .games_a {
+    height: 250px;
+  }
+
+}
+
+@media (max-width: 1023px) {
+  
+  .games {
+    max-width: 95%;
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
