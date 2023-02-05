@@ -1,5 +1,6 @@
 import './footer.css';
-import '../../assets/icons/logo.svg'
+import '../../assets/icons/logo.svg';
+
 export class FooterComponent {
   async getHtml(): Promise<string> {
     return `<footer class='footer'>
