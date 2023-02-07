@@ -26,7 +26,7 @@ export const gamesInfo: Igame[] = [
     id: 3,
     name: {
       en: 'Sequence Memory',
-      ru: 'Запоминание последовательности',
+      ru: 'Порядок следования',
     },
     description: {
       en: 'Remember an increasingly long pattern of button presses',
