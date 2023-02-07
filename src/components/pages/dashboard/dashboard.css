@@ -190,6 +190,14 @@
     width: 60px;
     height: 60px;
   }
+
+  .activity_item {
+    font-size: 14px;
+  }
+
+  .activity_item:nth-child(2) {
+    width: 40%;
+  }
 }
 
 @media (max-width: 690px) {
@@ -224,6 +232,10 @@
     width: 40px;
     height: 40px;
   }
+
+  .stats_item:first-child {    
+    width: 35%;
+  }
 }
 
 @media (max-width: 590px) {
@@ -231,6 +243,10 @@
     width: 110px;
     height: 110px;
     padding: 30px;
+  }
+
+  .stats_item {    
+    font-size: 14px;
   }
 
   .games_link-svg-wrap {
@@ -262,12 +278,22 @@
     text-align: left;
     gap: 15px;
     width: 80%;
+    font-size: 18px;
   }
 
   .activity_item-wrap {
     font-size: 14px;
     margin: 0 10px;
   }
+
+  .stats-wrap {
+    padding: 15px;
+  }
+
+  .activity_item {
+    font-size: 14px;
+  }
+
 }
 
 
@@ -301,6 +327,10 @@
     text-align: left;
     gap: 15px;
     width: 80%;
+  }
+
+  .activity_item {
+    font-size: 11px;
   }
 }
 
