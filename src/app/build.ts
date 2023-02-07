@@ -4,6 +4,7 @@ import { MainComponent } from '../components/pages/main/main';
 import { SignupComponent } from '../components/pages/registation/signup';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
+import { gamesInfo } from '../utils/games-info';
 
 
 export async function build(page: string): Promise<void> {
@@ -12,11 +13,12 @@ export async function build(page: string): Promise<void> {
   document.body.innerHTML = '';
   main.innerHTML = '';
   document.body.insertAdjacentHTML('afterbegin', await new HeaderComponent().getHtml());
+  HeaderComponent.setListeners();
   document.body.insertAdjacentElement('beforeend', main);
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
 
   if (page.startsWith('main')) {
-    main.innerHTML = await new MainComponent().getHtml();
+    main.innerHTML = await new MainComponent(gamesInfo).getHtml();
   } else if (page === 'dashboard') {
     main.innerHTML = await new DashboardComponent().getHtml();
   } else if (page === 'signup') {

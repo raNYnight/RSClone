@@ -1,7 +1,7 @@
-import { Itranslate } from './translate-interfase';
+import { Itranslate } from './translateInterfase';
 
 export const lang: Itranslate = {
-  'en': {
+  en: {
     'main': {
       'benchmark': 'HUMAN BENCHMARK',
       'main': 'MAIN',
@@ -116,12 +116,12 @@ export const lang: Itranslate = {
       'lives': 'Lives',
     },
   },
-  'ru': {
+  ru: {
     'main': {
       'benchmark': 'ЭТАЛОН ЧЕЛОВЕКА',
       'main': 'ГЛАВНАЯ',
       'dashboard': 'РЕЗУЛЬТАТЫ',
-      'sign': 'ЗАРЕГИСТРИРОВАТЬСЯ',
+      'sign': 'РЕГИСТРАЦИЯ',
       'login': 'ВХОД',
       'logout': 'ВЫХОД',
       'mainDiscr': 'Измерьте свои способности c помощью игр для мозга и когнитивных тестов.',

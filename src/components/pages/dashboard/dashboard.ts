@@ -1,9 +1,9 @@
 import './dashboard.css';
-import { isEngl } from '../../header/header';
 import { lang } from '../../translate/translate';
-import { Ilanguage } from 'components/translate/translate-interfase';
+import { Ilanguage } from 'components/translate/translateInterfase';
 import { Igame } from 'utils/types';
 import { gamesInfo } from '../../../utils/games-info';
+import { state } from '../../../utils/state';
 
 
 function getUserTitleWrapHtml(path: Ilanguage): string {
@@ -34,18 +34,16 @@ function getGamesIconsHtml(arr: Igame[]): string {
 }
 
 function getStatsHtml(arr: Igame[], path: Ilanguage): string {
-  const language = isEngl ? 'en' : 'ru';
+  const language = state.isEngl ? 'en' : 'ru';
   const statsTable = arr.map((el) => {
     return `<div class="stats_item-wrap">
       <div class="stats_item">${el.name[language]}</div>
       <div class="stats_item">
         <a class="stats_link" href="#${el.href}">
           <img class="stats_link-svg" src="https://www.svgrepo.com/show/479265/play-button.svg" alt="play">
-          Play
         </a>
         <a class="stats_link" href="#${el.hrefStats}">
           <img class="stats_link-svg" src="https://www.svgrepo.com/show/409311/stats-up.svg" alt="stats">
-          Stats
         </a>
       </div>
       <div class="stats_item">?</div>
@@ -65,7 +63,7 @@ function getStatsHtml(arr: Igame[], path: Ilanguage): string {
 
 //надо будет переделать функцию вывода последних игр. Написал только для настройки верстки
 function getActivityItemHtml(arr: Igame[]): string {
-  const language = isEngl ? 'en' : 'ru';
+  const language = state.isEngl ? 'en' : 'ru';
   const activityTable = arr.map((el) => {
     return `<div class="activity_item-wrap">
     <a class="dashboard_activity_link" href="#${el.href}">
@@ -95,7 +93,7 @@ function getActivityTitleWrapHtml(path: Ilanguage): string {
 
 export class DashboardComponent {
   async getHtml(): Promise<string> {
-    const path = isEngl ? lang.en : lang.ru;    
+    const path = state.isEngl ? lang.en : lang.ru;    
 
     return `<section class="dashboard">
     ${getUserTitleWrapHtml(path)}

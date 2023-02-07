@@ -1,3 +1,7 @@
+export interface Istate {
+  isEngl: boolean,
+}
+
 export interface Igame {
   id: number,
   name: {
