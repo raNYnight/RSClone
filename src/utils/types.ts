@@ -38,3 +38,16 @@ export interface PlayedTest {
   date: Date;
   score: number;
 }
+
+export interface Authorization {
+  user_name: string;
+  password: string;
+}
+
+export interface Registration {
+  email: string;
+  user_name: string;
+  password: string;
+  registration_date: string;
+  permalink: string;
+}

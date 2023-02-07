@@ -1,8 +1,9 @@
-import { PlayedTest, User } from 'utils/types';
-// const url: string = 'http://127.0.0.1:3000';
-const url: string = 'https://rscloneserver.onrender.com';
+import { Authorization, PlayedTest, Registration, User } from 'utils/types';
+const url: string = 'http://127.0.0.1:3000';
+// const url: string = 'https://rscloneserver.onrender.com';
 const users: string = `${url}/users`;
 const tests: string = `${url}/played`;
+const authorize: string = `${url}/authorize`;
 
 export const getUser = async (user_id: number): Promise<User> => (await fetch(`${url}/users/${user_id}`)).json();
 
@@ -13,3 +14,21 @@ export const getTestData = async (test_id: number): Promise<PlayedTest> => (awai
 
 export const getUserTestData = async (user_id: number, test_id: number): Promise<PlayedTest> =>
   (await fetch(`${users}/${user_id}/played/${test_id}`)).json();
+
+export const authorizeUser = async (user: Authorization) =>
+  (
+    await fetch(`${authorize}`, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: { 'Content-Type': 'application/json' },
+    })
+  ).json();
+
+export const registerNewUser = async (user: Registration) =>
+  (
+    await fetch(`${users}`, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: { 'Content-Type': 'application/json' },
+    })
+  ).json();
