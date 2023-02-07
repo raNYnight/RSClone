@@ -14,6 +14,8 @@ export interface Ilanguage {
   aim: Iaim,
   number: Inumber,
   visual: Ivisual,
+  verbal: Iverbal,
+  typing: Ityping,
 }
 
 export interface Imain {
@@ -137,4 +139,21 @@ export interface Ivisual {
   subTitle: string,
   discr: string,
   lives: string,
+}
+
+export interface Iverbal {
+  title: string,
+  subTitle: string,
+  discr: string,
+  lives: string,
+  seen: string,
+  new: string,
+}
+
+export interface Ityping {
+  title: string,
+  subTitle: string,
+  discr: string,
+  typingText: string,
+  startTyping: string,
 }

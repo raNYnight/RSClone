@@ -2,7 +2,7 @@ import { build } from './build';
 import { router } from './router';
 
 export class App {
-  static render(pageId: string = 'garage'): void {
+  static render(pageId: string = 'main'): void {
     document.body.innerHTML = '';
     if (window.location.hash.slice(1) === '') {
       pageId = 'main';

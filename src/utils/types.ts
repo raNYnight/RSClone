@@ -12,6 +12,10 @@ export interface Igame {
     en: string,
     ru: string,
   },
+  aboutTest: {
+    en: string,
+    ru: string,
+  },
   new: boolean,
   svg: string,
   href: string,

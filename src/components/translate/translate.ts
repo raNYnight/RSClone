@@ -115,6 +115,21 @@ export const lang: Itranslate = {
       'discr': 'Every level, a number of tiles will flash white. Memorize them, and pick them again after the tiles are reset!<br>Levels get progressively more difficult, to challenge your skills.<br>If you miss 3 tiles on a level, you lose one life.<br>You have three lives.<br>Make it as far as you can!',
       'lives': 'Lives',
     },
+    'verbal': {
+      'title': 'Verbal Memory Test',
+      'subTitle': "You will be shown words, one at a time. If you've seen a word during the test, click SEEN. If it's a new word, click NEW",
+      'discr': "This test measures how many words you can keep in short term memory at once.<br>The number of words you need to remember grows continually, until you can't keep them in your head anymore.<br>Go as long as you can. You have 3 strikes until game over.<br>Your score is how many turns you lasted.",
+      'lives': 'Lives',
+      'seen': 'Seen',
+      'new': 'New',
+    },
+    'typing': {
+      'title': 'Typing Test',
+      'subTitle': 'How many words per minute can you type?',
+      'discr': 'This is a simple test of typing speed, measuring words per minute, or WPM.<br>The standard measure of WPM is 50. The recorded score is WPM .',
+      'typingText': "The sun, spring, the delight of the new—fangled blue with white buttons miracle, the upcoming trip - all this in a hundredfold refraction, as if thrown under the feet of a warming May ray, fill the child's heart with the splendor of Life. And even parting with the jackdaw, almost tame, who eats on the kitchen windowsill every morning, and thoughts about his near orphan future do not overshadow expectations of a Miracle — expectations of Life, the Sun, the highest radiant Faith in the goodness of the world, so truthfully and keenly presented at this memorable moment. Faith in the indisputability of some deep, natural Justice of earthly and human laws",
+      'startTyping': 'Start typing to begin',
+    },
   },
   ru: {
     'main': {
@@ -229,6 +244,21 @@ export const lang: Itranslate = {
       'subTitle': 'Запомните расположение квадратов',
       'discr': 'На каждом уровне ряд плиток будет мигать белым. Запомните их и выберите снова после того, как плитки будут сброшены!<br>Уровни постепенно усложняются, чтобы испытать свои навыки.<br>Если вы пропустите 3 плитки на уровне, вы потеряете одну жизнь.<br>У вас есть три жизней.<br>Держитесь как можно дольше!',
       'lives': 'Жизни',
+    },
+    'verbal': {
+      'title': 'Вербальная память',
+      'subTitle': 'Вам будут показаны слова, по одному за раз. Если вы видели слово во время теста, нажмите "БЫЛО". Если это новое слово, нажмите "НОВОЕ"',
+      'discr': 'Этот тест измеряет, сколько слов вы можете сохранить в кратковременной памяти одновременно.<br> Количество слов, которые вам нужно запомнить, постоянно растет, пока вы больше не сможете удерживать их в своей голове.<br> Иди так долго, как сможешь. У вас есть 3 жизни до окончания игры.<br> Ваш счет - это то, сколько ходов вы продержались.',
+      'lives': 'Lives',
+      'seen': 'Было>',
+      'new': 'Новое',
+    },
+    'typing': {
+      'title': 'Скорость печати',
+      'subTitle': 'Сколько слов в минуту вы сможете напечатать?',
+      'discr': 'Это простой тест скорости набора текста, измеряющий количество слов в минуту.<br> Стандартный показатель - 50 слов в минуту. Записанный балл равен количеству слов.',
+      'typingText': 'Солнце, весна, восторг от новомодного синего с белыми пуговичками чуда, предстоящая поездка — всё это в стократном преломлении будто брошенного под ноги согревающего майского луча наполняют детское сердечко великолепием Жизни. И даже расставание с галчонком, почти ручным, который каждое утро лакомится на кухонном подоконнике, и мысли о его ближайшем сиротском будущем не омрачают ожидания Чуда — ожидания Жизни, Солнца, наивысшую лучезарную Веру в доброту мира, так правдиво и обострённо представляющуюся в эту памятную минуту. Веру в непререкаемость некой глубинной, природной Справедливости земных и человеческих законов',
+      'startTyping': 'Начните печатать как будете готовы',
     },
   },
 };
