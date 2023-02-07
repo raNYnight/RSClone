@@ -17,7 +17,7 @@ a:hover {
   height: 50px;
   padding: 1em;
   box-shadow: rgb(0 0 0 / 20%) 0px 0px 10px 0px;
-  z-index: 2;
+  z-index: 200;
 }
 
 .top-nav-svg {
@@ -44,6 +44,7 @@ a:hover {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  z-index: 200;
 }
 
 .menu > li {
@@ -99,6 +100,25 @@ a:hover {
 #menu-toggle:checked + .menu-button-container .menu-button::after {
   margin-top: 0px;
   transform: rotate(-405deg);
+}
+
+.change-lang-btn {
+  display: block;
+  border: none;
+  background-color: transparent;
+  font-size: inherit;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.change-lang-btn:hover {
+  color: rgb(43, 135, 209);
+}
+
+@media (min-width: 1920px) {
+  .top-nav {
+    padding: 1em 26vw;
+  }
 }
 
 @media (max-width: 768px) {
