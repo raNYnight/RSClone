@@ -1,5 +1,5 @@
 main {
-
+  z-index: 1;
 }
 
 h1 {
@@ -28,11 +28,26 @@ h4 {
   background: rgb(43, 135, 209);
 }
 
-.greeting_svg {
-  width: 100px;
-  height: 100px;
-  animation: svg-animation 3s linear infinite;
-  fill: #ffffff;
+.greeting_svg-wrap {
+  width: 160px;
+  height: 160px;
+}
+
+.common_svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: rgb(69, 177, 255);
+  z-index: 1;
+}
+
+.common_svg:hover {
+  fill: rgb(255, 209, 84);
+  transition: all 0.05s;
+}
+
+.greeting_svg-wrap svg {
+  animation: svg-animation 4s linear infinite;
 }
 
 @keyframes svg-animation {   
@@ -40,7 +55,7 @@ h4 {
     opacity: 1;
   }  
   50% {
-    opacity: 0.6;
+    opacity: 0.3;
   }
   100% {
     opacity: 1;
@@ -81,7 +96,11 @@ h4 {
 }
 
 .games_a {
-  display: block; 
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 300px;
   border-radius: 5px;
   background: #ffffff;
@@ -89,21 +108,17 @@ h4 {
   padding: 15px;
 }
 
-.games_svg {
-  margin-top: 35px;
+.svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
-  fill: #9bc9e1;
 }
 
 .games_a:hover {
   transform: translateY(-10px);
   box-shadow: rgb(0 0 0 / 20%) 0px 12px 15px;
-}
-
-.games_svg:hover {
-  fill: rgb(255, 209, 84);
-  transition: all 0.05s;
 }
 
 .games_h4 {
@@ -114,11 +129,6 @@ h4 {
   
   h1 {    
     font-size: 40px;
-  }
-
-  .greeting_svg {
-    width: 60px;
-    height: 60px;
   }
 
   .games {
