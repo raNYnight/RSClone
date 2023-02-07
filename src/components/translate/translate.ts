@@ -1,4 +1,5 @@
 import { Itranslate } from './translateInterfase';
+import { signUpFields } from '../../constants/signupFields';
 
 export const lang: Itranslate = {
   en: {
@@ -55,6 +56,8 @@ export const lang: Itranslate = {
       'password': 'Password',
       'passwordConfirm': 'Password confirmation',
       'error': 'Error',
+      'title': 'Sign up',
+      'fields': signUpFields.en,
     },
     'login': {
       'login': 'Log in',
@@ -185,6 +188,8 @@ export const lang: Itranslate = {
       'password': 'Пароль',
       'passwordConfirm': 'Подтверждение пароля',
       'error': 'ошибка ввода',
+      'title': 'Регистрация',
+      'fields': signUpFields.ru,
     },
     'login': {
       'login': 'Авторизоваться',

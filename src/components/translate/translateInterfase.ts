@@ -65,15 +65,10 @@ export interface Idashboard {
 }
 
 export interface IsignUp {
-  signUp: string,
-  haveAcc: string,
-  login: string,
-  email: string,
-  username: string,
-  password: string,
-  passwordConfirm: string,
-  error: string,
+  [key: string]: string | fields;
 }
+
+export type fields = {[key: string]: string}; 
 
 export interface Ilogin {
   login: string,
