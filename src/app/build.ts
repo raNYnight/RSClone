@@ -4,10 +4,12 @@ import { MainComponent } from '../components/pages/main/main';
 import { SignupComponent } from '../components/pages/registation/signup';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
+import { pageMarkup } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
 
 
-export async function build(page: string): Promise<void> {
+
+export async function build(page: pageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
   main.classList.add('main');
   document.body.innerHTML = '';
@@ -17,13 +19,5 @@ export async function build(page: string): Promise<void> {
   document.body.insertAdjacentElement('beforeend', main);
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
 
-  if (page.startsWith('main')) {
-    main.innerHTML = await new MainComponent(gamesInfo).getHtml();
-  } else if (page === 'dashboard') {
-    main.innerHTML = await new DashboardComponent().getHtml();
-  } else if (page === 'signup') {
-    main.innerHTML = await new SignupComponent().getHtml();
-  } else if (page === 'login') {
-    main.innerHTML = await new LoginComponent().getHtml();
-  }
+  main.innerHTML = await page();
 }
