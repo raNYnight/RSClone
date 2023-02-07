@@ -1,4 +1,6 @@
-export const lang = {
+import { Itranslate } from './translate-interfase';
+
+export const lang: Itranslate = {
   'en': {
     'main': {
       'benchmark': 'HUMAN BENCHMARK',
@@ -29,7 +31,10 @@ export const lang = {
     },
     'dashboard': {
       'username': 'Username',
+      'guest': 'Guest',
       'joined': 'Joined',
+      'or': 'or',
+      'save': 'to save your results',
       'permalink': 'Permalink',
       'test': 'Test',
       'actions': 'Actions',
@@ -121,7 +126,7 @@ export const lang = {
       'logout': 'ВЫХОД',
       'mainDiscr': 'Измерьте свои способности c помощью игр для мозга и когнитивных тестов.',
       'getStarted': 'Начать',
-      'new': 'Новое',
+      'new': 'Новинка',
       'reaction': 'Время реакции',
       'reactionDiscr': 'Проверьте свои зрительные рефлексы.',
       'sequence': 'Запоминание последовательности',
@@ -141,7 +146,10 @@ export const lang = {
     },
     'dashboard': {
       'username': 'Имя',
+      'guest': 'Гость',
       'joined': 'присоединился',
+      'or': 'или',
+      'save': 'для сохранения результатов',
       'permalink': 'Ссылка',
       'test': 'Тест',
       'actions': 'Действия',
