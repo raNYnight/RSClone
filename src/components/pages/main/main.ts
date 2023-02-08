@@ -5,7 +5,6 @@ import { gamesInfo } from '../../../utils/games-info';
 import { Igame } from '../../../utils/types';
 import { state } from '../../../utils/state';
 
-
 export class MainComponent {
   gamesArr: Igame[];
 
@@ -40,5 +39,4 @@ export class MainComponent {
     });
     return `<section class="games">${innerSection.join('')}</section>`;
   }
-
 }

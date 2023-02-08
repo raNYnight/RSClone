@@ -7,8 +7,6 @@ import { HeaderComponent } from '../components/header/header';
 import { pageMarkup } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
 
-
-
 export async function build(page: pageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
   main.classList.add('main');
@@ -20,4 +18,11 @@ export async function build(page: pageMarkup): Promise<void> {
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
 
   main.innerHTML = await page();
+  let user = {
+    email: 'aaa@gmial.com',
+    user_name: 'AAA',
+    password: 'AAA',
+    registration_date: new Date().toISOString(),
+    permalink: 'AAA',
+  };
 }
