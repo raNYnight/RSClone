@@ -8,8 +8,6 @@ import { pageMarkup } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
 import { Component } from '../components/component';
 
-
-
 export async function build(page: pageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
   main.classList.add('main');

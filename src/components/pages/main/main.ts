@@ -8,6 +8,7 @@ import { Component } from '../../../components/component';
 
 
 export class MainComponent implements Component {
+
   gamesArr: Igame[];
 
   constructor(gamesArr: Igame[]) {
@@ -41,5 +42,4 @@ export class MainComponent implements Component {
     });
     return `<section class="games">${innerSection.join('')}</section>`;
   }
-
 }
