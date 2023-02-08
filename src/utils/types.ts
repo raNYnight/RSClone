@@ -35,7 +35,7 @@ export interface PlayedTest {
   id?: number;
   user_id: number;
   tests_id: number;
-  date: Date;
+  date: string;
   score: number;
 }
 

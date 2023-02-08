@@ -18,11 +18,4 @@ export async function build(page: pageMarkup): Promise<void> {
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
 
   main.innerHTML = await page();
-  let user = {
-    email: 'aaa@gmial.com',
-    user_name: 'AAA',
-    password: 'AAA',
-    registration_date: new Date().toISOString(),
-    permalink: 'AAA',
-  };
 }
