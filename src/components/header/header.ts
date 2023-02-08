@@ -3,8 +3,9 @@ import { lang } from '../translate/translate';
 // import { changeLanguage } from '../translate/changeLanguage';
 import { state } from '../../utils/state';
 import { App } from '../../app/app';
+import { Component } from '../../components/component';
 
-export class HeaderComponent {
+export class HeaderComponent implements Component{
 
   async getHtml(): Promise<string> {
     const path = state.isEngl ? lang.en : lang.ru;

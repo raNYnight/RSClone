@@ -6,8 +6,8 @@ import { paths } from "interfaces/paths";
 import { gamesInfo } from "../utils/games-info";
 
 export const routerPaths: paths = {
-  dashboard: async () => await new DashboardComponent().getHtml(),
-  signup: async () => await new SignupComponent().getHtml(),
-  login: async () => await new LoginComponent().getHtml(),
-  main: async () => await new MainComponent(gamesInfo).getHtml(),
+  dashboard: () => new DashboardComponent(),
+  signup: () => new SignupComponent(),
+  login: () => new LoginComponent(),
+  main: () => new MainComponent(gamesInfo),
 };

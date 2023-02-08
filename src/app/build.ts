@@ -6,6 +6,7 @@ import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { pageMarkup } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
+import { Component } from '../components/component';
 
 export async function build(page: pageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
@@ -16,6 +17,9 @@ export async function build(page: pageMarkup): Promise<void> {
   HeaderComponent.setListeners();
   document.body.insertAdjacentElement('beforeend', main);
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
+  
+  const pageComponent = page();
+  main.innerHTML = await pageComponent.getHtml();
+  if (pageComponent.setListeners) pageComponent.setListeners();
 
-  main.innerHTML = await page();
 }

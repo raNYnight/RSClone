@@ -4,6 +4,7 @@ import { Ilanguage } from 'components/translate/translateInterfase';
 import { Igame } from 'utils/types';
 import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
+import { Component } from "../../../components/component";
 
 
 function getUserTitleWrapHtml(path: Ilanguage): string {
@@ -91,7 +92,7 @@ function getActivityTitleWrapHtml(path: Ilanguage): string {
 </div>`;
 }
 
-export class DashboardComponent {
+export class DashboardComponent implements Component {
   async getHtml(): Promise<string> {
     const path = state.isEngl ? lang.en : lang.ru;    
 
