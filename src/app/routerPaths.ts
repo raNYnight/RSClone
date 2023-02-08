@@ -6,10 +6,10 @@ import { paths } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
 import { ReactionComponent } from '../components/reaction/reaction';
 import { SequenceComponent } from '../components/sequence/sequence';
-// import { ReactionComponent } from '../components/reaction/reaction';
-// import { ReactionComponent } from '../components/reaction/reaction';
-// import { ReactionComponent } from '../components/reaction/reaction';
-// import { ReactionComponent } from '../components/reaction/reaction';
+import { AimComponent } from '../components/aim/aim';
+import { NumberComponent } from '../components/number/number';
+import { VerbalComponent } from '../components/verbal/verbal';
+import { TypingComponent } from '../components/typing/typing';
 
 export const routerPaths: paths = {
   dashboard: () => new DashboardComponent(),
@@ -18,8 +18,8 @@ export const routerPaths: paths = {
   main: () => new MainComponent(gamesInfo),
   reaction: () => new ReactionComponent(),
   sequence: () => new SequenceComponent(),
-  // reaction: () => new ReactionComponent(),
-  // reaction: () => new ReactionComponent(),
-  // reaction: () => new ReactionComponent(),
-  // reaction: () => new ReactionComponent(),
+  aim: () => new AimComponent(),
+  number: () => new NumberComponent(),
+  verbal: () => new VerbalComponent(),
+  typing: () => new TypingComponent(),
 };
