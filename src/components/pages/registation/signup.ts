@@ -5,7 +5,9 @@ import { state } from '../../../utils/state';
 import "./signup.scss";
 import { sign } from "crypto";
 import { field } from "../../../constants/field";
+import { fieldsErrors } from "../../../constants/fieldsErrors";
 export class SignupComponent implements Component{
+  public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
   async getHtml(): Promise<string> {
     const path = state.isEngl ? lang.en : lang.ru;
     let form = ``;
@@ -63,34 +65,38 @@ export class SignupComponent implements Component{
   }
 
   checkEmail(field: field): boolean{
+      const lang = this.errors.email;
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       const result = emailRegex.test((field.field as HTMLInputElement).value);
       console.log((field.field as HTMLInputElement).value);
-      this.setError("Email", field, result, 'Invalid email address');
+      this.setError(lang.name, field, result, lang.invalid);
       return result;
   }
 
   checkUsername(field: field): boolean{
+    const lang = this.errors.username;
     const result = (field.field as HTMLInputElement).value.length > 0;
-    this.setError("Username", field, result, 'Required');
+    this.setError(lang.name, field, result, lang.req);
     return result;
   }
 
   checkPassword(field: field): boolean{
+    const lang = this.errors.password;
     const result = (field.field as HTMLInputElement).value.length >= 6;
     const errorMsg = !result && (field.field as HTMLInputElement).value.length === 0 ?
-     "Required" : "Must be at least 6 characters long"
-    this.setError("Password", field, result, errorMsg);
+    lang.req : lang.invalid
+    this.setError(lang.name, field, result, errorMsg);
     return result;
   }
 
   arePasswordsEqual(password: field, confirmation: field): boolean{
+    const lang = this.errors.passConf;
     const passwordText = (password.field as HTMLInputElement).value;
     const confirmationText = (confirmation.field as HTMLInputElement).value
     const result = (passwordText === confirmationText) && !!passwordText && !!confirmationText;
     const errorMsg = !result && (confirmation.field as HTMLInputElement).value.length === 0 ?
-     "Required" : "Passwords must match";
-    this.setError("Password confirmation", confirmation, result, errorMsg);
+    lang.req : lang.invalid;
+    this.setError(lang.name, confirmation, result, errorMsg);
     return result;
   }
 }
