@@ -1,3 +1,4 @@
+import './typing.scss';
 import { GameGreetingComponent } from '../game-greeting/game-greeting';
 import { gamesInfo } from '../../utils/games-info';
 import { GamesStatsComponent } from '../games-stats/games-stats';
