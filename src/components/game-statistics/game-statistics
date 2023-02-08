@@ -1,2 +1,0 @@
-import { Igame } from 'utils/types';
-import { state } from '../../utils/state';

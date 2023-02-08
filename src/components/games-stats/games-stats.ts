@@ -2,7 +2,7 @@ import { Igame } from 'utils/types';
 import { state } from '../../utils/state';
 import { lang } from '../translate/translate';
 
-export class GameAboutComponent {
+export class GamesStatsComponent {
 
   id: number;
 
@@ -17,8 +17,9 @@ export class GameAboutComponent {
 
     const language = state.isEngl ? 'en' : 'ru';
 
+    //Дописать рендер графика статистики
     return `<div class="game-about">
-        <p class="title">${lang[language].common.about}</p>
+        <p class="title">${lang[language].common.statistics}</p>
         <p class="text">${this.gameInfo.aboutTest[language]}</p>
       </div>`;
   }

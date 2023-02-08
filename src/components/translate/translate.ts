@@ -85,7 +85,7 @@ export const lang: Itranslate = {
     'reaction': {
       'title': 'Reaction Time Test',
       'subTitle': 'When the red box turns green, click as quickly as you can.',
-      'discr': 'This is a simple tool to measure your reaction time.<br>The average (median) reaction time is 273 milliseconds, according to the data collected so far.<br>In addition to measuring your reaction time, this test is affected by the latency of your computer and monitor. Using a fast computer and low latency / high framerate monitor will improve your score.<br>Scores in this test are faster than the aim trainer test, because you can react instantly without moving the cursor.<br>This is discussed in further detail on the the statistics page. While an average human reaction time may fall between 200-250ms, your computer could be adding 10-50ms on top. Some modern TVs add as much as 150ms!<br>If you want, you can keep track of your scores, and see your full history of reaction times.<br>Just perform at least 5 clicks and then save.',
+      'discr': 'This is a simple tool to measure your reaction time.<br><br>The average (median) reaction time is 273 milliseconds, according to the data collected so far.<br><br>In addition to measuring your reaction time, this test is affected by the latency of your computer and monitor. Using a fast computer and low latency / high framerate monitor will improve your score.<br><br>Scores in this test are faster than the aim trainer test, because you can react instantly without moving the cursor.<br><br>This is discussed in further detail on the the statistics page. While an average human reaction time may fall between 200-250ms, your computer could be adding 10-50ms on top. Some modern TVs add as much as 150ms!<br><br>If you want, you can keep track of your scores, and see your full history of reaction times.<br><br>Just perform at least 5 clicks and then save.',
       'wait': 'Wait for green',
       'soon': 'Too soon',
       'click': 'Click',
@@ -96,12 +96,12 @@ export const lang: Itranslate = {
     'sequence': {
       'title': 'Sequence Memory Test',
       'subTitle': 'Memorize the pattern.',
-      'discr': 'Memorize the sequence of buttons that light up, then press them in order.<br>Every time you finish the pattern, it gets longer.<br>Make a mistake, and the test is over.',
+      'discr': 'Memorize the sequence of buttons that light up, then press them in order.<br><br>Every time you finish the pattern, it gets longer.<br><br>Make a mistake, and the test is over.',
     },
     'aim': {
       'title': 'Aim Trainer',
       'subTitle': 'Hit 30 targets as quickly as you can.',
-      'discr': "Click the targets as quickly and accurately as you can.<br>This tests reflexes and hand-eye coordination.<br>Once you've clicked 30 targets, your score and average time per target will be displayed.<br>Scores in this test are slower than the simple reaction time test, because you must react and then move the cursor.<br>This test is best taken with a mouse or tablet screen. Trackpads are difficult to score well with.",
+      'discr': "Click the targets as quickly and accurately as you can.<br><br>This tests reflexes and hand-eye coordination.<br><br>Once you've clicked 30 targets, your score and average time per target will be displayed.<br><br>Scores in this test are slower than the simple reaction time test, because you must react and then move the cursor.<br><br>This test is best taken with a mouse or tablet screen. Trackpads are difficult to score well with.",
       'remaining': 'Remaining',
       'endGameDiscr': 'Average time per target',
     },
@@ -115,13 +115,13 @@ export const lang: Itranslate = {
     'visual': {
       'title': 'Visual Memory Test',
       'subTitle': 'Memorize the squares.',
-      'discr': 'Every level, a number of tiles will flash white. Memorize them, and pick them again after the tiles are reset!<br>Levels get progressively more difficult, to challenge your skills.<br>If you miss 3 tiles on a level, you lose one life.<br>You have three lives.<br>Make it as far as you can!',
+      'discr': 'Every level, a number of tiles will flash white. Memorize them, and pick them again after the tiles are reset!<br><br>Levels get progressively more difficult, to challenge your skills.<br><br>If you miss 3 tiles on a level, you lose one life.<br><br>You have three lives.<br><br>Make it as far as you can!',
       'lives': 'Lives',
     },
     'verbal': {
       'title': 'Verbal Memory Test',
       'subTitle': "You will be shown words, one at a time. If you've seen a word during the test, click SEEN. If it's a new word, click NEW",
-      'discr': "This test measures how many words you can keep in short term memory at once.<br>The number of words you need to remember grows continually, until you can't keep them in your head anymore.<br>Go as long as you can. You have 3 strikes until game over.<br>Your score is how many turns you lasted.",
+      'discr': "This test measures how many words you can keep in short term memory at once.<br><br>The number of words you need to remember grows continually, until you can't keep them in your head anymore.<br><br>Go as long as you can. You have 3 strikes until game over.<br><br>Your score is how many turns you lasted.",
       'lives': 'Lives',
       'seen': 'Seen',
       'new': 'New',
@@ -129,7 +129,7 @@ export const lang: Itranslate = {
     'typing': {
       'title': 'Typing Test',
       'subTitle': 'How many words per minute can you type?',
-      'discr': 'This is a simple test of typing speed, measuring words per minute, or WPM.<br>The standard measure of WPM is 50. The recorded score is WPM .',
+      'discr': 'This is a simple test of typing speed, measuring words per minute, or WPM.<br><br>The standard measure of WPM is 50. The recorded score is WPM .',
       'typingText': "The sun, spring, the delight of the new—fangled blue with white buttons miracle, the upcoming trip - all this in a hundredfold refraction, as if thrown under the feet of a warming May ray, fill the child's heart with the splendor of Life. And even parting with the jackdaw, almost tame, who eats on the kitchen windowsill every morning, and thoughts about his near orphan future do not overshadow expectations of a Miracle — expectations of Life, the Sun, the highest radiant Faith in the goodness of the world, so truthfully and keenly presented at this memorable moment.",
       'startTyping': 'Start typing to begin',
     },
@@ -217,7 +217,7 @@ export const lang: Itranslate = {
     'reaction': {
       'title': 'Тест на скорость реакции',
       'subTitle': 'Когда красный прямоугольник станет зеленым, нажмите на него как можно быстрее.',
-      'discr': 'Это простой инструмент для измерения времени вашей реакции.<br>Согласно собранным данным, среднее (медианное) время реакции составляет 273 миллисекунды.<br>Помимо измерения времени вашей реакции, на этот тест влияет задержка вашего компьютера и монитора. Использование быстрого компьютера и монитора с низкой задержкой и высокой частотой кадров улучшит ваш результат.<br>Оценки в этом тесте выше, чем в тесте тренера по прицеливанию, потому что вы можете реагировать мгновенно, не перемещая курсор.<br>Это обсуждается более подробно. на странице статистики. В то время как среднее время реакции человека может составлять от 200 до 250 мс, ваш компьютер может добавить 10-50 мс к этому времени. Некоторые современные телевизоры добавляют до 150 мс!<br>Если хотите, вы можете отслеживать свои баллы и просматривать полную историю времени реакции.<br>Просто выполните не менее 5 кликов, затем сохраните',
+      'discr': 'Это простой инструмент для измерения времени вашей реакции.<br><br>Согласно собранным данным, среднее (медианное) время реакции составляет 273 миллисекунды.<br><br>Помимо измерения времени вашей реакции, на этот тест влияет задержка вашего компьютера и монитора. Использование быстрого компьютера и монитора с низкой задержкой и высокой частотой кадров улучшит ваш результат.<br><br>Оценки в этом тесте выше, чем в тесте тренера по прицеливанию, потому что вы можете реагировать мгновенно, не перемещая курсор.<br><br>Это обсуждается более подробно. на странице статистики. В то время как среднее время реакции человека может составлять от 200 до 250 мс, ваш компьютер может добавить 10-50 мс к этому времени. Некоторые современные телевизоры добавляют до 150 мс!<br><br>Если хотите, вы можете отслеживать свои баллы и просматривать полную историю времени реакции.<br><br>Просто выполните не менее 5 кликов, затем сохраните',
       'wait': 'Подождите, пока загорится зеленый',
       'soon': 'Слишком рано',
       'click': 'Нажмите',
@@ -228,12 +228,12 @@ export const lang: Itranslate = {
     'sequence': {
       'title': 'Тест запоминания последовательности',
       'subTitle': 'Запомните последовательность',
-      'discr': 'Запомните последовательность загорающихся кнопок, и затем нажимайте их по порядку.<br>Каждый раз, когда вы заканчиваете рисунок, он становится длиннее.<br>Сделаете ошибку, и тест окончен.',
+      'discr': 'Запомните последовательность загорающихся кнопок, и затем нажимайте их по порядку.<br><br>Каждый раз, когда вы заканчиваете рисунок, он становится длиннее.<br><br>Сделаете ошибку, и тест окончен.',
     },
     'aim': {
       'title': 'Тренеровка прицеливания',
       'subTitle': 'Поразите 30 целей как можно быстрее.',
-      'discr': 'Щелкайте по мишеням как можно быстрее и точнее.<br>Это проверка рефлексов и зрительно-моторной координации.<br>После того как вы нажмете 30 мишеней, отобразится ваш счет и среднее время на каждую мишень.<br>Очки в этот тест медленнее, чем простой тест на время реакции, потому что вы должны отреагировать, a затем переместить курсор.<br>Этот тест лучше всего выполнять c помощью мыши или экрана планшета. C трекпадами сложно добиться хороших результатов.',
+      'discr': 'Щелкайте по мишеням как можно быстрее и точнее.<br><br>Это проверка рефлексов и зрительно-моторной координации.<br><br>После того как вы нажмете 30 мишеней, отобразится ваш счет и среднее время на каждую мишень.<br><br>Очки в этот тест медленнее, чем простой тест на время реакции, потому что вы должны отреагировать, a затем переместить курсор.<br><br>Этот тест лучше всего выполнять c помощью мыши или экрана планшета. C трекпадами сложно добиться хороших результатов.',
       'remaining': 'Осталось',
       'endGameDiscr': 'Среднее время на цель',
     },
@@ -247,13 +247,13 @@ export const lang: Itranslate = {
     'visual': {
       'title': 'Зрительная память',
       'subTitle': 'Запомните расположение квадратов',
-      'discr': 'На каждом уровне ряд плиток будет мигать белым. Запомните их и выберите снова после того, как плитки будут сброшены!<br>Уровни постепенно усложняются, чтобы испытать свои навыки.<br>Если вы пропустите 3 плитки на уровне, вы потеряете одну жизнь.<br>У вас есть три жизней.<br>Держитесь как можно дольше!',
+      'discr': 'На каждом уровне ряд плиток будет мигать белым. Запомните их и выберите снова после того, как плитки будут сброшены!<br><br>Уровни постепенно усложняются, чтобы испытать свои навыки.<br><br>Если вы пропустите 3 плитки на уровне, вы потеряете одну жизнь.<br><br>У вас есть три жизней.<br><br>Держитесь как можно дольше!',
       'lives': 'Жизни',
     },
     'verbal': {
       'title': 'Вербальная память',
       'subTitle': 'Вам будут показаны слова, по одному за раз. Если вы видели слово во время теста, нажмите "БЫЛО". Если это новое слово, нажмите "НОВОЕ"',
-      'discr': 'Этот тест измеряет, сколько слов вы можете сохранить в кратковременной памяти одновременно.<br> Количество слов, которые вам нужно запомнить, постоянно растет, пока вы больше не сможете удерживать их в своей голове.<br> Иди так долго, как сможешь. У вас есть 3 жизни до окончания игры.<br> Ваш счет - это то, сколько ходов вы продержались.',
+      'discr': 'Этот тест измеряет, сколько слов вы можете сохранить в кратковременной памяти одновременно.<br><br> Количество слов, которые вам нужно запомнить, постоянно растет, пока вы больше не сможете удерживать их в своей голове.<br><br> Иди так долго, как сможешь. У вас есть 3 жизни до окончания игры.<br><br> Ваш счет - это то, сколько ходов вы продержались.',
       'lives': 'Lives',
       'seen': 'Было>',
       'new': 'Новое',
@@ -261,7 +261,7 @@ export const lang: Itranslate = {
     'typing': {
       'title': 'Скорость печати',
       'subTitle': 'Сколько слов в минуту вы сможете напечатать?',
-      'discr': 'Это простой тест скорости набора текста, измеряющий количество слов в минуту.<br> Стандартный показатель - 50 слов в минуту. Записанный балл равен количеству слов.',
+      'discr': 'Это простой тест скорости набора текста, измеряющий количество слов в минуту.<br><br> Стандартный показатель - 50 слов в минуту. Записанный балл равен количеству слов.',
       'typingText': 'Солнце, весна, восторг от новомодного синего с белыми пуговичками чуда, предстоящая поездка — всё это в стократном преломлении будто брошенного под ноги согревающего майского луча наполняют детское сердечко великолепием Жизни. И даже расставание с галчонком, почти ручным, который каждое утро лакомится на кухонном подоконнике, и мысли о его ближайшем сиротском будущем не омрачают ожидания Чуда — ожидания Жизни, Солнца, наивысшую лучезарную Веру в доброту мира, так правдиво и обострённо представляющуюся в эту памятную минуту.',
       'startTyping': 'Начните печатать как будете готовы',
     },
