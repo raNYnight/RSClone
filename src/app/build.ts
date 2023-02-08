@@ -1,12 +1,6 @@
-import { DashboardComponent } from '../components/pages/dashboard/dashboard';
-import { LoginComponent } from '../components/pages/login/login';
-import { MainComponent } from '../components/pages/main/main';
-import { SignupComponent } from '../components/pages/registation/signup';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { pageMarkup } from 'interfaces/paths';
-import { gamesInfo } from '../utils/games-info';
-import { Component } from '../components/component';
 
 export async function build(page: pageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
