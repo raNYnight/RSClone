@@ -5,6 +5,11 @@ import { SignupComponent } from '../components/pages/registation/signup';
 import { paths } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
 import { ReactionComponent } from '../components/reaction/reaction';
+import { SequenceComponent } from '../components/sequence/sequence';
+// import { ReactionComponent } from '../components/reaction/reaction';
+// import { ReactionComponent } from '../components/reaction/reaction';
+// import { ReactionComponent } from '../components/reaction/reaction';
+// import { ReactionComponent } from '../components/reaction/reaction';
 
 export const routerPaths: paths = {
   dashboard: () => new DashboardComponent(),
@@ -12,4 +17,9 @@ export const routerPaths: paths = {
   login: () => new LoginComponent(),
   main: () => new MainComponent(gamesInfo),
   reaction: () => new ReactionComponent(),
+  sequence: () => new SequenceComponent(),
+  // reaction: () => new ReactionComponent(),
+  // reaction: () => new ReactionComponent(),
+  // reaction: () => new ReactionComponent(),
+  // reaction: () => new ReactionComponent(),
 };
