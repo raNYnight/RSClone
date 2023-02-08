@@ -4,7 +4,7 @@ import { Ilanguage } from 'components/translate/translateInterfase';
 import { Igame } from 'utils/types';
 import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
-import { Component } from "../../../components/component";
+import { Component } from '../../../components/component';
 
 
 function getUserTitleWrapHtml(path: Ilanguage): string {

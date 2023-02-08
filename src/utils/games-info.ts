@@ -7,7 +7,7 @@ export const gamesInfo: Igame[] = [
     id: 2,
     name: {
       en: 'Reaction Time',
-      ru: 'Время реакции',
+      ru: 'Скорость реакции',
     },
     description: {
       en: 'Test your visual reflexes.',
