@@ -32,16 +32,20 @@ export interface User {
 }
 
 export interface PlayedTest {
-  id: number;
+  id?: number;
   user_id: number;
   tests_id: number;
-  date: Date;
+  date: string;
   score: number;
 }
 
 export interface Authorization {
   user_name: string;
   password: string;
+}
+export interface AuthResponse {
+  isAuthorized: boolean;
+  user_id: number;
 }
 
 export interface Registration {
