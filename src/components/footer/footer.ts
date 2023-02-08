@@ -1,7 +1,8 @@
 import './footer.css';
 import '../../assets/icons/logo.svg';
+import { Component } from '../../components/component';
 
-export class FooterComponent {
+export class FooterComponent implements Component {
   async getHtml(): Promise<string> {
     return `<footer class='footer'>
   <ul class="footer__ul">

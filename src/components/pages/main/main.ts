@@ -4,9 +4,10 @@ import { BOLT_SVG } from '../../../assets/icons/svg';
 import { gamesInfo } from '../../../utils/games-info';
 import { Igame } from '../../../utils/types';
 import { state } from '../../../utils/state';
+import { Component } from '../../../components/component';
 
 
-export class MainComponent {
+export class MainComponent implements Component {
   gamesArr: Igame[];
 
   constructor(gamesArr: Igame[]) {
