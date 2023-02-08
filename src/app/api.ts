@@ -1,4 +1,4 @@
-import { Authorization, AuthResponse, PlayedTest, Registration, User } from 'utils/types';
+import { Authorization, AuthResponse, PlayedTest, RandomRussianText, Registration, User } from 'utils/types';
 // const url: string = 'http://127.0.0.1:3000';
 const url: string = 'https://rscloneserver.onrender.com';
 const users: string = `${url}/users`;
@@ -41,3 +41,12 @@ export const registerNewUser = async (user: Registration): Promise<Registration>
       headers: { 'Content-Type': 'application/json' },
     })
   ).json();
+
+export const getRandomTextEN = async (): Promise<string> =>
+  (await fetch('http://metaphorpsum.com/paragraphs/2/4')).text();
+
+export const getRandomTextRU = async (): Promise<RandomRussianText> =>
+  (await fetch('https://fish-text.ru/get?type=sentence&format=json&number=5')).json();
+
+export const getRandomWordEN = async (): Promise<string> =>
+  (await fetch('https://random-word-form.herokuapp.com/random/noun')).json();
