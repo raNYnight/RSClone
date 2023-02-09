@@ -55,3 +55,9 @@ export interface Registration {
   registration_date: string;
   permalink: string;
 }
+
+export interface RandomRussianText {
+  status: 'success' | 'error';
+  text: string;
+  errorCode?: number;
+}
