@@ -47,5 +47,8 @@
     "webpack-dev-server": "^4.11.1",
     "wepack-cli": "^0.0.1-security",
     "workbox-webpack-plugin": "^6.5.4"
+  },
+  "dependencies": {
+    "typescript-cookie": "^1.0.4"
   }
 }
