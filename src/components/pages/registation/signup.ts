@@ -8,6 +8,10 @@ import './signup.scss';
 import { sign } from 'crypto';
 import { field } from '../../../constants/field';
 import { fieldsErrors } from '../../../constants/fieldsErrors';
+import { UsersService } from '../../../APIs/UsersService';
+import { strict } from 'assert';
+import { getRandomString } from '../../../utils/randomString';
+import { Authorization, User } from '../../../utils/types';
 export class SignupComponent implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
 
@@ -34,6 +38,7 @@ export class SignupComponent implements Component {
       <div class="middle-headers">
         <h2>${path.signUp.title}</h2>
         <p>${path.signUp.haveAcc} <a href="#login">${path.signUp.login}</a></p>
+        <p class="reg-fail"></p>
         ${form}
       </div>
       <input class="submit-btn" type="submit" value="${path.signUp.signUp}">
@@ -42,7 +47,7 @@ export class SignupComponent implements Component {
       `;
   }
 
-  setListeners(): void {
+  async setListeners(): Promise<void> {
     const fields: field[] = [];
     if (typeof lang.en.signUp.fields !== 'string')
       for (const key in lang.en.signUp.fields) {
@@ -51,14 +56,46 @@ export class SignupComponent implements Component {
         element && label ? fields.push({ field: element as HTMLElement, label: label as HTMLElement }) : null;
       }
     const signUpBtn = document.querySelector('.submit-btn');
-    signUpBtn?.addEventListener('click', () => {
+    signUpBtn?.addEventListener('click', async () => {
+      const regFailBlock = document.querySelector(".reg-fail");
+      (regFailBlock as HTMLElement).style.visibility = "hidden";
       if (
         this.checkEmail(fields[0]) &&
         this.checkUsername(fields[1]) &&
         this.checkPassword(fields[2]) &&
         this.arePasswordsEqual(fields[2], fields[3])
       ) {
-        // Registration function here
+        const userData = {
+        email: (fields[0].field as HTMLInputElement).value,
+        userName: (fields[1].field as HTMLInputElement).value,
+        password: (fields[2].field as HTMLInputElement).value
+        };
+
+        const newUser: User = {
+          email: userData.email ? userData.email.toString() : "",
+          user_name: userData.userName ? userData.userName.toString() : "",
+          password: userData.password ? userData.password.toString() : "",
+          permalink: await getRandomString(10),
+          registration_date: new Date(new Date().getTime()).toISOString(),
+        }
+
+        UsersService.registerNewUser(newUser).then((data) => {
+          UsersService.authorizeWithCookie({user_name: newUser.user_name, password: newUser.password});
+
+        })
+        .catch((error) => {
+          const lang = state.isEngl ? 'en' : 'ru';
+          console.log(error.data);
+          (regFailBlock as HTMLElement).style.visibility = "visible";
+          (regFailBlock as HTMLElement).textContent = "";
+          for (const key in error.data) {
+            if (Object.prototype.hasOwnProperty.call(error.data, key) && regFailBlock) {
+              error.data[key].forEach((element: string) => {
+                regFailBlock.innerHTML += element + "</br>";
+              });
+            }
+          }
+        });
       }
     });
   }
@@ -72,7 +109,6 @@ export class SignupComponent implements Component {
     const lang = this.errors.email;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const result = emailRegex.test((field.field as HTMLInputElement).value);
-    console.log((field.field as HTMLInputElement).value);
     this.setError(lang.name, field, result, lang.invalid);
     return result;
   }
