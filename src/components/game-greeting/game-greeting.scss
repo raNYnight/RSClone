@@ -1,0 +1,19 @@
+.text-area {
+  margin-top: 10px;
+  font-size: 18px;
+  max-width: 1010px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.6;
+  cursor: text;
+}
+
+@media (max-width: 624px) {
+  .text-area {
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+    line-height: 1.4;
+  }
+}

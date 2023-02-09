@@ -24,6 +24,53 @@ p {
   padding: 0;
 }
 
+.title {
+  font-size: 22px;
+  padding: 20px;
+  font-weight: 600;
+}
+
+.text {
+  padding: 0 20px 40px 20px;
+  font-size: 16px;
+}
+
+.game-info {
+  max-width: 1010px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.game-about {  
+  background: #ffffff;
+  box-shadow: rgb(0 0 0 / 10%) 0px 2px 5px;
+  border-radius: 5px;
+  width: 80%;
+}
+
 .display-none {
   display: none;
+}
+
+@media (max-width: 1023px) {
+  
+  .game-info {
+    width: 95%;
+  }  
+
+}
+
+@media (max-width: 767px) {
+  
+  .game-info {
+    flex-direction: column;
+    align-items: center;
+  } 
+
+  .game-about {    
+    width: 100%;
+  }
+
 }
