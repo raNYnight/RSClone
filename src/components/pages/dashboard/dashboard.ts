@@ -6,7 +6,6 @@ import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
 import { Component } from '../../../components/component';
 
-
 function getUserTitleWrapHtml(path: Ilanguage): string {
   return `<div class="dashboard_user-wrap">
       <p class="dashboard_user-paragraf">${path.dashboard.username}</p>
@@ -17,8 +16,8 @@ function getUserTitleWrapHtml(path: Ilanguage): string {
       <p class="dashboard_user-paragraf">${path.dashboard.joined}</p>
       <p class="dashboard_user-join">21.02.2023</p>
       <div class="link">
-        <a href="/login">${path.signUp.login}</a> ${path.dashboard.or} 
-        <a href="/signup">${path.signUp.signUp}</a> ${path.dashboard.save}
+        <a href="#login">${path.signUp.login}</a> ${path.dashboard.or} 
+        <a href="#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
       </div>
     </div>`;
 }
@@ -80,7 +79,7 @@ function getActivityItemHtml(arr: Igame[]): string {
   return activityTable.join('');
 }
 
-function getActivityTitleWrapHtml(path: Ilanguage): string { 
+function getActivityTitleWrapHtml(path: Ilanguage): string {
   return `<div class="stats-wrap">
   <div class="activity_item-wrap activity_title-bold">
     <div class="dashboard_activity_link">${path.dashboard.test}</div>
@@ -94,7 +93,7 @@ function getActivityTitleWrapHtml(path: Ilanguage): string {
 
 export class DashboardComponent implements Component {
   async getHtml(): Promise<string> {
-    const path = state.isEngl ? lang.en : lang.ru;    
+    const path = state.isEngl ? lang.en : lang.ru;
 
     return `<section class="dashboard">
     ${getUserTitleWrapHtml(path)}
