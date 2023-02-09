@@ -5,15 +5,15 @@ const users: string = `${url}/users`;
 const authorize: string = `${url}/authorize`;
 
 export class UsersService{
-  getUser = async (user_id: number): Promise<User> => (await fetch(`${url}/users/${user_id}`)).json();
+  static getUser = async (user_id: number): Promise<User> => (await fetch(`${url}/users/${user_id}`)).json();
 
-  getUserPlayedTests = async (user_id: number): Promise<PlayedTest[]> =>
+  static getUserPlayedTests = async (user_id: number): Promise<PlayedTest[]> =>
   (await fetch(`${users}/${user_id}/played`)).json();
 
-  getUserTestData = async (user_id: number, test_id: number): Promise<PlayedTest> =>
+  static getUserTestData = async (user_id: number, test_id: number): Promise<PlayedTest> =>
   (await fetch(`${users}/${user_id}/played/${test_id}`)).json();
 
-  authorizeUser = async (user: Authorization): Promise<AuthResponse> =>
+  static authorizeUser = async (user: Authorization): Promise<AuthResponse> =>
   (
     await fetch(`${authorize}`, {
       method: 'POST',
@@ -22,7 +22,7 @@ export class UsersService{
     })
   ).json();
 
-  registerNewUser = async (user: Registration): Promise<Registration> =>
+  static registerNewUser = async (user: Registration): Promise<Registration> =>
   (
     await fetch(`${users}`, {
       method: 'POST',
