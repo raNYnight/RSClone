@@ -1,8 +1,6 @@
-import { GameAreaComponent } from '../game-area/game-area';
-import { gamesInfo } from '../../utils/games-info';
-import { GamesStatsComponent } from '../games-stats/games-stats';
-import { GameAboutComponent } from '../game-about/game-about';
-import { Igame } from 'utils/types';
+import { GameAreaComponent } from '../../game-area/game-area';
+import { GamesStatsComponent } from '../../games-stats/games-stats';
+import { GameAboutComponent } from '../../game-about/game-about';
 
 
 export class GamePageComponent {

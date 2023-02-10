@@ -1,5 +1,9 @@
 export interface Istate {
-  isEngl: boolean;
+  isEngl: boolean,
+  user: {
+    id: number,
+    name: string,
+  }
 }
 
 export interface Igame {

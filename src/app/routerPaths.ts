@@ -4,7 +4,8 @@ import { MainComponent } from '../components/pages/main/main';
 import { SignupComponent } from '../components/pages/registation/signup';
 import { paths } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
-import { GamePageComponent } from '../components/gamePage/gamePage';
+import { GamePageComponent } from '../components/pages/gamePage/gamePage';
+import { StatsPageComponent } from '../components/pages/statsPage/statsPage';
 
 export const routerPaths: paths = {
   dashboard: () => new DashboardComponent(),
@@ -15,4 +16,8 @@ export const routerPaths: paths = {
 
 gamesInfo.forEach((game) => {
   routerPaths[game.href] = () => new GamePageComponent(game.id);
+});
+
+gamesInfo.forEach((game) => {
+  routerPaths[game.hrefStats] = () => new StatsPageComponent(game.id);
 });

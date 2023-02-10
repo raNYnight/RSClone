@@ -5,7 +5,7 @@ import { state } from '../../utils/state';
 import { App } from '../../app/app';
 import { Component } from '../../components/component';
 
-export class HeaderComponent implements Component{
+export class HeaderComponent implements Component {
 
   async getHtml(): Promise<string> {
     const path = state.isEngl ? lang.en : lang.ru;
@@ -17,7 +17,6 @@ export class HeaderComponent implements Component{
       <div class='menu-button'></div>
     </label>
     <ul class="menu">
-      <li><a href="#main" class="nav__link">${path.main.main}</a></li>
       <li><a href="#dashboard" class="nav__link">${path.main.dashboard}</a></li>
       <li><a href="#signup" class="nav__link">${path.main.sign}</a></li>
       <li><a href="#login" class="nav__link">${path.main.login}</a></li>

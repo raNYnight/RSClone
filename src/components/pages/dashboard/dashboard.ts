@@ -17,8 +17,8 @@ function getUserTitleWrapHtml(path: Ilanguage): string {
       <p class="dashboard_user-paragraf">${path.dashboard.joined}</p>
       <p class="dashboard_user-join">21.02.2023</p>
       <div class="link">
-        <a href="/login">${path.signUp.login}</a> ${path.dashboard.or} 
-        <a href="/signup">${path.signUp.signUp}</a> ${path.dashboard.save}
+        <a href="/#login">${path.signUp.login}</a> ${path.dashboard.or} 
+        <a href="/#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
       </div>
     </div>`;
 }
