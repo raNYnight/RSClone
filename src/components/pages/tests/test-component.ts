@@ -10,7 +10,7 @@ export class TestComponents {
     startBTN.addEventListener('click', this.gameStarter);
   }
 
-  // В каждом тесте переопределям этот метод под логику конкретного теста
+  // В каждом тесте-компоненте переопределям этот метод под логику конкретного теста
   async gameStarter(): Promise<void> {
     const greeting = document.querySelector('.greeting') as HTMLElement;
     const main = document.querySelector('main') as HTMLElement;
