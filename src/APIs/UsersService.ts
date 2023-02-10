@@ -3,7 +3,8 @@ import { Authorization, AuthResponse, PlayedTest, Registration, User, UsersCooki
 import { getCookie, setCookie } from '../../node_modules/typescript-cookie'
 import { json } from 'stream/consumers';
 
-const url: string = 'https://rscloneserver.onrender.com';
+// const url: string = 'https://rscloneserver.onrender.com';
+const url: string = 'http://localhost:3000';
 const users: string = `${url}/users`;
 const authorize: string = `${url}/authorize`;
 
@@ -42,6 +43,8 @@ export class UsersService{
       regDate: new Date(user.registration_date),
       permalink: user.permalink,
     }
+    console.log("date: ",new Date(user.registration_date));
+    
     setCookie('user', JSON.stringify(cookie), {expires: 7, path: ''});
   }
 

@@ -83,7 +83,7 @@ export class SignupComponent implements Component {
 
         UsersService.registerNewUser(newUser).then((data) => {
           UsersService.authorizeWithCookie({user_name: newUser.user_name, password: newUser.password});
-
+          window.location.hash = "dashboard";
         })
         .catch((error) => {
           const lang = state.isEngl ? 'en' : 'ru';

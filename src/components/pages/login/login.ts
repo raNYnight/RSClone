@@ -5,6 +5,7 @@ import { Component } from "../../../components/component";
 import { field } from '../../../constants/field';
 import { fieldsErrors } from "../../../constants/fieldsErrors";
 import { UsersService } from "../../../APIs/UsersService";
+import './login.css'
 
 export class LoginComponent implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
@@ -62,7 +63,9 @@ export class LoginComponent implements Component {
         {
           user_name: (fields[0].field as HTMLInputElement).value,
           password: (fields[1].field as HTMLInputElement).value,
-        }).then(()=> console.log('authorized')
+        }).then(()=> {
+          window.location.hash = "dashboard"
+        }
         ).catch(()=>{
           console.log("error");
           
