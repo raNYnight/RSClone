@@ -59,6 +59,7 @@ export class LoginComponent implements Component {
         this.checkUsername(fields[0]) &&
         this.checkPassword(fields[1])
       ) {
+        (loginBtn as HTMLElement).classList.add('btn-pending');
       UsersService.authorizeWithCookie(
         {
           user_name: (fields[0].field as HTMLInputElement).value,
@@ -75,7 +76,7 @@ export class LoginComponent implements Component {
             "Username and password do not match" :
             "Имя пользователя и пароль не соответствуют"
           }
-        })
+        }).finally(()=> (loginBtn as HTMLElement).classList.remove('btn-pending'));
       }
     });
   }
