@@ -1,24 +1,27 @@
 import './dashboard.css';
 import { lang } from '../../translate/translate';
 import { Ilanguage } from 'components/translate/translateInterfase';
-import { Igame } from 'utils/types';
+import { Igame, UsersCookie } from 'utils/types';
 import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
 import { Component } from '../../../components/component';
-
+import { UsersService } from '../../../APIs/UsersService';
 
 function getUserTitleWrapHtml(path: Ilanguage): string {
+  const usersCookie: UsersCookie | string = UsersService.getCookie();
+  const date = new Date(usersCookie.regDate);
+  const fullDate = `${date.getFullYear()}-${date.getDate().toString().padStart(2, '0')}-${date.getDay().toString().padStart(2, '0')}`;
   return `<div class="dashboard_user-wrap">
       <p class="dashboard_user-paragraf">${path.dashboard.username}</p>
       <p class="dashboard_username">
         <img src="https://www.svgrepo.com/show/447734/person-male.svg" alt="person">
-        ${path.dashboard.guest}
+        ${typeof usersCookie !== 'string' ? usersCookie.userName : path.dashboard.guest}
       </p>
-      <p class="dashboard_user-paragraf">${path.dashboard.joined}</p>
-      <p class="dashboard_user-join">21.02.2023</p>
+      <p class="dashboard_user-paragraf">${ path.dashboard.joined}</p>
+      <p class="dashboard_user-join">${fullDate}</p>
       <div class="link">
-        <a href="/#login">${path.signUp.login}</a> ${path.dashboard.or} 
-        <a href="/#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
+        <a href="#login">${path.signUp.login}</a> ${path.dashboard.or} 
+        <a href="#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
       </div>
     </div>`;
 }
@@ -80,7 +83,7 @@ function getActivityItemHtml(arr: Igame[]): string {
   return activityTable.join('');
 }
 
-function getActivityTitleWrapHtml(path: Ilanguage): string { 
+function getActivityTitleWrapHtml(path: Ilanguage): string {
   return `<div class="stats-wrap">
   <div class="activity_item-wrap activity_title-bold">
     <div class="dashboard_activity_link">${path.dashboard.test}</div>
@@ -94,7 +97,7 @@ function getActivityTitleWrapHtml(path: Ilanguage): string {
 
 export class DashboardComponent implements Component {
   async getHtml(): Promise<string> {
-    const path = state.isEngl ? lang.en : lang.ru;    
+    const path = state.isEngl ? lang.en : lang.ru;
 
     return `<section class="dashboard">
     ${getUserTitleWrapHtml(path)}
@@ -102,5 +105,15 @@ export class DashboardComponent implements Component {
     ${getStatsHtml(gamesInfo, path)}
     ${getActivityTitleWrapHtml(path)}
     </section>`;
+  }
+
+  async setListeners() {
+    // Доделать расчет даты регистрации
+    // const joined = document.querySelector(".dashboard_user-join");
+    // const cookie = UsersService.getJoinPeriod();
+
+    // if (joined){
+
+    // }
   }
 }

@@ -1,3 +1,4 @@
+import { UsersService } from '../APIs/UsersService';
 import { build } from './build';
 import { router } from './router';
 import { routerPaths } from './routerPaths';
@@ -17,5 +18,7 @@ export class App {
   run(): void {
     App.render();
     window.addEventListener('hashchange', router);
+    console.log(UsersService.getCookie());
+     
   }
 }
