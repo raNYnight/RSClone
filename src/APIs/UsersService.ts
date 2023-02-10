@@ -42,6 +42,8 @@ export class UsersService{
       regDate: new Date(user.registration_date),
       permalink: user.permalink,
     }
+    console.log("date: ",new Date(user.registration_date));
+    
     setCookie('user', JSON.stringify(cookie), {expires: 7, path: ''});
   }
 

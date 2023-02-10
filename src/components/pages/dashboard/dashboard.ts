@@ -10,7 +10,10 @@ import { UsersService } from '../../../APIs/UsersService';
 function getUserTitleWrapHtml(path: Ilanguage): string {
   const usersCookie: UsersCookie | string = UsersService.getCookie();
   const date = new Date(usersCookie.regDate);
-  const fullDate = `${date.getFullYear()}-${date.getDate().toString().padStart(2, '0')}-${date.getDay().toString().padStart(2, '0')}`;
+
+  const fullDate = `${date.getFullYear()}-${date.getDate().toString().padStart(2,'0')}-${(Number(date.getUTCMonth())+1).toString().padStart(2,'0')}`;
+  console.log(date.getDay(), date.getDate());
+  
   return `<div class="dashboard_user-wrap">
       <p class="dashboard_user-paragraf">${path.dashboard.username}</p>
       <p class="dashboard_username">

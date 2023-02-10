@@ -27,7 +27,7 @@ export const fieldsErrors = {
       invalid:"Некорректный адрес эл. почты",
         },
     username: {
-      name: "Имя",
+      name: "Имя пользователя",
       req:"Обязательное поле", 
     },
     password: {

@@ -1,5 +1,6 @@
 import { Itranslate } from './translateInterfase';
 import { signUpFields } from '../../constants/signupFields';
+import { loginFields } from '../../constants/loginFields';
 
 export const lang: Itranslate = {
   en: {
@@ -68,6 +69,7 @@ export const lang: Itranslate = {
       'forgotPas': 'Forgot password?',
       'resetPas': 'Reset password',
       'error': 'Error',
+      fields: loginFields.en,
     },
     'common': {
       'start': 'Start',
@@ -189,7 +191,7 @@ export const lang: Itranslate = {
       'password': 'Пароль',
       'passwordConfirm': 'Подтверждение пароля',
       'error': 'ошибка ввода',
-      'title': 'Регистрация',
+      'title': 'Зарегистрироваться',
       'fields': signUpFields.ru,
     },
     'login': {
@@ -201,6 +203,7 @@ export const lang: Itranslate = {
       'forgotPas': 'Забыли пароль?',
       'resetPas': 'Сбросить пароль',
       'error': 'ошибка',
+      fields: loginFields.ru,
     },
     'common': {
       'start': 'Начать',

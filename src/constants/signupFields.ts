@@ -7,7 +7,7 @@ export const signUpFields = {
   },
   ru: {
     'email': 'Электронная почта',
-    'username': 'Имя',
+    'username': 'Имя пользователя',
     'password': 'Пароль',
     'passwordConfirm': 'Подтверждение пароля',
   }
