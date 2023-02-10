@@ -1,5 +1,5 @@
 import { GameAreaComponent } from '../game-area/game-area';
-import { gamesInfo } from '../../utils/games-info';
+// import { gamesInfo } from '../../utils/games-info';
 import { GamesStatsComponent } from '../games-stats/games-stats';
 import { GameAboutComponent } from '../game-about/game-about';
 
@@ -9,9 +9,9 @@ export class ReactionComponent {
 
     const ID_REACTION: number = 2;
 
-    const areaSection = new GameAreaComponent(ID_REACTION, gamesInfo);
+    const areaSection = new GameAreaComponent(ID_REACTION);
     const statsSection = new GamesStatsComponent(ID_REACTION);
-    const aboutSection = new GameAboutComponent(ID_REACTION, gamesInfo);
+    const aboutSection = new GameAboutComponent(ID_REACTION);
 
     return `${await areaSection.getHtml()}
     <section class="game-info">      
