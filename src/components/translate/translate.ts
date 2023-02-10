@@ -81,6 +81,7 @@ export const lang: Itranslate = {
       'saveScore': 'Save score',
       'tryAgain': 'Try again',
       'level': 'Level',
+      'recentResults': 'Recent results',
     },
     'reaction': {
       'title': 'Reaction Time Test',
@@ -213,6 +214,7 @@ export const lang: Itranslate = {
       'saveScore': 'Сохранить',
       'tryAgain': 'Попробовать снова',
       'level': 'Уровень',
+      'recentResults': 'Последние результаты',
     },
     'reaction': {
       'title': 'Тест на скорость реакции',
