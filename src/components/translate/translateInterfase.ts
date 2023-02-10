@@ -68,7 +68,7 @@ export interface IsignUp {
   [key: string]: string | fields;
 }
 
-export type fields = {[key: string]: string}; 
+export type fields = { [key: string]: string }; 
 
 export interface Ilogin {
   login: string,
@@ -96,6 +96,8 @@ export interface Icommon {
   saveScore: string,
   tryAgain: string,
   level: string,
+  recentResults: string,
+
 }
 
 export interface Ireaction {

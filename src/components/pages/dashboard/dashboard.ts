@@ -10,6 +10,7 @@ import { UsersService } from '../../../APIs/UsersService';
 function getUserTitleWrapHtml(path: Ilanguage): string {
   const usersCookie: UsersCookie | string = UsersService.getCookie();
   const date = new Date(usersCookie.regDate);
+
   const fullDate = `${date.getFullYear()}-${date.getDate().toString().padStart(2,'0')}-${(Number(date.getUTCMonth())+1).toString().padStart(2,'0')}`;
   console.log(date.getDay(), date.getDate());
   
@@ -17,7 +18,7 @@ function getUserTitleWrapHtml(path: Ilanguage): string {
       <p class="dashboard_user-paragraf">${path.dashboard.username}</p>
       <p class="dashboard_username">
         <img src="https://www.svgrepo.com/show/447734/person-male.svg" alt="person">
-        ${typeof usersCookie !== "string" ? usersCookie.userName : path.dashboard.guest}
+        ${typeof usersCookie !== 'string' ? usersCookie.userName : path.dashboard.guest}
       </p>
       <p class="dashboard_user-paragraf">${ path.dashboard.joined}</p>
       <p class="dashboard_user-join">${fullDate}</p>
@@ -109,7 +110,7 @@ export class DashboardComponent implements Component {
     </section>`;
   }
 
-  async setListeners(){
+  async setListeners() {
     // Доделать расчет даты регистрации
     // const joined = document.querySelector(".dashboard_user-join");
     // const cookie = UsersService.getJoinPeriod();
