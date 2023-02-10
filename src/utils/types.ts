@@ -23,12 +23,19 @@ export interface Igame {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   email: string;
   user_name: string;
   password: string;
-  registration_date: Date;
+  registration_date: string;
   permalink: string;
+}
+
+export interface UsersCookie{
+  userId: number,
+  userName: string,
+  regDate: Date,
+  permalink: string,
 }
 
 export interface PlayedTest {
