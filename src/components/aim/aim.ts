@@ -1,4 +1,4 @@
-import { GameGreetingComponent } from '../game-greeting/game-greeting';
+import { GameAreaComponent } from '../game-area/game-area';
 import { gamesInfo } from '../../utils/games-info';
 import { GamesStatsComponent } from '../games-stats/games-stats';
 import { GameAboutComponent } from '../game-about/game-about';
@@ -9,11 +9,11 @@ export class AimComponent {
 
     const ID_AIM: number = 5;
 
-    const greetingSection = new GameGreetingComponent(ID_AIM, gamesInfo);
-    const statsSection = new GamesStatsComponent(ID_AIM, gamesInfo);
+    const areaSection = new GameAreaComponent(ID_AIM, gamesInfo);
+    const statsSection = new GamesStatsComponent(ID_AIM);
     const aboutSection = new GameAboutComponent(ID_AIM, gamesInfo);
 
-    return `${await greetingSection.getHtml()}
+    return `${await areaSection.getHtml()}
     <section class="game-info">      
       ${await statsSection.getHtml()}
       ${await aboutSection.getHtml()}

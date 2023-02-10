@@ -1,10 +1,10 @@
-import './game-greeting.scss';
+import './game-area.scss';
 import { Igame } from 'utils/types';
 import { state } from '../../utils/state';
 import { lang } from '../translate/translate';
 
 
-export class GameGreetingComponent {
+export class GameAreaComponent {
 
   id: number;
 
