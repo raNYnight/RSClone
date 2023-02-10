@@ -11,8 +11,12 @@
   border-radius: 5px;
 
   .form-wrapper{
-    max-width: 400px;
+    max-width: 463px;
     margin: 0 auto;
+
+    .form-field{
+      font-size: 16px;
+    }
 
     .btn-pending{
       cursor:progress;

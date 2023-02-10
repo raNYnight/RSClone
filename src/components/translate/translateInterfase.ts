@@ -79,6 +79,9 @@ export interface Ilogin {
   forgotPas: string,
   resetPas: string,
   error: string,
+  fields: {
+    [key:string]: string
+  }
 }
 
 export interface Icommon {

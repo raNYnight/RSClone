@@ -28,7 +28,7 @@ export class SignupComponent implements Component {
       form += `
       <div class="sign-up-field">
       <label for="${lowerField}">${label}</label>
-      <input type="${type}" name="${lowerField}" autocomplete="${autoComplete}">
+      <input class="form-field" type="${type}" name="${lowerField}" autocomplete="${autoComplete}">
      </div>
       `;
     }
