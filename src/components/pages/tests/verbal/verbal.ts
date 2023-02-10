@@ -20,5 +20,3 @@ export class VerbalComponent extends GameAreaComponent {
     </section>`;
   }
 }
-
-export class VerbalTest {}
