@@ -56,8 +56,9 @@ export class SignupComponent implements Component {
         element && label ? fields.push({ field: element as HTMLElement, label: label as HTMLElement }) : null;
       }
     const signUpBtn = document.querySelector('.submit-btn');
-    signUpBtn?.addEventListener('click', async () => {
+    signUpBtn?.addEventListener('click', async (event: Event) => {
       const regFailBlock = document.querySelector(".reg-fail");
+      const RegButton = event.target as HTMLElement;
       (regFailBlock as HTMLElement).style.visibility = "hidden";
       if (
         this.checkEmail(fields[0]) &&
@@ -70,6 +71,7 @@ export class SignupComponent implements Component {
         userName: (fields[1].field as HTMLInputElement).value,
         password: (fields[2].field as HTMLInputElement).value
         };
+        RegButton.classList.add('btn-pending');
 
         const newUser: User = {
           email: userData.email ? userData.email.toString() : "",
@@ -85,17 +87,14 @@ export class SignupComponent implements Component {
         })
         .catch((error) => {
           const lang = state.isEngl ? 'en' : 'ru';
-          console.log(error.data);
           (regFailBlock as HTMLElement).style.visibility = "visible";
           (regFailBlock as HTMLElement).textContent = "";
-          for (const key in error.data) {
-            if (Object.prototype.hasOwnProperty.call(error.data, key) && regFailBlock) {
-              error.data[key].forEach((element: string) => {
-                regFailBlock.innerHTML += element + "</br>";
-              });
-            }
-          }
-        });
+          if (regFailBlock)
+          error.data['denyReasons'][lang].forEach((element: string) => {
+          regFailBlock.innerHTML += element + "</br>";
+          });
+        })
+        .finally(() => RegButton.classList.remove('btn-pending'));
       }
     });
   }

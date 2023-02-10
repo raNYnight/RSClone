@@ -13,6 +13,17 @@
   .form-wrapper{
     max-width: 400px;
     margin: 0 auto;
+
+    .btn-pending{
+      cursor:progress;
+      background-color: gray;
+      border-bottom-color: rgb(88, 85, 85);
+      &:hover{
+        background-color: gray;
+        border-bottom-color: rgb(88, 85, 85);
+      }
+    }
+
   }
 
   .middle-headers{
@@ -26,6 +37,7 @@
       color: red;
       border-bottom: 5px solid rgb(255, 56, 56);
     }
+
 
     h2{
       font-size: 48px;
