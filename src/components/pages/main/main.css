@@ -17,7 +17,8 @@ h4 {
   text-align: center;
 }
 
-.greeting {
+.greeting,
+.play-field {
   height: 540px;
   display: flex;
   flex-direction: column;
@@ -50,10 +51,10 @@ h4 {
   animation: svg-animation 4s linear infinite;
 }
 
-@keyframes svg-animation {   
-  0% {     
+@keyframes svg-animation {
+  0% {
     opacity: 1;
-  }  
+  }
   50% {
     opacity: 0.3;
   }
@@ -78,13 +79,12 @@ h4 {
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
-  color: rgb(51, 51, 51)
+  color: rgb(51, 51, 51);
 }
 
 .greeting-a:hover {
   background: #ffffff;
 }
-
 
 .games {
   display: grid;
@@ -122,12 +122,11 @@ h4 {
 }
 
 .games_h4 {
- color:rgb(51, 51, 51);
+  color: rgb(51, 51, 51);
 }
 
 @media (max-width: 425px) {
-  
-  h1 {    
+  h1 {
     font-size: 40px;
   }
 
@@ -140,14 +139,11 @@ h4 {
   .games_a {
     height: 250px;
   }
-
 }
 
 @media (max-width: 1023px) {
-  
   .games {
     max-width: 95%;
     grid-template-columns: 1fr 1fr;
   }
-
 }

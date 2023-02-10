@@ -1,11 +1,9 @@
 import './game-greeting.scss';
 import { Igame } from 'utils/types';
 import { state } from '../../utils/state';
-import { lang } from '../translate/translate';
-
+import { lang } from '../../components/translate/translate';
 
 export class GameGreetingComponent {
-
   id: number;
 
   gameInfo: Igame;
@@ -16,7 +14,6 @@ export class GameGreetingComponent {
   }
 
   async getHtml(): Promise<string> {
-    
     const language = state.isEngl ? 'en' : 'ru';
 
     if (this.gameInfo.name.en !== 'Typing') {
@@ -33,8 +30,19 @@ export class GameGreetingComponent {
         <div class="text-area">${lang[language].typing.typingText}</div>
         <div class="greeting_btn greeting-a">${lang[language].common.start}</div>
       </section>`;
-    }    
+    }
   }
 
-}
+  // async gameStarter() {
+  //   const greeting = document.querySelector('.greeting') as HTMLElement;
+  //   const main = document.querySelector('main') as HTMLElement;
+  //   const playField = '<section class="play-field"> </section>';
+  //   greeting.remove();
+  //   main.insertAdjacentHTML('afterbegin', playField);
+  // }
 
+  // async setListeners() {
+  //   const startBTN = document.querySelector('.greeting_btn') as HTMLButtonElement;
+  //   startBTN.addEventListener('click', this.gameStarter);
+  // }
+}

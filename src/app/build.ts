@@ -1,8 +1,9 @@
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
-import { pageMarkup } from 'interfaces/paths';
+import { PageMarkup } from 'interfaces/paths';
+import { TestComponents } from '../components/pages/tests/test-component';
 
-export async function build(page: pageMarkup): Promise<void> {
+export async function build(page: PageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
   main.classList.add('main');
   document.body.innerHTML = '';
@@ -11,9 +12,10 @@ export async function build(page: pageMarkup): Promise<void> {
   HeaderComponent.setListeners();
   document.body.insertAdjacentElement('beforeend', main);
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
-  
+
   const pageComponent = page();
   main.innerHTML = await pageComponent.getHtml();
-  if (pageComponent.setListeners) pageComponent.setListeners();
+  if (pageComponent instanceof TestComponents) pageComponent.setTestStartListener();
 
+  if (pageComponent.setListeners) pageComponent.setListeners();
 }

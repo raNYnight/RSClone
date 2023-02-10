@@ -1,4 +1,4 @@
-export interface Component{
-  getHtml: () => Promise<string>,
-  setListeners?: () => void,
+export interface Component {
+  getHtml: () => Promise<string>;
+  setListeners?: () => void;
 }

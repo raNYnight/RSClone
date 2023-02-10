@@ -1,8 +1,7 @@
-import { Component } from "../components/component"
+import { Component } from '../components/component';
 
-export type pageMarkup = () => Component
+export type PageMarkup = () => Component;
 
-export interface paths {
-  [key: string]: pageMarkup
+export interface Paths {
+  [key: string]: PageMarkup;
 }
-

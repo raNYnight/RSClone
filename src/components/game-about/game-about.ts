@@ -1,9 +1,8 @@
 import { Igame } from 'utils/types';
 import { state } from '../../utils/state';
-import { lang } from '../translate/translate';
+import { lang } from '../../components/translate/translate';
 
 export class GameAboutComponent {
-
   id: number;
 
   gameInfo: Igame;
@@ -14,7 +13,6 @@ export class GameAboutComponent {
   }
 
   async getHtml(): Promise<string> {
-
     const language = state.isEngl ? 'en' : 'ru';
 
     return `<div class="game-about">

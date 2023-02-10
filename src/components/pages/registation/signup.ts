@@ -6,7 +6,7 @@ import { lang } from '../../../components/translate/translate';
 import { state } from '../../../utils/state';
 import './signup.scss';
 import { sign } from 'crypto';
-import { field } from '../../../constants/field';
+import { Field } from '../../../constants/field';
 import { fieldsErrors } from '../../../constants/fieldsErrors';
 export class SignupComponent implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
@@ -43,7 +43,7 @@ export class SignupComponent implements Component {
   }
 
   setListeners(): void {
-    const fields: field[] = [];
+    const fields: Field[] = [];
     if (typeof lang.en.signUp.fields !== 'string')
       for (const key in lang.en.signUp.fields) {
         const element = document.querySelector(`input[name=${key.toLowerCase()}]`);
@@ -63,12 +63,12 @@ export class SignupComponent implements Component {
     });
   }
 
-  setError(initName: string, field: field, result: boolean, errorMsg: string) {
+  setError(initName: string, field: Field, result: boolean, errorMsg: string) {
     if (!result) field.label.innerHTML = initName + `<span class="error"> ${errorMsg}<span>`;
     else field.label.innerHTML = initName;
   }
 
-  checkEmail(field: field): boolean {
+  checkEmail(field: Field): boolean {
     const lang = this.errors.email;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const result = emailRegex.test((field.field as HTMLInputElement).value);
@@ -77,14 +77,14 @@ export class SignupComponent implements Component {
     return result;
   }
 
-  checkUsername(field: field): boolean {
+  checkUsername(field: Field): boolean {
     const lang = this.errors.username;
     const result = (field.field as HTMLInputElement).value.length > 0;
     this.setError(lang.name, field, result, lang.req);
     return result;
   }
 
-  checkPassword(field: field): boolean {
+  checkPassword(field: Field): boolean {
     const lang = this.errors.password;
     const result = (field.field as HTMLInputElement).value.length >= 6;
     const errorMsg = !result && (field.field as HTMLInputElement).value.length === 0 ? lang.req : lang.invalid;
@@ -92,7 +92,7 @@ export class SignupComponent implements Component {
     return result;
   }
 
-  arePasswordsEqual(password: field, confirmation: field): boolean {
+  arePasswordsEqual(password: Field, confirmation: Field): boolean {
     const lang = this.errors.passConf;
     const passwordText = (password.field as HTMLInputElement).value;
     const confirmationText = (confirmation.field as HTMLInputElement).value;
