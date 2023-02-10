@@ -1,10 +1,9 @@
 import './reaction.scss';
 import { GamesStatsComponent } from '../../../games-stats/games-stats';
 import { GameAboutComponent } from '../../../game-about/game-about';
-import { GamePageComponent } from 'components/pages/gamePage/gamePage';
 import { GameAreaComponent } from 'components/game-area/game-area';
 
-export class ReactionComponent extends GamePageComponent {
+export class ReactionComponent extends GameAreaComponent {
   constructor(id: number) {
     super(id);
     this.id = id;
