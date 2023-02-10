@@ -11,9 +11,8 @@ export async function build(page: pageMarkup): Promise<void> {
   HeaderComponent.setListeners();
   document.body.insertAdjacentElement('beforeend', main);
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
-  
+
   const pageComponent = page();
   main.innerHTML = await pageComponent.getHtml();
   if (pageComponent.setListeners) pageComponent.setListeners();
-
 }
