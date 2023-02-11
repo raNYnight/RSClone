@@ -35,11 +35,11 @@ export interface User {
   permalink: string;
 }
 
-export interface UsersCookie{
-  userId: number,
+export interface UserData{
+  userId?: number,
   userName: string,
   regDate: Date,
-  permalink: string,
+  permalink?: string,
 }
 
 export interface PlayedTest {

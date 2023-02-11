@@ -1,6 +1,6 @@
 import { AuthApiError, RegApiError } from '../utils/errors';
-import { Authorization, AuthResponse, PlayedTest, Registration, User, UsersCookie } from 'utils/types';
-import { getCookie, setCookie } from '../../node_modules/typescript-cookie'
+import { Authorization, AuthResponse, PlayedTest, Registration, User, UserData } from 'utils/types';
+import { getCookie, setCookie, removeCookie } from '../../node_modules/typescript-cookie'
 import { json } from 'stream/consumers';
 
 const url: string = 'https://rscloneserver.onrender.com';
@@ -36,7 +36,7 @@ export class UsersService{
 
     const user = await this.getUser(user_id);
 
-    const cookie: UsersCookie = {
+    const cookie: UserData = {
       userId: user_id,
       userName: user.user_name,
       regDate: new Date(user.registration_date),
@@ -47,9 +47,13 @@ export class UsersService{
     setCookie('user', JSON.stringify(cookie), {expires: 7, path: ''});
   }
 
-  static getCookie(): UsersCookie{
+  static getCookie(): UserData{
     const cookie = getCookie('user')
     return JSON.parse(cookie? cookie : 'false');
+  }
+
+  static removeCookie(){
+    removeCookie('user');
   }
 
   // Returns interval between registration and now in milliseconds
