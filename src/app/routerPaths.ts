@@ -4,7 +4,7 @@ import { MainComponent } from '../components/pages/main/main';
 import { SignupComponent } from '../components/pages/registation/signup';
 import { paths } from 'interfaces/paths';
 import { gamesInfo } from '../utils/games-info';
-import { GamePageComponent } from '../components/pages/gamePage/gamePage';
+import { GamePageComponent } from '../components/pages/game-page/game-page';
 import { StatsPageComponent } from '../components/pages/statsPage/statsPage';
 
 export const routerPaths: paths = {

@@ -22,16 +22,7 @@ export class GamePageComponent {
   }
 
   async setListeners(): Promise<void> {
-    const startBTN = document.querySelector('.greeting_btn')! as HTMLButtonElement;
-    startBTN.addEventListener('click', this.gameStarter);
-  }
-
-  // В каждом тесте-компоненте переопределям этот метод под логику конкретного теста
-  async gameStarter(): Promise<void> {
-    const greeting = document.querySelector('.greeting') as HTMLElement;
-    const main = document.querySelector('main') as HTMLElement;
-    const playField = '<section class="play-field"></section>';
-    greeting.remove();
-    main.insertAdjacentHTML('afterbegin', playField);
+    let gameArea = new GameAreaComponent(this.id);
+    await gameArea.setListeners();
   }
 }
