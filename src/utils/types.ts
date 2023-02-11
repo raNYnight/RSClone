@@ -1,9 +1,9 @@
 export interface Istate {
-  isEngl: boolean,
+  isEngl: boolean;
   user: {
-    id: number,
-    name: string,
-  }
+    id: number;
+    name: string;
+  };
 }
 
 export interface Igame {
@@ -35,11 +35,11 @@ export interface User {
   permalink: string;
 }
 
-export interface UsersCookie{
-  userId: number,
-  userName: string,
-  regDate: Date,
-  permalink: string,
+export interface UsersCookie {
+  userId: number;
+  userName: string;
+  regDate: Date;
+  permalink: string;
 }
 
 export interface PlayedTest {
