@@ -35,12 +35,11 @@ export interface User {
   permalink: string;
 }
 
-
-export interface UserData{
-  userId?: number,
-  userName: string,
-  regDate: Date,
-  permalink?: string,
+export interface UserData {
+  userId?: number;
+  userName: string;
+  regDate: Date;
+  permalink?: string;
 }
 
 export interface PlayedTest {
