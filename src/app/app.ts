@@ -10,7 +10,7 @@ export class App {
       pageId = 'main';
       window.location.hash = 'main';
     } else {
-      pageId = window.location.hash.slice(1);
+      pageId = window.location.hash.slice(1).split("/")[0];
     }
     build(routerPaths[pageId]);
   }

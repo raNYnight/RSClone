@@ -1,15 +1,50 @@
-import './dashboard.css';
+import './dashboard.scss';
 import { lang } from '../../translate/translate';
 import { Ilanguage } from 'components/translate/translateInterfase';
-import { Igame, UsersCookie } from 'utils/types';
+import { Igame, User, UserData } from 'utils/types';
 import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
 import { Component } from '../../../components/component';
 import { UsersService } from '../../../APIs/UsersService';
+import { GuestUser } from '../../../utils/guestUser';
+import { getCookie, setCookie } from '../../../../node_modules/typescript-cookie';
 
-function getUserTitleWrapHtml(path: Ilanguage): string {
-  const usersCookie: UsersCookie | string = UsersService.getCookie();
-  const date = new Date(usersCookie.regDate);
+let dataToShow: UserData | null = null;
+let sharedUser: UserData | undefined;
+async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
+  sharedUser = undefined;
+  const location = document.location.hash.slice(1).split('/');
+
+  if (location[1] === 'users'){
+    const userLink = location[2];
+    const users = await UsersService.getAllUsers();
+    const user =  users.find((user) => user.permalink === userLink);
+    if (user){
+      const UserData: UserData = {
+        userId:user.id,
+        userName: user.user_name,
+        regDate: new Date(user.registration_date),
+        permalink: user.permalink
+       }
+      sharedUser = UserData;
+    }
+    
+  }
+  console.log(sharedUser);
+  
+  const usersCookie: UserData | string = UsersService.getCookie();
+  const guestCookie = getCookie('guest');
+  const guest = guestCookie ? JSON.parse(guestCookie) : new GuestUser();
+  if (!usersCookie && !guestCookie){
+    setCookie('guest', JSON.stringify(guest));
+  }
+
+  dataToShow = sharedUser || usersCookie || guest;
+  let date = new Date();
+  if (dataToShow){
+  date =  new Date(dataToShow.regDate);
+  }
+  
 
   const fullDate = `${date.getFullYear()}-${date.getDate().toString().padStart(2,'0')}-${(Number(date.getUTCMonth())+1).toString().padStart(2,'0')}`;
   console.log(date.getDay(), date.getDate());
@@ -18,13 +53,18 @@ function getUserTitleWrapHtml(path: Ilanguage): string {
       <p class="dashboard_user-paragraf">${path.dashboard.username}</p>
       <p class="dashboard_username">
         <img src="https://www.svgrepo.com/show/447734/person-male.svg" alt="person">
-        ${typeof usersCookie !== 'string' ? usersCookie.userName : path.dashboard.guest}
+        ${dataToShow?.userName}
       </p>
       <p class="dashboard_user-paragraf">${ path.dashboard.joined}</p>
       <p class="dashboard_user-join">${fullDate}</p>
       <div class="link">
+      ${ usersCookie ? `<span class="perma-link">${path.dashboard.permalink}</span> `:
+        `
         <a href="#login">${path.signUp.login}</a> ${path.dashboard.or} 
         <a href="#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
+        `
+      }
+        
       </div>
     </div>`;
 }
@@ -103,7 +143,7 @@ export class DashboardComponent implements Component {
     const path = state.isEngl ? lang.en : lang.ru;
 
     return `<section class="dashboard">
-    ${getUserTitleWrapHtml(path)}
+    ${await getUserTitleWrapHtml(path)}
     ${getGamesIconsHtml(gamesInfo)}
     ${getStatsHtml(gamesInfo, path)}
     ${getActivityTitleWrapHtml(path)}
@@ -118,5 +158,13 @@ export class DashboardComponent implements Component {
     // if (joined){
 
     // }
+    const permalink = document.querySelector('.perma-link');
+    if (permalink){
+      permalink.addEventListener('click', ()=>{
+        if (dataToShow)
+        window.location.hash = `dashboard/users/${dataToShow.permalink}`
+        
+      });
+    }
   }
 }
