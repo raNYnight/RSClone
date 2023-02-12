@@ -62,6 +62,8 @@ export class GameAreaComponent {
         test = new TypingComponent();
         break;
     }
-    startBTN.addEventListener('click', test.gameStarter);
+    startBTN.addEventListener('click', async () => {
+      await test.gameStarter();
+    });
   }
 }
