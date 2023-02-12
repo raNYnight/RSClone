@@ -15,7 +15,7 @@ export class UsersService {
   static getUserPlayedTests = async (user_id: number): Promise<PlayedTest[]> =>
     (await fetch(`${users}/${user_id}/played`)).json();
 
-  static getUserTestData = async (user_id: number, test_id: number): Promise<PlayedTest> =>
+  static getUserTestData = async (user_id: number, test_id: number): Promise<PlayedTest[]> =>
     (await fetch(`${users}/${user_id}/played/${test_id}`)).json();
 
   static authorizeUser = async (user: Authorization): Promise<AuthResponse> =>
