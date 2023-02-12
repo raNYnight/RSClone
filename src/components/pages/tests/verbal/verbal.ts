@@ -53,7 +53,7 @@ export class VerbalComponent extends PlayComponent {
           score.textContent = (+score.textContent! + 1).toString();
           break;
       }
-      if (+lives.textContent! === 0) this.gameEnd(6, `${+score.textContent!} words`);
+      if (+lives.textContent! === 0) this.gameEnd(6, +score.textContent!, 'words');
     });
     NEW_BTN.addEventListener('click', async () => {
       let index = seenArr.indexOf(current.textContent!);
@@ -71,7 +71,7 @@ export class VerbalComponent extends PlayComponent {
           lives.textContent = (+lives.textContent! - 1).toString();
           break;
       }
-      if (+lives.textContent! === 0) this.gameEnd(6, `${+score.textContent!} words`);
+      if (+lives.textContent! === 0) this.gameEnd(6, +score.textContent!, 'words');
     });
   }
 
