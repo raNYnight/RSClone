@@ -10,7 +10,7 @@ export class App {
       pageId = 'main';
       window.location.hash = 'main';
     } else {
-      pageId = window.location.hash.slice(1).split("/")[0];
+      pageId = window.location.hash.slice(1).split('/')[0];
     }
     build(routerPaths[pageId]);
   }
@@ -19,6 +19,5 @@ export class App {
     App.render();
     window.addEventListener('hashchange', router);
     console.log(UsersService.getCookie());
-     
   }
 }

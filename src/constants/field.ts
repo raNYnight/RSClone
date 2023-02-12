@@ -1,4 +1,4 @@
-export interface field{
-  field: HTMLElement,
-  label: HTMLElement,
+export interface Field {
+  field: HTMLElement;
+  label: HTMLElement;
 }

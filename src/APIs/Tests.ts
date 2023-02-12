@@ -3,10 +3,10 @@ import { PlayedTest } from 'utils/types';
 const url: string = 'https://rscloneserver.onrender.com';
 const tests: string = `${url}/played`;
 
-export class Tests{
-   static getTestData = async (test_id: number): Promise<PlayedTest> => (await fetch(`${tests}/${test_id}`)).json();
-   
-   static addTestInDB = async (test: PlayedTest): Promise<PlayedTest> =>
+export class Tests {
+  static getTestData = async (test_id: number): Promise<PlayedTest> => (await fetch(`${tests}/${test_id}`)).json();
+
+  static addTestInDB = async (test: PlayedTest): Promise<PlayedTest> =>
     (
       await fetch(`${url}/tests`, {
         method: 'POST',
