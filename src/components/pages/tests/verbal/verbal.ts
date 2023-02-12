@@ -15,7 +15,7 @@ export class VerbalComponent extends PlayComponent {
       <div class="verbal-stats">${lang[language].verbal.lives} | </span>
           <span id="LIVES">3</span>
           <span>${lang[language].verbal.score} | </span>
-          <span id="SCORE">3</span>
+          <span id="SCORE">0</span>
       </div>
       <div class="verbal-current-word">${await TextGenerator.getRandomWord(language)}</div>
       <div class="verbal-btns">
