@@ -116,39 +116,6 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
     ${statsTable.join('')}
   </div>`;
 }
-// async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
-//   const language = state.isEngl ? 'en' : 'ru';
-//   const statsTable = await Promise.all(
-//     arr.map((el: Igame, i: number) => {
-//       const gameInfo: Igame = gamesInfo[i];
-//       const played = await Tests.getUserAverageStats(gameInfo.id);
-//       return `<div class="stats_item-wrap">
-//             <div class="stats_item">${gameInfo.name[language]}</div>
-//             <div class="stats_item">
-//               <a class="stats_link" href="#${gameInfo.href}">
-//                 <img class="stats_link-svg" src="https://www.svgrepo.com/show/479265/play-button.svg" alt="play">
-//               </a>
-//               <a class="stats_link" href="#${gameInfo.hrefStats}">
-//                 <img class="stats_link-svg" src="https://www.svgrepo.com/show/409311/stats-up.svg" alt="stats">
-//               </a>
-//             </div>
-//             <div class="stats_item">?</div>
-//             <div class="stats_item">20%</div>
-//           </div>`;
-
-//     })
-//   );
-//   return `<div class="stats-wrap">
-//      <div class="stats_item-wrap stats_title-bold">
-//        <div class="stats_item">${path.dashboard.test}</div>
-//        <div class="stats_item">${path.dashboard.actions}</div>
-//        <div class="stats_item">${path.dashboard.score}</div>
-//        <div class="stats_item">${path.dashboard.percentile}</div>
-//      </div>
-//      ${statsTable.join('')}
-//    </div>`
-//   );
-// }
 //надо будет переделать функцию вывода последних игр. Написал только для настройки верстки
 async function getActivityItemHtml(): Promise<string> {
   const played = await Tests.getUserPlayedTests();
