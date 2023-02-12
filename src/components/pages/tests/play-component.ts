@@ -32,7 +32,9 @@ export class PlayComponent {
     const saveScore = document.querySelector('#SaveScore') as HTMLElement;
     tryAgain.addEventListener('click', async () => {
       const main = document.querySelector('main') as HTMLElement;
-      main.innerHTML = await new GamePageComponent(gameID).getHtml();
+      const newGame = new GamePageComponent(gameID);
+      main.innerHTML = await newGame.getHtml();
+      newGame.setListeners();
     });
   }
 }
