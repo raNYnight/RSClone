@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
+import './verbal.css';
 import { TextGenerator } from '../../../../APIs/TextGenerator';
 import { lang } from '../../../../components/translate/translate';
 import { state } from '../../../../utils/state';
@@ -12,12 +13,13 @@ export class VerbalComponent extends PlayComponent {
     playField.insertAdjacentHTML(
       'afterbegin',
       `<section class="play-field">
-      <div class="verbal-stats">${lang[language].verbal.lives} | </span>
-          <span id="LIVES">3</span>
-          <span>${lang[language].verbal.score} | </span>
-          <span id="SCORE">3</span>
+      <div class="verbal-stats">
+      <span class="verbal-stats_span">${lang[language].verbal.lives} | </span>
+          <h3 id="LIVES">3</h3>
+          <span class="verbal-stats_span">${lang[language].verbal.score} | </span>
+          <h3 id="SCORE">3</h3>
       </div>
-      <div class="verbal-current-word">${await TextGenerator.getRandomWord(language)}</div>
+      <h1 class="verbal-current-word">${await TextGenerator.getRandomWord(language)}</h1>
       <div class="verbal-btns">
           <button id="SEEN" class="greeting_btn greeting-a">${lang[language].verbal.seen} </button>
           <button id="NEW" class="greeting_btn greeting-a">${lang[language].verbal.new} </button>
