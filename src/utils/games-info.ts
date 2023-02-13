@@ -116,7 +116,7 @@ export const gamesInfo: Igame[] = [
     href: 'verbal',
     hrefStats: 'verbal-stats',
     units: {
-      en: 'poitns',
+      en: 'points',
       ru: 'ед',
     },
   },
