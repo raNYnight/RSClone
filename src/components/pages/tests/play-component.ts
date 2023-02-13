@@ -15,8 +15,8 @@ export class PlayComponent {
     const greeting = document.querySelector('.greeting') as HTMLElement;
     const main = document.querySelector('main') as HTMLElement;
     const playField = '<section class="play-field"></section>';
-    greeting.remove();
-    main.insertAdjacentHTML('afterbegin', playField);
+     greeting.remove();
+     main.insertAdjacentHTML('afterbegin', playField);
   }
 
   async gameEnd(gameID: number, score: number, scoreUnits: string): Promise<void> {
