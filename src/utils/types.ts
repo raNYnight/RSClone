@@ -25,8 +25,8 @@ export interface Igame {
   href: string;
   hrefStats: string;
   units: {
-    en: string;
     ru: string;
+    en: string;
   };
 }
 

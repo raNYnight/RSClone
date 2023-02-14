@@ -49,6 +49,7 @@ export const gamesInfo: Igame[] = [
       ru: 'ед',
     },
   },
+
   {
     id: 5,
     name: {
@@ -72,6 +73,7 @@ export const gamesInfo: Igame[] = [
       ru: 'мс',
     },
   },
+
   {
     id: 7,
     name: {
@@ -118,6 +120,7 @@ export const gamesInfo: Igame[] = [
       ru: 'ед',
     },
   },
+
   {
     id: 9,
     name: {
