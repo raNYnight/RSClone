@@ -77,7 +77,7 @@ export class ReactionComponent extends PlayComponent {
         case 'green': {
           const startTime = performance.now();
           this.playField.addEventListener('click', (event: Event) => {
-            this.navigate('result', event, performance.now() - startTime);
+            this.navigate('result', event, Math.round(performance.now() - startTime));
           });
           break;
         }
@@ -95,10 +95,14 @@ export class ReactionComponent extends PlayComponent {
         case 'end': {
           const saveBtn = this.playField.querySelector('.save');
           const tryAgainBtn = this.playField.querySelector('.try-again_btn');
+          this.playField.style.cursor = 'default';
           if (saveBtn && tryAgainBtn) {
-            saveBtn.addEventListener('click', () => {
+            const save = (event: Event) =>{
               this.saveScore();
-            });
+              if (event.target)
+              event.target.removeEventListener('click', save);
+            }
+            saveBtn.addEventListener('click', save);
             tryAgainBtn.addEventListener('click', async () => {
               await super.newGame(2);
             });
@@ -118,8 +122,6 @@ export class ReactionComponent extends PlayComponent {
   }
 
   async navigate(page: ReactionPages, event: Event, ms?: number) {
-    console.log('navigate to', page);
-
     event.stopImmediatePropagation();
     this.removeListeners();
     this.changeState(page, ms);
@@ -127,7 +129,7 @@ export class ReactionComponent extends PlayComponent {
 
   async saveScore() {
     const userData = await UsersService.getCookie();
-    const score = this.results.reduce((acc, curr) => acc + curr);
+    const score = this.results.reduce((acc, curr) => acc + curr,0);
 
     const playedTest: PlayedTest = {
       user_id: userData.userId!,
