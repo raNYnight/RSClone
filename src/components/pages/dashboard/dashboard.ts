@@ -30,7 +30,6 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
       sharedUser = UserData;
     }
   }
-  console.log(sharedUser);
 
   const usersCookie: UserData | string = UsersService.getCookie();
   const guestCookie = getCookie('guest');
@@ -50,7 +49,6 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
   )
     .toString()
     .padStart(2, '0')}`;
-  console.log(date.getDay(), date.getDate());
 
   return `<div class="dashboard_user-wrap">
       <p class="dashboard_user-paragraf">${path.dashboard.username}</p>
@@ -101,7 +99,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                     <img class="stats_link-svg" src="https://www.svgrepo.com/show/409311/stats-up.svg" alt="stats">
                   </a>
                 </div>
-                <div class="stats_item">${played.score}</div>
+                <div class="stats_item">${played.score} ${gameInfo.units[language]}</div>
                 <div class="stats_item">${played.percentile}</div>
               </div>`;
     })
@@ -121,20 +119,30 @@ async function getActivityItemHtml(): Promise<string> {
   const played = await Tests.getUserPlayedTests();
 
   const language = state.isEngl ? 'en' : 'ru';
+  console.log(await played);
   const activityTable = await Promise.all(
-    played.map(async (el: PlayedTest, i: number) => {
-      const gameInfo: Igame = gamesInfo.filter(async (el) => el.id === played[i].tests_id)[0];
-      return `<div class="activity_item-wrap">
+    played
+      .map(async (el: PlayedTest, i: number) => {
+        let gameInfo: Igame = gamesInfo.find((el) => el.id === played[i].tests_id)!;
+        let dateString: string = played[i].date;
+        let date: Date = new Date(dateString);
+        let formattedDate: string = date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        });
+        return `<div class="activity_item-wrap">
     <a class="dashboard_activity_link" href="#${gameInfo.href}">
       <div class="activity_link-svg-wrap">
         ${gameInfo.svg}
       </div>
     </a>      
       <div class="activity_item">${gameInfo.name[language]}</div>      
-      <div class="activity_item">21.02.2023</div>
-      <div class="activity_item">20%</div>
+      <div class="activity_item">${formattedDate}</div>
+      <div class="activity_item">${played[i].score} ${gameInfo.units[language]}</div>
     </div>`;
-    })
+      })
+      .reverse()
   );
   return activityTable.join('');
 }
@@ -146,7 +154,7 @@ async function getActivityTitleWrapHtml(path: Ilanguage): Promise<string> {
     <div class="dashboard_activity_link">${path.dashboard.test}</div>
     <div class="activity_item"></div>
     <div class="activity_item">${path.dashboard.date}</div>
-    <div class="activity_item">${path.dashboard.score}</div>
+    <div class="activity_item">${path.dashboard.score} </div>
   </div>
   ${played}
 </div>`;

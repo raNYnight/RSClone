@@ -21,6 +21,10 @@ export const gamesInfo: Igame[] = [
     svg: BOLT_SVG,
     href: 'reaction',
     hrefStats: 'reaction-stats',
+    units: {
+      en: 'ms',
+      ru: 'мс',
+    },
   },
   {
     id: 3,
@@ -40,6 +44,10 @@ export const gamesInfo: Igame[] = [
     svg: SEQUENCE_SVG,
     href: 'sequence',
     hrefStats: 'sequence-stats',
+    units: {
+      en: 'points',
+      ru: 'ед',
+    },
   },
   {
     id: 5,
@@ -59,6 +67,10 @@ export const gamesInfo: Igame[] = [
     svg: AIM_SVG,
     href: 'aim',
     hrefStats: 'aim-stats',
+    units: {
+      en: 'ms',
+      ru: 'мс',
+    },
   },
   {
     id: 7,
@@ -78,6 +90,10 @@ export const gamesInfo: Igame[] = [
     svg: NUMBER_SVG,
     href: 'number',
     hrefStats: 'number-stats',
+    units: {
+      en: 'digits',
+      ru: 'чисел',
+    },
   },
   {
     id: 6,
@@ -97,6 +113,10 @@ export const gamesInfo: Igame[] = [
     svg: VERBAL_SVG,
     href: 'verbal',
     hrefStats: 'verbal-stats',
+    units: {
+      en: 'points',
+      ru: 'ед',
+    },
   },
   {
     id: 9,
@@ -116,5 +136,9 @@ export const gamesInfo: Igame[] = [
     svg: TYPING_SVG,
     href: 'typing',
     hrefStats: 'typing-stats',
+    units: {
+      en: 'WPM',
+      ru: 'слов/мин',
+    },
   },
 ];
