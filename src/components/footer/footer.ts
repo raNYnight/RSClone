@@ -8,13 +8,13 @@ export class FooterComponent implements Component {
   <ul class="footer__ul">
     <li class="footer__li">
       <a href="https://github.com/ranynight" target="_blank">
-        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" title="raNYnight">
       </a>
       <a href="https://github.com/almondchips" target="_blank">
-        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" title="AlmondChips">
       </a>
       <a href="https://github.com/IliasovDamir" target="_blank">
-        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        <img class="footer__logo-gh" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" title="Iliasov Damir">
       </a>
     </li>
     <li class="footer__li">

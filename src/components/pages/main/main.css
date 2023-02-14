@@ -1,5 +1,6 @@
 main {
   z-index: 1;
+  min-height: calc(100vh - 130px);
 }
 
 h1 {
