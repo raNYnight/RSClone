@@ -101,7 +101,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                     <img class="stats_link-svg" src="https://www.svgrepo.com/show/409311/stats-up.svg" alt="stats">
                   </a>
                 </div>
-                <div class="stats_item">${played.score}</div>
+                <div class="stats_item">${played.score} ${gameInfo.units[language]}</div>
                 <div class="stats_item">${played.percentile}</div>
               </div>`;
     })

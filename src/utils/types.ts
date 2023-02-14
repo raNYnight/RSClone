@@ -24,6 +24,10 @@ export interface Igame {
   svg: string;
   href: string;
   hrefStats: string;
+  units: {
+    ru: string;
+    en: string;
+  };
 }
 
 export interface User {
