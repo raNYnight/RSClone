@@ -1,3 +1,4 @@
+import { gamesInfo } from '../../../../utils/games-info';
 import { lang } from '../../../../components/translate/translate';
 import { state } from '../../../../utils/state';
 import { PlayComponent } from '../play-component';
@@ -28,7 +29,8 @@ export class NumberComponent extends PlayComponent {
             this.changeSlide(this.getResultPage());
             this.animateBGright(playField);
           } else {
-            this.gameEnd(7, this.currentNumberLength - 1, 'digits');
+            const language = state.isEngl ? 'en' : 'ru';
+            this.gameEnd(7, this.currentNumberLength - 1, gamesInfo[3].units[language]);
             this.animateBGwrong(playField);
           }
           break;
@@ -69,7 +71,8 @@ export class NumberComponent extends PlayComponent {
    <button class="greeting_btn greeting-a" id="NEXT_LEVEL">${this.language.common.next}</button>`;
 
   async gameEnd(gameID: number, score: number, scoreUnits: string) {
-    super.gameEnd(7, this.currentNumberLength - 1, 'digits');
+    const language = state.isEngl ? 'en' : 'ru';
+    super.gameEnd(7, this.currentNumberLength - 1, gamesInfo[3].units[language]);
     const playField = document.querySelector('.play-field') as HTMLElement;
     const insertPlace = playField.querySelector('h3') as HTMLElement;
     insertPlace.insertAdjacentHTML('afterend', this.getResultPage());
