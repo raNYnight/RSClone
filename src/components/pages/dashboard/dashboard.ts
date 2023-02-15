@@ -31,7 +31,7 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
     }
   }
 
-  const usersCookie: UserData | string = UsersService.getCookie();
+  const usersCookie: UserData | undefined = UsersService.getCookie();
   const guestCookie = getCookie('guest');
   const guest = guestCookie ? JSON.parse(guestCookie) : new GuestUser();
   if (!usersCookie && !guestCookie) {
