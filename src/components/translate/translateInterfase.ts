@@ -99,6 +99,8 @@ export interface Icommon {
   level: string;
   recentResults: string;
   averageUsers: string;
+  loading: string;
+
 }
 
 export interface Ireaction {

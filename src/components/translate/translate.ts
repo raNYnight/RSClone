@@ -85,6 +85,8 @@ export const lang: Itranslate = {
       level: 'Level',
       recentResults: 'Recent results',
       averageUsers: 'Average users',
+      loading: 'Loading...',
+
     },
     reaction: {
       title: 'Reaction Time Test',
@@ -233,6 +235,8 @@ export const lang: Itranslate = {
       level: 'Уровень',
       recentResults: 'Последние результаты',
       averageUsers: 'Среднее пользователей',
+      loading: 'Загрузка...',
+
     },
     reaction: {
       title: 'Тест на скорость реакции',
