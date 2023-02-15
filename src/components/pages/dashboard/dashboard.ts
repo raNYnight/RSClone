@@ -89,6 +89,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
     arr.map(async (el: Igame, i: number) => {
       const gameInfo: Igame = gamesInfo[i];
       const played = await Tests.getUserAverageStats(gameInfo.id);
+      const score = isNaN(parseInt((played.score).toString())) ? 0 : parseInt((played.score).toString());
       return `<div class="stats_item-wrap">
                 <div class="stats_item">${gameInfo.name[language]}</div>
                 <div class="stats_item">
@@ -99,7 +100,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                     <img class="stats_link-svg" src="https://www.svgrepo.com/show/409311/stats-up.svg" alt="stats">
                   </a>
                 </div>
-                <div class="stats_item">${parseInt((played.score).toString())} ${gameInfo.units[language]}</div>
+                <div class="stats_item">${score} ${gameInfo.units[language]}</div>
                 <div class="stats_item">${played.percentile}</div>
               </div>`;
     }),
