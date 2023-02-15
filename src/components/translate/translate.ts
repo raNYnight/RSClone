@@ -84,6 +84,7 @@ export const lang: Itranslate = {
       tryAgain: 'Try again',
       level: 'Level',
       recentResults: 'Recent results',
+      loading: 'Loading...',
     },
     reaction: {
       title: 'Reaction Time Test',
@@ -231,6 +232,7 @@ export const lang: Itranslate = {
       tryAgain: 'Попробовать снова',
       level: 'Уровень',
       recentResults: 'Последние результаты',
+      loading: 'Загрузка...',
     },
     reaction: {
       title: 'Тест на скорость реакции',

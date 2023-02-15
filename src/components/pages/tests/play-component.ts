@@ -7,15 +7,22 @@ import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
 import { Igame, PlayedTest } from '../../../utils/types';
 import { GamePageComponent } from '../game-page/game-page';
+import { SPINNER_SVG } from '../../../assets/icons/svg';
 
 export class PlayComponent {
   async gameStarter(): Promise<void> {
-    console.log('PLAY-COMPONENTS');
-
+    const language = state.isEngl ? 'en' : 'ru';
+    const modal: string = `<div id="loading-modal" class="modal">
+    <div class="modal-content">
+      <p>${lang[language].common.loading}   ${SPINNER_SVG}</p>
+    </div>
+  </div>`;
     const greeting = document.querySelector('.greeting') as HTMLElement;
     const main = document.querySelector('main') as HTMLElement;
     const playField = '<section class="play-field"></section>';
-    if (greeting) greeting.remove();
+    greeting.remove();
+
+    main.insertAdjacentHTML('beforeend', modal);
     main.insertAdjacentHTML('afterbegin', playField);
   }
 
@@ -46,8 +53,11 @@ export class PlayComponent {
         date: new Date().toISOString(),
         score: score,
       };
-      await Tests.addTestInDB(playedTest);
-      await build(routerPaths.dashboard);
+      this.showModal();
+      await Tests.addTestInDB(playedTest).then(() => {
+        window.location.hash = 'dashboard';
+        this.hideModal();
+      });
     });
   }
 
@@ -56,5 +66,15 @@ export class PlayComponent {
     const newGame = new GamePageComponent(gameID);
     main.innerHTML = await newGame.getHtml();
     newGame.setListeners();
+  }
+
+  showModal() {
+    const modalNode = document.querySelector('#loading-modal') as HTMLElement;
+    modalNode.style.display = 'block';
+  }
+
+  hideModal() {
+    const modalNode = document.querySelector('#loading-modal') as HTMLElement;
+    modalNode.style.display = 'none';
   }
 }
