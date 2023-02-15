@@ -10,7 +10,7 @@ export const gamesInfo: Igame[] = [
       ru: 'Скорость реакции',
     },
     description: {
-      en: 'Test your visual reflexes.',
+      en: 'When the red box turns green, click as quickly as you can. </br> Click start to begin.',
       ru: 'Проверьте свои зрительные рефлексы.',
     },
     aboutTest: {

@@ -1,6 +1,7 @@
 export interface Itranslate {
   en: Ilanguage;
   ru: Ilanguage;
+  [key: string]: Ilanguage;
 }
 
 export interface Ilanguage {

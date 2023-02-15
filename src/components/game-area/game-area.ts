@@ -9,6 +9,7 @@ import { AimComponent } from '../../components/pages/tests/aim/aim';
 import { NumberComponent } from '../../components/pages/tests/number/number';
 import { VerbalComponent } from '../../components/pages/tests/verbal/verbal';
 import { TypingComponent } from '../../components/pages/tests/typing/typing';
+import { PlayComponent } from 'components/pages/tests/play-component';
 
 export class GameAreaComponent {
   id: number;
@@ -41,7 +42,7 @@ export class GameAreaComponent {
 
   async setListeners(): Promise<void> {
     const startBTN = document.querySelector('.greeting_btn')! as HTMLButtonElement;
-    let test = new ReactionComponent();
+    let test: PlayComponent = new ReactionComponent();
     switch (this.id) {
       case 2:
         test = new ReactionComponent();
