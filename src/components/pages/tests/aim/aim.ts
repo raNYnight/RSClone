@@ -13,36 +13,38 @@ export class AimComponent extends PlayComponent {
 
   targets: number = 30;
 
+  averageTime: number = 0;
+
   async gameStarter(): Promise<void> {
-    if (document.querySelector('.greeting')) await super.gameStarter();
+    if (document.querySelector('.greeting')) await super.gameStarter();    
     const playField = document.querySelector('.play-field') as HTMLElement;
     playField.innerHTML = this.renderPlayField();
 
     const aimTarget: HTMLElement | null = document.querySelector('.aim_svg');
     const curTargetsCount: HTMLElement | null = document.querySelector('.aim_count');
     const svgPosition: HTMLElement | null = document.querySelector('.aim_svg-wrapper');
-    const gameWrapper: HTMLElement | null = document.querySelector('.aim_game-wrap');
 
-    playField.addEventListener('click', (event) => {
+    const timerStart: number = new Date().valueOf();
+
+    svgPosition!.addEventListener('click', (event) => {      
+
       let target = event.target as HTMLElement;
-      switch (target) {
-        case aimTarget:
-          this.targets = this.targets - 1;
-          event.stopPropagation();
-          if (curTargetsCount) {
-            curTargetsCount.textContent = this.targets.toString();
-          }
-          if (svgPosition) {
-            svgPosition.style.top = `${this.randomPosition()}%`;
-            svgPosition.style.left = `${this.randomPosition()}%`;
-          }
-          break;
-        case gameWrapper:
-          if (curTargetsCount) {
-            console.log('мимо');
-          }
-          break;          
-      }
+      if (target === aimTarget || svgPosition) {
+        this.targets = this.targets - 1;
+        if (curTargetsCount) {
+          curTargetsCount.textContent = this.targets.toString();
+        }
+        if (svgPosition) {
+          svgPosition.style.top = `${this.randomPosition()}%`;
+          svgPosition.style.left = `${this.randomPosition()}%`;
+        }
+        if (this.targets < 0) {
+          const timerEnd: number = new Date().valueOf();
+          const lang = state.isEngl ? 'en' : 'ru';
+          this.averageTime = parseInt(((timerEnd - timerStart) / 30).toString());
+          super.gameEnd(5, this.averageTime, gamesInfo[2].units[lang]);             
+        }
+      }        
     });
     
   }
@@ -61,4 +63,5 @@ export class AimComponent extends PlayComponent {
   randomPosition(): number {
     return Math.floor(13 + Math.random() * (87 + 1 - 13));
   }
+
 }
