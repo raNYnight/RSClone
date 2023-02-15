@@ -57,8 +57,8 @@ export const gamesInfo: Igame[] = [
       ru: 'Тренеровка прицеливания',
     },
     description: {
-      en: 'How quickly can you hit all the targets?',
-      ru: 'Как быстро вы можете поразить все цели?',
+      en: 'How quickly can you hit all 30 targets?',
+      ru: 'Как быстро вы можете поразить все 30 целей?',
     },
     aboutTest: {
       en: lang.en.aim.discr,
