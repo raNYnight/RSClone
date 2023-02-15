@@ -35,7 +35,7 @@ export class GameAreaComponent {
         <h1>${gameInfo.name[language]}</h1>
         <h4>${gameInfo.description[language]}</h4>
         <div class="text-area">${lang[language].typing.typingText}</div>
-        <div class="greeting_btn greeting-a">${lang[language].common.start}</div>
+        <button class="greeting_btn greeting-a" id="START">${lang[language].common.start}</button>
       </section>`;
     }
   }
