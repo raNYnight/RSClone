@@ -60,13 +60,13 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
       <p class="dashboard_user-join">${fullDate}</p>
       <div class="link">
       ${
-        usersCookie
-          ? `<span class="perma-link">${path.dashboard.permalink}</span> `
-          : `
+  usersCookie
+    ? `<span class="perma-link">${path.dashboard.permalink}</span> `
+    : `
         <a href="#login">${path.signUp.login}</a> ${path.dashboard.or} 
         <a href="#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
         `
-      }
+}
         
       </div>
     </div>`;
@@ -99,10 +99,10 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                     <img class="stats_link-svg" src="https://www.svgrepo.com/show/409311/stats-up.svg" alt="stats">
                   </a>
                 </div>
-                <div class="stats_item">${played.score} ${gameInfo.units[language]}</div>
+                <div class="stats_item">${parseInt((played.score).toString())} ${gameInfo.units[language]}</div>
                 <div class="stats_item">${played.percentile}</div>
               </div>`;
-    })
+    }),
   );
   return `<div class="stats-wrap">
     <div class="stats_item-wrap stats_title-bold">
@@ -142,7 +142,7 @@ async function getActivityItemHtml(): Promise<string> {
       <div class="activity_item">${played[i].score} ${gameInfo.units[language]}</div>
     </div>`;
       })
-      .reverse()
+      .reverse().slice(0, 10),
   );
   return activityTable.join('');
 }

@@ -4,7 +4,7 @@ import { state } from '../../../../utils/state';
 import { PlayComponent } from '../play-component';
 import './number.css';
 export class NumberComponent extends PlayComponent {
-  currentNumberLength: number = 2;
+  currentNumberLength: number = 1;
 
   currentNumber: number = 1;
 
@@ -17,7 +17,7 @@ export class NumberComponent extends PlayComponent {
 
     const playField = document.querySelector('.play-field') as HTMLElement;
     playField.innerHTML = this.getNumberSlide();
-    this.animateLine(this.currentNumberLength);
+    this.animateLine(this.currentNumberLength + 1);
 
     playField.addEventListener('click', (e) => {
       let target = e.target as HTMLButtonElement;
@@ -30,21 +30,21 @@ export class NumberComponent extends PlayComponent {
             this.animateBGright(playField);
           } else {
             const language = state.isEngl ? 'en' : 'ru';
-            this.gameEnd(7, this.currentNumberLength - 1, gamesInfo[3].units[language]);
+            this.gameEnd(7, this.currentNumberLength, gamesInfo[3].units[language]);
             this.animateBGwrong(playField);
           }
           break;
         case 'NEXT_LEVEL':
           this.currentNumberLength += 1;
           this.changeSlide(this.getNumberSlide());
-          this.animateLine(this.currentNumberLength);
+          this.animateLine(this.currentNumberLength + 1);
           break;
       }
     });
   }
 
   getNumberSlide = (): string => {
-    this.currentNumber = this.generateRandomNumber(this.currentNumberLength - 1);
+    this.currentNumber = this.generateRandomNumber(this.currentNumberLength);
     return `<h1 class="current-number">
     ${this.currentNumber}</h1>
     <div class="line-container">
@@ -67,7 +67,7 @@ export class NumberComponent extends PlayComponent {
    <h2>${this.currentNumber}</h2>
    <h2 class="number-test_transparent">${this.language.number.answer}</h2>
    <h2 class='number-test_user-answer'>${this.userAnswer}</h2>
-   <h1 id="number-level">${this.language.common.level} ${this.currentNumberLength - 1}</h1>
+   <h1 id="number-level">${this.language.common.level} ${this.currentNumberLength}</h1>
    <button class="greeting_btn greeting-a" id="NEXT_LEVEL">${this.language.common.next}</button>`;
 
   async gameEnd(gameID: number, score: number, scoreUnits: string) {

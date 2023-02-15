@@ -49,7 +49,7 @@ export class AimComponent extends PlayComponent {
     
   }
   
-  renderPlayField() {
+  renderPlayField(): string {
     return `<div class="aim_game-wrap">
         <p class="aim_remaining">${this.language.aim.remaining}: <span class="aim_count">${this.targets}</span></p>
         <div class="aim_game-field">
