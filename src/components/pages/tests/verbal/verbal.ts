@@ -12,8 +12,7 @@ export class VerbalComponent extends PlayComponent {
     const playField = document.querySelector('.play-field') as HTMLElement;
     playField.insertAdjacentHTML(
       'afterbegin',
-      `<section class="play-field">
-      <div class="verbal-stats">
+      `<div class="verbal-stats">
       <span class="verbal-stats_span">${lang[language].verbal.lives} | </span>
           <h3 id="LIVES">3</h3>
           <span class="verbal-stats_span">${lang[language].verbal.score} | </span>
@@ -23,8 +22,7 @@ export class VerbalComponent extends PlayComponent {
       <div class="verbal-btns">
           <button id="SEEN" class="greeting_btn greeting-a">${lang[language].verbal.seen} </button>
           <button id="NEW" class="greeting_btn greeting-a">${lang[language].verbal.new} </button>
-      </div>
-    </section>`
+      </div>`
     );
     this.gamePlay();
   }

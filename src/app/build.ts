@@ -3,8 +3,6 @@ import { HeaderComponent } from '../components/header/header';
 import { PageMarkup } from 'interfaces/paths';
 
 export async function build(page: PageMarkup): Promise<void> {
-  console.log(page);
-
   const main: HTMLElement = document.createElement('main');
   main.classList.add('main');
   document.body.innerHTML = '';

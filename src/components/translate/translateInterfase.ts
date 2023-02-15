@@ -132,6 +132,9 @@ export interface Inumber {
   discr: string;
   num: string;
   answer: string;
+  submit: string;
+  submitBTN: string;
+  whatNumber: string;
 }
 
 export interface Ivisual {

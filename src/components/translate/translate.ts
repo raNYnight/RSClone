@@ -118,6 +118,9 @@ export const lang: Itranslate = {
         "The average person can only remember 7 digit numbers reliably, but it's possible to do much better using mnemonic techniques.",
       num: 'Number',
       answer: 'You answer',
+      submit: 'Press the button to submit your answer',
+      submitBTN: 'Submit',
+      whatNumber: 'What was the number?',
     },
     visual: {
       title: 'Visual Memory Test',
@@ -262,6 +265,9 @@ export const lang: Itranslate = {
         'Среднестатистический человек может надежно запомнить только семизначные числа, но c помощью мнемонических методов можно добиться большего успеха.',
       num: 'Цифры',
       answer: 'Ваш ответ',
+      submit: 'Нажмите на кнопку, чтобы подтвердить ответ',
+      submitBTN: 'Подтвердить',
+      whatNumber: 'Какое было число?',
     },
     visual: {
       title: 'Зрительная память',
