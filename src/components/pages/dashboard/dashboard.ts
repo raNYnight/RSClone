@@ -9,6 +9,7 @@ import { UsersService } from '../../../APIs/UsersService';
 import { GuestUser } from '../../../utils/guestUser';
 import { getCookie, setCookie } from '../../../../node_modules/typescript-cookie';
 import { Tests } from '../../../APIs/Tests';
+import { LocalGameStorage } from '../../../utils/localGameStorage';
 
 let dataToShow: UserData | null = null;
 let sharedUser: UserData | undefined;
@@ -35,6 +36,7 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
   const guestCookie = getCookie('guest');
   const guest = guestCookie ? JSON.parse(guestCookie) : new GuestUser();
   if (!usersCookie && !guestCookie) {
+    LocalGameStorage.removeAllGames();
     setCookie('guest', JSON.stringify(guest));
   }
 

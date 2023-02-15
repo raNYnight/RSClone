@@ -18,4 +18,8 @@ export class LocalGameStorage {
     gamesList.push(game);
     localStorage.setItem('games', JSON.stringify(gamesList));
   }
+
+  static removeAllGames(): void{
+    localStorage.removeItem('games');
+  }
 }
