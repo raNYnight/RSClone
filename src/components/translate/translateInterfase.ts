@@ -98,6 +98,7 @@ export interface Icommon {
   tryAgain: string;
   level: string;
   recentResults: string;
+  averageUsers: string;
 }
 
 export interface Ireaction {

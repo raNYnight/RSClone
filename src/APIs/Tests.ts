@@ -5,7 +5,7 @@ const url: string = 'https://rscloneserver.onrender.com';
 const tests: string = `${url}/played`;
 
 export class Tests {
-  static getTestData = async (test_id: number): Promise<PlayedTest> => (await fetch(`${tests}/${test_id}`)).json();
+  static getTestData = async (test_id: number): Promise<PlayedTest[]> => (await fetch(`${tests}/${test_id}`)).json();
 
   static addTestInDB = async (test: PlayedTest): Promise<PlayedTest> =>
     (

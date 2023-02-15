@@ -28,6 +28,8 @@ export interface Igame {
     ru: string;
     en: string;
   };
+  dataset: number[];
+  datasetStep: number;
 }
 
 export interface User {
