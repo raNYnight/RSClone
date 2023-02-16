@@ -8,6 +8,7 @@ import { state } from '../../../utils/state';
 import { Igame, PlayedTest } from '../../../utils/types';
 import { GamePageComponent } from '../game-page/game-page';
 import { SPINNER_SVG } from '../../../assets/icons/svg';
+import { LocalGameStorage } from '../../../utils/localGameStorage';
 
 export class PlayComponent {
   async gameStarter(): Promise<void> {
@@ -46,13 +47,15 @@ export class PlayComponent {
     });
     saveScore.addEventListener('click', async () => {
       const currUser = UsersService.getCookie();
-      console.log(currUser.userId);
       const playedTest: PlayedTest = {
-        user_id: currUser.userId!,
+        user_id: currUser ? currUser.userId!: 36,
         tests_id: gameID,
         date: new Date().toISOString(),
         score: score,
       };
+      if (!currUser){
+        LocalGameStorage.addGame(playedTest);
+      }
       this.showModal();
       await Tests.addTestInDB(playedTest).then(() => {
         window.location.hash = 'dashboard';
