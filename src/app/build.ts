@@ -1,6 +1,7 @@
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { PageMarkup } from 'interfaces/paths';
+import { StatsPageComponent } from '../components/pages/statsPage/statsPage';
 
 export async function build(page: PageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
@@ -15,4 +16,5 @@ export async function build(page: PageMarkup): Promise<void> {
   const pageComponent = page();
   main.innerHTML = await pageComponent.getHtml();
   if (pageComponent.setListeners) pageComponent.setListeners();
+  if (pageComponent instanceof StatsPageComponent) pageComponent.renderGraph();
 }

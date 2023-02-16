@@ -3,10 +3,11 @@ import { Igame } from 'utils/types';
 import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
 import { lang } from '../../translate/translate';
-
+import { UsersService } from '../../../APIs/UsersService';
+import { GraphComponent } from '../../../components/graphic/graphic';
+import { Tests } from '../../../APIs/Tests';
 
 export class StatsPageComponent {
-
   id: number;
 
   gameInfo: Igame;
@@ -43,9 +44,8 @@ export class StatsPageComponent {
 
   async getIconsHtml(id: number): Promise<string> {
     const innerGamesIcons = gamesInfo.map((game) => {
-      
       const activeIcon = game.svg.replace('class="common_svg"', 'class="common_svg active-svg"');
-      
+
       return `<a class="dashboard_games_link" href="#${game.hrefStats}">
         <div class="games_link-svg-wrap">
           ${game.id === id ? activeIcon : game.svg}
@@ -54,12 +54,14 @@ export class StatsPageComponent {
     });
     return `<div class="dashboard_games">${innerGamesIcons.join('')}</div>`;
   }
-  
+
   async getTitleStatsHtml(gameInfo: Igame): Promise<string> {
+    const averageScore = await Tests.getUserAverageStats(gameInfo.id);
     const language = state.isEngl ? 'en' : 'ru';
+    const score = isNaN(parseInt(averageScore.score)) ? 0 : parseInt(averageScore.score);
     return `<div class=" dashboard_user-wrap statistic-media statistic-title-wrap">
         <p class="statistic-title">${gameInfo.name[language]}</p>
-        <p class="statistic-score">?</p>
+        <p class="statistic-score">${score}</p>
         <p class="statistic-pts">${lang[language].common.pts}</p>
         <p class="statistic-item">${lang[language].dashboard.percentile}: 20%</p>      
         <a class="statistic-link" href="#${gameInfo.href}">
@@ -68,15 +70,15 @@ export class StatsPageComponent {
         </a>
       </div>`;
   }
-  
+
   async getFirstGraphStatsHtml(gameInfo: Igame): Promise<string> {
     const language = state.isEngl ? 'en' : 'ru';
     return `<div class=" dashboard_user-wrap statistic-media">
         <p class="statistic-title">${gameInfo.name[language]}: ${lang[language].common.statistics}</p>
-        <img src="https://web-standards.ru/articles/performance-metrics/images/3.png" style="width: 100%;" alt="graphic">
+        <canvas class = "user-stats-canvas"></canvas>
       </div>`;
   }
-  
+
   async getSecondGraphStatsHtml(gameInfo: Igame): Promise<string> {
     const language = state.isEngl ? 'en' : 'ru';
     return `<div class=" dashboard_user-wrap statistic-media">
@@ -84,5 +86,17 @@ export class StatsPageComponent {
         <img src="https://web-standards.ru/articles/performance-metrics/images/3.png" style="width: 100%;" alt="graphic">
       </div>`;
   }
-  
+
+  async renderGraph() {
+    const currUser = UsersService.getCookie();
+    const graph = new GraphComponent(this.id);
+    const testDataset = Object.values(await graph.getTestDataset(this.gameInfo.datasetStep));
+    if (currUser) {
+      const userDataset = Object.values(await graph.getUserDataset(this.gameInfo.datasetStep));
+      console.log(userDataset);
+      await graph.renderGraph(this.gameInfo.dataset, testDataset, userDataset);
+    } else {
+      await graph.renderGraph(this.gameInfo.dataset, testDataset);
+    }
+  }
 }

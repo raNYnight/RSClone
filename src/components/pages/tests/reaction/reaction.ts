@@ -96,10 +96,9 @@ export class ReactionComponent extends PlayComponent {
           const tryAgainBtn = this.playField.querySelector('.try-again_btn');
           this.playField.style.cursor = 'default';
           if (saveBtn && tryAgainBtn) {
-            const save = (event: Event) =>{
+            const save = (event: Event) => {
               this.saveScore();
-              if (event.target)
-                event.target.removeEventListener('click', save);
+              if (event.target) event.target.removeEventListener('click', save);
             };
             saveBtn.addEventListener('click', save);
             tryAgainBtn.addEventListener('click', async () => {
@@ -128,7 +127,7 @@ export class ReactionComponent extends PlayComponent {
 
   async saveScore(): Promise<void> {
     const userData = await UsersService.getCookie();
-    const score = this.results.reduce((acc, curr) => acc + curr, 0);    
+    const score = this.results.reduce((acc, curr) => acc + curr, 0);
 
     const playedTest: PlayedTest = {
       user_id: userData.userId!,
@@ -136,10 +135,10 @@ export class ReactionComponent extends PlayComponent {
       date: new Date().toISOString(),
       score: parseInt((score / 5).toString()),
     };
-
-    console.log('playedTest-score', playedTest.score);
-
-    await Tests.addTestInDB(playedTest);
-    await build(routerPaths.dashboard);
+    this.showModal();
+    await Tests.addTestInDB(playedTest).then(() => {
+      window.location.hash = 'dashboard';
+      this.hideModal();
+    });
   }
 }

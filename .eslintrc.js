@@ -7,5 +7,6 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-shadow': 'off',
+    // '@typescript-eslint/no-unused-vars': 'off',
   },
 };

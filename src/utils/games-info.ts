@@ -1,7 +1,14 @@
 import { lang } from '../components/translate/translate';
 import { AIM_SVG, BOLT_SVG, NUMBER_SVG, SEQUENCE_SVG, TYPING_SVG, VERBAL_SVG } from '../assets/icons/svg';
 import { Igame } from './types';
-
+import {
+  aimDataset,
+  numberDataset,
+  reactionDataset,
+  sequenceDataset,
+  typingDataset,
+  verbalDataset,
+} from '../components/graphic/datasets';
 export const gamesInfo: Igame[] = [
   {
     id: 2,
@@ -25,6 +32,8 @@ export const gamesInfo: Igame[] = [
       en: 'ms',
       ru: 'мс',
     },
+    dataset: reactionDataset,
+    datasetStep: 25,
   },
   {
     id: 3,
@@ -48,6 +57,8 @@ export const gamesInfo: Igame[] = [
       en: 'points',
       ru: 'ед',
     },
+    dataset: sequenceDataset,
+    datasetStep: 1,
   },
 
   {
@@ -72,6 +83,8 @@ export const gamesInfo: Igame[] = [
       en: 'ms',
       ru: 'мс',
     },
+    dataset: aimDataset,
+    datasetStep: 50,
   },
 
   {
@@ -96,6 +109,8 @@ export const gamesInfo: Igame[] = [
       en: 'digits',
       ru: 'чисел',
     },
+    dataset: numberDataset,
+    datasetStep: 1,
   },
   {
     id: 6,
@@ -119,6 +134,8 @@ export const gamesInfo: Igame[] = [
       en: 'points',
       ru: 'ед',
     },
+    dataset: verbalDataset,
+    datasetStep: 10,
   },
 
   {
@@ -143,5 +160,7 @@ export const gamesInfo: Igame[] = [
       en: 'WPM',
       ru: 'слов/мин',
     },
+    dataset: typingDataset,
+    datasetStep: 10,
   },
 ];
