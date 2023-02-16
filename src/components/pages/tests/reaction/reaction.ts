@@ -9,6 +9,7 @@ import { Tests } from '../../../../APIs/Tests';
 import { routerPaths } from '../../../../app/routerPaths';
 import { build } from '../../../../app/build';
 import { lang } from 'components/translate/translate';
+import { LocalGameStorage } from '../../../../utils/localGameStorage';
 
 export class ReactionComponent extends PlayComponent {
   defaultFieldColor = 'rgb(43, 135, 209)';
@@ -131,11 +132,14 @@ export class ReactionComponent extends PlayComponent {
     const score = this.results.reduce((acc, curr) => acc + curr, 0);
 
     const playedTest: PlayedTest = {
-      user_id: userData.userId!,
+      user_id: userData ? userData.userId!: 36,
       tests_id: 2,
       date: new Date().toISOString(),
       score: score / 5,
     };
+    if (!userData){
+      LocalGameStorage.addGame(playedTest);
+    }
     this.showModal();
     await Tests.addTestInDB(playedTest).then(() => {
       window.location.hash = 'dashboard';

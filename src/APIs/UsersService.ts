@@ -48,19 +48,20 @@ export class UsersService {
     setCookie('user', JSON.stringify(cookie), { expires: 7, path: '' });
   };
 
-  static getCookie(): UserData {
+  static getCookie(): UserData | undefined {
     const cookie = getCookie('user');
-    return JSON.parse(cookie ? cookie : 'false');
+    if (!cookie) return;
+    return JSON.parse(cookie);
   }
 
-  static removeCookie() {
+  static removeCookie(): void {
     removeCookie('user');
   }
 
   // Returns interval between registration and now in milliseconds
   static getJoinPeriod(): number {
     const cookie = this.getCookie();
-    if (typeof cookie === 'string') {
+    if (!cookie) {
       return 1000;
     }
     const regDate = new Date(cookie.regDate).getTime();
