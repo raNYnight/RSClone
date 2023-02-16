@@ -20,7 +20,7 @@ export class ReactionComponent extends PlayComponent {
 
   results: number[] = [];
 
-  async gameStarter() {
+  async gameStarter(): Promise<void> {
     await super.gameStarter();
     console.log('ReactionComponent');
     this.language = state.isEngl ? 'en' : 'ru';
@@ -30,7 +30,7 @@ export class ReactionComponent extends PlayComponent {
     this.changeState('red');
   }
 
-  async changeState(page: ReactionPages, time?: number) {
+  async changeState(page: ReactionPages, time?: number): Promise<void> {
     const data = pageData[this.language || 'en'][page];
     const Msg = `
     <div class="reaction-wrapper">
@@ -41,14 +41,14 @@ export class ReactionComponent extends PlayComponent {
       <p class="main-msg">${time ? time + data.text : data.text}</p>
       <p class="sub-msg">${data.sub || ''}</p>
       ${
-        page === 'end'
-          ? `
+  page === 'end'
+    ? `
       <div class="end-btns">
       <button class="greeting_btn greeting-a save">${data.btnSave || ''}</button>
       <button class="greeting_btn greeting-a try-again_btn">${data.btnTry || ''}</button>
       </div>`
-          : ''
-      }
+    : ''
+}
     </div>
     `;
     if (this.playField && this.language) {
@@ -113,7 +113,7 @@ export class ReactionComponent extends PlayComponent {
     }
   }
 
-  async removeListeners() {
+  async removeListeners(): Promise<void> {
     if (this.playField) {
       const clone = this.playField.cloneNode(true) as HTMLElement;
       this.playField.parentNode?.replaceChild(clone, this.playField);
@@ -121,13 +121,13 @@ export class ReactionComponent extends PlayComponent {
     }
   }
 
-  async navigate(page: ReactionPages, event: Event, ms?: number) {
+  async navigate(page: ReactionPages, event: Event, ms?: number): Promise<void> {
     event.stopImmediatePropagation();
     this.removeListeners();
     this.changeState(page, ms);
   }
 
-  async saveScore() {
+  async saveScore(): Promise<void> {
     const userData = await UsersService.getCookie();
     const score = this.results.reduce((acc, curr) => acc + curr, 0);
 
@@ -135,7 +135,7 @@ export class ReactionComponent extends PlayComponent {
       user_id: userData ? userData.userId!: 36,
       tests_id: 2,
       date: new Date().toISOString(),
-      score: score / 5,
+      score: parseInt((score / 5).toString()),
     };
     if (!userData){
       LocalGameStorage.addGame(playedTest);

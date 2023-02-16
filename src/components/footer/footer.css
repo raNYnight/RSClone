@@ -28,6 +28,7 @@
 }
 
 .footer__logo-gh {
+  position: relative;
   width: 20px;
   height: 20px;
   opacity: 0.6;

@@ -1,0 +1,57 @@
+.aim {
+
+  &_game-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_remaining {
+    color: #d1cfcf;
+    font-size: 28px;
+  }
+
+  &_count {
+    color: #ffffff;
+  }
+
+  &_game-field {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: all 0s;
+  }
+
+  &_svg-wrapper {
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: all 0s;
+  }
+
+  &_svg {
+    fill: #ffffff;
+    width: 95%;
+    height: 95%;
+  }
+
+  &_svg:hover {
+    transform: scale(1.05);
+    transition: all 0.1s;
+  }
+
+}
+
+@media (max-width: 424px) {
+  .aim_svg-wrapper {
+    width: 85px;
+    height: 85px;
+  }
+}

@@ -58,9 +58,10 @@ export class StatsPageComponent {
   async getTitleStatsHtml(gameInfo: Igame): Promise<string> {
     const averageScore = await Tests.getUserAverageStats(gameInfo.id);
     const language = state.isEngl ? 'en' : 'ru';
+    const score = isNaN(parseInt(averageScore.score)) ? 0 : parseInt(averageScore.score);
     return `<div class=" dashboard_user-wrap statistic-media statistic-title-wrap">
         <p class="statistic-title">${gameInfo.name[language]}</p>
-        <p class="statistic-score">${averageScore.score}</p>
+        <p class="statistic-score">${score}</p>
         <p class="statistic-pts">${lang[language].common.pts}</p>
         <p class="statistic-item">${lang[language].dashboard.percentile}: 20%</p>      
         <a class="statistic-link" href="#${gameInfo.href}">
