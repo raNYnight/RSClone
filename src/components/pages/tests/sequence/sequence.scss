@@ -1,0 +1,63 @@
+$fieldSize: 400px;
+$plate-color: rgb(0, 0, 102);
+.memo-plate{
+  width: 30%;
+  height: 30%;
+  background-color: $plate-color;
+  border-radius: 15px;
+  opacity: 0.15;
+  cursor: pointer;
+
+  &:active{
+  opacity: 1;
+  background: white;
+  background-clip: border-box;
+  transform: scale(1);
+  transition: none 0s ease 0s;
+  }
+}
+
+.level-label{
+  margin-bottom: 20px;
+  color: rgb(205, 205, 205);
+  font-size: 34px;
+  span{
+    color: white;
+    ;
+  }
+}
+
+.memory-field{
+  display: flex;
+  flex-wrap: wrap;
+  width: $fieldSize;
+  height: $fieldSize;
+  gap: 3%;
+}
+
+.plate-animation-long{
+  animation-name: plate-blink;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.7s;
+}
+
+.plate-animation-short{
+  animation-name: plate-blink;
+  animation-timing-function: ease-out;
+  animation-duration: 0.5s;
+}
+
+@keyframes plate-blink {
+  0% {
+    background: $plate-color;
+    opacity: 0.15;
+  }
+  50% {
+    background: rgb(255, 255, 255);
+    opacity: 1;
+  }
+  100% {
+    background: $plate-color;
+    opacity: 0.15;
+  }
+}
