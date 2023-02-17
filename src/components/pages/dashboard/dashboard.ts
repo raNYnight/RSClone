@@ -16,11 +16,12 @@ let sharedUser: UserData | undefined;
 async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
   sharedUser = undefined;
   const location = document.location.hash.slice(1).split('/');
-
+  console.log(location);
   if (location[1] === 'users') {
     const userLink = location[2];
     const users = await UsersService.getAllUsers();
     const user = users.find((user) => user.permalink === userLink);
+    console.log(user);
     if (user) {
       const UserData: UserData = {
         userId: user.id,
@@ -28,6 +29,7 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
         regDate: new Date(user.registration_date),
         permalink: user.permalink,
       };
+      console.log(UserData);
       sharedUser = UserData;
     }
   }
@@ -62,13 +64,13 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
       <p class="dashboard_user-join">${fullDate}</p>
       <div class="link">
       ${
-  usersCookie
-    ? `<span class="perma-link">${path.dashboard.permalink}</span> `
-    : `
+        usersCookie
+          ? `<span class="perma-link">${path.dashboard.permalink}</span> `
+          : `
         <a href="#login">${path.signUp.login}</a> ${path.dashboard.or} 
         <a href="#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
         `
-}
+      }
         
       </div>
     </div>`;
@@ -91,7 +93,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
     arr.map(async (el: Igame, i: number) => {
       const gameInfo: Igame = gamesInfo[i];
       const played = await Tests.getUserAverageStats(gameInfo.id);
-      const score = isNaN(parseInt((played.score).toString())) ? 0 : parseInt((played.score).toString());
+      const score = isNaN(parseInt(played.score.toString())) ? 0 : parseInt(played.score.toString());
       return `<div class="stats_item-wrap">
                 <div class="stats_item">${gameInfo.name[language]}</div>
                 <div class="stats_item">
@@ -105,7 +107,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                 <div class="stats_item">${score} ${gameInfo.units[language]}</div>
                 <div class="stats_item">${played.percentile}</div>
               </div>`;
-    }),
+    })
   );
   return `<div class="stats-wrap">
     <div class="stats_item-wrap stats_title-bold">
@@ -122,7 +124,6 @@ async function getActivityItemHtml(): Promise<string> {
   const played = await Tests.getUserPlayedTests();
 
   const language = state.isEngl ? 'en' : 'ru';
-  console.log(await played);
   const activityTable = await Promise.all(
     played
       .map(async (el: PlayedTest, i: number) => {
@@ -145,7 +146,8 @@ async function getActivityItemHtml(): Promise<string> {
       <div class="activity_item">${played[i].score} ${gameInfo.units[language]}</div>
     </div>`;
       })
-      .reverse().slice(0, 10),
+      .reverse()
+      .slice(0, 10)
   );
   return activityTable.join('');
 }
@@ -183,6 +185,7 @@ export class DashboardComponent implements Component {
     // if (joined){
 
     // }
+    const currUser = UsersService.getCookie();
     const permalink = document.querySelector('.perma-link');
     if (permalink) {
       permalink.addEventListener('click', () => {

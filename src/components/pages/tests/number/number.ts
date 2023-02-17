@@ -72,7 +72,8 @@ export class NumberComponent extends PlayComponent {
 
   async gameEnd(gameID: number, score: number, scoreUnits: string) {
     const language = state.isEngl ? 'en' : 'ru';
-    super.gameEnd(7, this.currentNumberLength - 1, gamesInfo[3].units[language]);
+    const result = this.currentNumberLength;
+    super.gameEnd(7, result, gamesInfo[3].units[language]);
     const playField = document.querySelector('.play-field') as HTMLElement;
     const insertPlace = playField.querySelector('h3') as HTMLElement;
     insertPlace.insertAdjacentHTML('afterend', this.getResultPage());

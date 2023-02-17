@@ -48,14 +48,14 @@ export class PlayComponent {
     saveScore.addEventListener('click', async () => {
       const currUser = UsersService.getCookie();
       console.log(currUser);
-      
+
       const playedTest: PlayedTest = {
-        user_id: currUser ? currUser.userId!: 36,
+        user_id: currUser ? currUser.userId! : 36,
         tests_id: gameID,
         date: new Date().toISOString(),
         score: score,
       };
-      if (!currUser){
+      if (!currUser) {
         LocalGameStorage.addGame(playedTest);
       }
       this.showModal();

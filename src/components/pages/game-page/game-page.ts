@@ -32,15 +32,9 @@ export class GamePageComponent {
     const currUser = UsersService.getCookie();
     let gameArea = new GameAreaComponent(this.id);
     const graph = new GraphComponent(this.id);
-    const testDataset = Object.values(await graph.getTestDataset(this.gameInfo.datasetStep));
-
-    if (currUser) {
-      const userDataset = Object.values(await graph.getUserDataset(this.gameInfo.datasetStep));
-      console.log(userDataset);
-      await graph.renderGraph(this.gameInfo.dataset, testDataset, userDataset);
-    } else {
-      await graph.renderGraph(this.gameInfo.dataset, testDataset);
-    }
+    if (!currUser && localStorage.length === 0) await graph.renderGraph();
+    if (!currUser && localStorage.length > 0) await graph.renderGraph();
+    if (currUser) await graph.renderGraph();
 
     await gameArea.setListeners();
   }

@@ -3,7 +3,6 @@ import { Igame } from 'utils/types';
 import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
 import { lang } from '../../translate/translate';
-import { UsersService } from '../../../APIs/UsersService';
 import { GraphComponent } from '../../../components/graphic/graphic';
 import { Tests } from '../../../APIs/Tests';
 
@@ -83,20 +82,14 @@ export class StatsPageComponent {
     const language = state.isEngl ? 'en' : 'ru';
     return `<div class=" dashboard_user-wrap statistic-media">
         <p class="statistic-title">${gameInfo.name[language]}: ${lang[language].common.recentResults}</p>
-        <img src="https://web-standards.ru/articles/performance-metrics/images/3.png" style="width: 100%;" alt="graphic">
+        <canvas class = "user-stats-canvas" id="LastGamesGraph"></canvas>
       </div>`;
   }
 
   async renderGraph() {
-    const currUser = UsersService.getCookie();
     const graph = new GraphComponent(this.id);
-    const testDataset = Object.values(await graph.getTestDataset(this.gameInfo.datasetStep));
-    if (currUser) {
-      const userDataset = Object.values(await graph.getUserDataset(this.gameInfo.datasetStep));
-      console.log(userDataset);
-      await graph.renderGraph(this.gameInfo.dataset, testDataset, userDataset);
-    } else {
-      await graph.renderGraph(this.gameInfo.dataset, testDataset);
-    }
+
+    await graph.renderGraph();
+    await graph.renderLastgamesGraph();
   }
 }
