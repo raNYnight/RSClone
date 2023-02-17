@@ -35,7 +35,7 @@ export class GraphComponent {
     ];
     if (yUserDataset)
       datasets.push({
-        label: currUser.userName,
+        label: currUser!.userName,
         data: yUserDataset,
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgba(54, 162, 235, 1)',
@@ -81,7 +81,7 @@ export class GraphComponent {
 
   async getUserDataset(step: number) {
     const currUser = UsersService.getCookie();
-    const userTests = await UsersService.getUserTestData(currUser.userId!, this.id);
+    const userTests = await UsersService.getUserTestData(currUser!.userId!, this.id);
     const obj: { [key: number]: number } = {
       0: 0,
     };

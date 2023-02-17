@@ -47,6 +47,8 @@ export class PlayComponent {
     });
     saveScore.addEventListener('click', async () => {
       const currUser = UsersService.getCookie();
+      console.log(currUser);
+      
       const playedTest: PlayedTest = {
         user_id: currUser ? currUser.userId!: 36,
         tests_id: gameID,
@@ -79,5 +81,15 @@ export class PlayComponent {
   hideModal() {
     const modalNode = document.querySelector('#loading-modal') as HTMLElement;
     modalNode.style.display = 'none';
+  }
+
+  animateBGright(bg: HTMLElement) {
+    bg.classList.add('right-animation');
+    bg.addEventListener('animationend', () => bg.classList.remove('right-animation'));
+  }
+
+  animateBGwrong(bg: HTMLElement) {
+    bg.classList.add('wrong-animation');
+    bg.addEventListener('animationend', () => bg.classList.remove('wrong-animation'));
   }
 }

@@ -103,14 +103,4 @@ export class NumberComponent extends PlayComponent {
     const answerSlide = this.getAnswerSlide();
     line.addEventListener('animationend', () => this.changeSlide(answerSlide));
   }
-
-  animateBGright(bg: HTMLElement) {
-    bg.classList.add('right-animation');
-    bg.addEventListener('animationend', () => bg.classList.remove('right-animation'));
-  }
-
-  animateBGwrong(bg: HTMLElement) {
-    bg.classList.add('wrong-animation');
-    bg.addEventListener('animationend', () => bg.classList.remove('wrong-animation'));
-  }
 }
