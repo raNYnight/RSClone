@@ -6,7 +6,7 @@ export class SequenceComponent extends PlayComponent {
   field: HTMLElement[] = [];
   gameSequence: HTMLElement[] = [];
   userSequence: HTMLElement[] = [];
-  level = 0;
+  level = 1;
   levelElement: HTMLElement | null = null;
   isGameStarted = false;
   async gameStarter() {
@@ -45,6 +45,7 @@ export class SequenceComponent extends PlayComponent {
         if (plate === this.gameSequence[this.gameSequence.length - 1]
            && this.gameSequence.length === this.userSequence.length && playField){
           this.animateBGright(playField);
+          this.level++;
           setTimeout(()=>{
             this.userSequence = [];
             this.showSequence().then(()=>{
@@ -66,7 +67,6 @@ export class SequenceComponent extends PlayComponent {
   async showSequence(): Promise<string>{
     this.isGameStarted = false;
     return new Promise((resolve, rejects) =>{
-      this.level++;
       if (this.levelElement)
       this.levelElement.textContent = String(this.level);
       this.gameSequence.push(this.field[getRandomInt(0, this.field.length)])
