@@ -1,10 +1,8 @@
 import { GameAreaComponent } from '../../game-area/game-area';
 import { GamesStatsComponent } from '../../games-stats/games-stats';
 import { GameAboutComponent } from '../../game-about/game-about';
-import { GraphComponent } from '../../../components/graphic/graphic';
 import { gamesInfo } from '../../../utils/games-info';
 import { Igame } from '../../../utils/types';
-import { UsersService } from '../../../APIs/UsersService';
 
 export class GamePageComponent {
   id: number;
@@ -29,12 +27,7 @@ export class GamePageComponent {
   }
 
   async setListeners(): Promise<void> {
-    const currUser = UsersService.getCookie();
     let gameArea = new GameAreaComponent(this.id);
-    const graph = new GraphComponent(this.id);
-    if (!currUser && localStorage.length === 0) await graph.renderGraph();
-    if (!currUser && localStorage.length > 0) await graph.renderGraph();
-    if (currUser) await graph.renderGraph();
 
     await gameArea.setListeners();
   }

@@ -119,7 +119,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
     ${statsTable.join('')}
   </div>`;
 }
-//надо будет переделать функцию вывода последних игр. Написал только для настройки верстки
+
 async function getActivityItemHtml(): Promise<string> {
   const played = await Tests.getUserPlayedTests();
 
@@ -181,11 +181,6 @@ export class DashboardComponent implements Component {
     // Доделать расчет даты регистрации
     // const joined = document.querySelector(".dashboard_user-join");
     // const cookie = UsersService.getJoinPeriod();
-
-    // if (joined){
-
-    // }
-    const currUser = UsersService.getCookie();
     const permalink = document.querySelector('.perma-link');
     if (permalink) {
       permalink.addEventListener('click', () => {
