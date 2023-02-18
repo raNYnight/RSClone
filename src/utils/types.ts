@@ -78,3 +78,9 @@ export interface RandomRussianText {
   text: string;
   errorCode?: number;
 }
+
+export enum Guest {
+  GuestLocalStorageEmpty,
+  GuestLocalStorageNotEmpty,
+  authorized,
+}

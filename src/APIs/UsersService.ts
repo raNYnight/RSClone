@@ -18,6 +18,11 @@ export class UsersService {
   static getUserTestData = async (user_id: number, test_id: number): Promise<PlayedTest[]> =>
     (await fetch(`${users}/${user_id}/played/${test_id}`)).json();
 
+  static getGuestTestDataFromLocalStorage = async (test_id: number): Promise<PlayedTest[]> =>
+    JSON.parse(localStorage.games).filter((el: PlayedTest) => el.tests_id === test_id);
+
+  static getGuestAllTeststDataFromLocalStorage = async (): Promise<PlayedTest[]> => JSON.parse(localStorage.games);
+
   static authorizeUser = async (user: Authorization): Promise<AuthResponse> =>
     (
       await fetch(`${authorize}`, {

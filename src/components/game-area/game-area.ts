@@ -10,6 +10,8 @@ import { NumberComponent } from '../../components/pages/tests/number/number';
 import { VerbalComponent } from '../../components/pages/tests/verbal/verbal';
 import { TypingComponent } from '../../components/pages/tests/typing/typing';
 import { PlayComponent } from 'components/pages/tests/play-component';
+import { UsersService } from '../../APIs/UsersService';
+import { GraphComponent } from '../../components/graphic/graphic';
 
 export class GameAreaComponent {
   id: number;
@@ -41,6 +43,7 @@ export class GameAreaComponent {
   }
 
   async setListeners(): Promise<void> {
+    const currUser = UsersService.getCookie();
     const startBTN = document.querySelector('.greeting_btn')! as HTMLButtonElement;
     let test: PlayComponent = new ReactionComponent();
     switch (this.id) {
@@ -66,5 +69,9 @@ export class GameAreaComponent {
     startBTN.addEventListener('click', async () => {
       await test.gameStarter();
     });
+    const graph = new GraphComponent(this.id);
+    if (!currUser && localStorage.length === 0) await graph.renderGraph();
+    if (!currUser && localStorage.length > 0) await graph.renderGraph();
+    if (currUser) await graph.renderGraph();
   }
 }
