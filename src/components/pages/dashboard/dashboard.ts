@@ -94,7 +94,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
       const gameInfo: Igame = gamesInfo[i];
       const played = await Tests.getUserAverageStats(gameInfo.id);
       const score = isNaN(parseInt(played.score.toString())) ? 0 : parseInt(played.score.toString());
-      return `<div class="stats_item-wrap">
+      const html = `<div class="stats_item-wrap">
                 <div class="stats_item">${gameInfo.name[language]}</div>
                 <div class="stats_item">
                   <a class="stats_link" href="#${gameInfo.href}">
@@ -105,10 +105,12 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                   </a>
                 </div>
                 <div class="stats_item">${score} ${gameInfo.units[language]}</div>
-                <div class="stats_item">${played.percentile}</div>
+                <div class="stats_item percentile_container"><span class='percentile_span'>${played.percentile}</span><div class="percentile-bg" style='width: ${played.percentile};'}"></div></div>
               </div>`;
+      return html;
     })
   );
+
   return `<div class="stats-wrap">
     <div class="stats_item-wrap stats_title-bold">
       <div class="stats_item">${path.dashboard.test}</div>
@@ -181,6 +183,7 @@ export class DashboardComponent implements Component {
     // Доделать расчет даты регистрации
     // const joined = document.querySelector(".dashboard_user-join");
     // const cookie = UsersService.getJoinPeriod();
+
     const permalink = document.querySelector('.perma-link');
     if (permalink) {
       permalink.addEventListener('click', () => {

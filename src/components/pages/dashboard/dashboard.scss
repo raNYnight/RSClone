@@ -47,7 +47,7 @@
   padding: 10px 0;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(1, 1fr);   
+  grid-template-rows: repeat(1, 1fr);
   justify-content: space-between;
 }
 
@@ -90,7 +90,8 @@
   box-shadow: rgb(0 0 0 / 10%) 0px 2px 5px;
   border-radius: 5px;
 }
-
+.percentile_container {
+}
 .stats_item-wrap {
   display: flex;
   justify-content: space-between;
@@ -102,14 +103,19 @@
 }
 
 .stats_item {
+  position: relative;
   width: 170px;
   display: flex;
   gap: 20px;
   margin: 10px;
   align-items: center;
 }
-
-.stats_item a { 
+.percentile-bg {
+  position: absolute;
+  background-color: rgb(37 124 255 / 20%);
+  height: 100%;
+}
+.stats_item a {
   display: block;
   display: flex;
   gap: 5px;
@@ -174,18 +180,15 @@
   height: 70%;
 }
 
-.perma-link{
+.perma-link {
   color: rgb(93, 93, 219);
   cursor: pointer;
-  &:hover{
+  &:hover {
     text-decoration: underline;
   }
 }
 
-
-
 @media (max-width: 890px) {
-  
   .dashboard_games_link {
     width: 100px;
     height: 100px;
@@ -216,7 +219,6 @@
 }
 
 @media (max-width: 690px) {
-  
   .dashboard_games {
     width: 85%;
     grid-template-columns: repeat(3, 1fr);
@@ -228,7 +230,7 @@
   .dashboard_games_link:first-child {
     margin: 0 auto;
   }
-  
+
   .dashboard_games_link:last-child {
     margin: 0 auto;
   }
@@ -248,7 +250,7 @@
     height: 40px;
   }
 
-  .stats_item:first-child {    
+  .stats_item:first-child {
     width: 35%;
   }
 }
@@ -260,7 +262,7 @@
     padding: 30px;
   }
 
-  .stats_item {    
+  .stats_item {
     font-size: 14px;
   }
 
@@ -276,15 +278,15 @@
   }
 
   .stats_item-wrap {
-    flex-direction: column;   
+    flex-direction: column;
     width: 90%;
     margin: 0 auto;
     font-size: 22px;
   }
 
-  .stats_title-bold {    
+  .stats_title-bold {
     display: none;
-  }  
+  }
 
   .stats_item {
     display: flex;
@@ -308,9 +310,7 @@
   .activity_item {
     font-size: 14px;
   }
-
 }
-
 
 @media (max-width: 425px) {
   .dashboard_games {
@@ -321,17 +321,17 @@
     grid-row-gap: 20px;
   }
 
-  .stats-wrap {    
+  .stats-wrap {
     padding: 15px 0;
   }
 
   .stats_item-wrap {
-    flex-direction: column;   
+    flex-direction: column;
     width: 90%;
     margin: 0 auto;
   }
 
-  .stats_title-bold {    
+  .stats_title-bold {
     display: none;
   }
 
@@ -352,7 +352,6 @@
 @media ((min-width: 375px) and (max-width: 425px)) {
   .dashboard_games_link {
     width: 140px;
-    height: 140px;    
+    height: 140px;
   }
 }
-

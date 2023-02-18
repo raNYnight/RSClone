@@ -62,7 +62,7 @@ export class StatsPageComponent {
         <p class="statistic-title">${gameInfo.name[language]}</p>
         <p class="statistic-score">${score}</p>
         <p class="statistic-pts">${lang[language].common.pts}</p>
-        <p class="statistic-item">${lang[language].dashboard.percentile}: 20%</p>      
+        <p class="statistic-item">${lang[language].dashboard.percentile}: ${averageScore.percentile}</p>      
         <a class="statistic-link" href="#${gameInfo.href}">
           <img class="statistic-link-svg" src="https://www.svgrepo.com/show/479265/play-button.svg" alt="play">
           <p class="statistic-link"> ${lang[language].dashboard.play}</p>

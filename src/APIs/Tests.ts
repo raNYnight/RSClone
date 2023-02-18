@@ -30,12 +30,26 @@ export class Tests {
       score: '?',
       percentile: '?',
     };
+    let testData: PlayedTest[] = [];
     if (currUser) {
-      const testData = await UsersService.getUserTestData(currUser.userId!, testID);
-      const lastFive = testData.slice(Math.max(testData.length - 5, 0));
-      const averageScore = lastFive.reduce((sum, current) => sum + current.score, 0) / lastFive.length;
-      if (lastFive.length > 0) testStats.score = averageScore.toFixed(2);
+      testData = await UsersService.getUserTestData(currUser.userId!, testID);
     }
+    if (!currUser && localStorage.length === 0) testStats.score = '?';
+    if (!currUser && localStorage.length > 0) {
+      testData = await UsersService.getGuestTestDataFromLocalStorage(testID);
+    }
+    const lastFive = testData.slice(Math.max(testData.length - 5, 0));
+    const averageScore =
+      testData.length !== 0
+        ? (lastFive.reduce((sum, current) => sum + current.score, 0) / lastFive.length).toFixed(0)
+        : 0;
+    if (lastFive.length > 0) testStats.score = averageScore.toString();
+    const scoresArr = testData.map((obj) => obj.score);
+    scoresArr.push(+averageScore);
+    const sortedScores = scoresArr.sort((a: number, b: number) => a - b);
+    const index = sortedScores.indexOf(+averageScore);
+    const percentile = (index / sortedScores.length) * 100;
+    testStats.percentile = percentile.toFixed(2) + '%';
     return testStats;
   };
 }
