@@ -58,7 +58,7 @@ export class AimComponent extends PlayComponent {
           </div>
         </div>
       </div>`;
-  }  
+  }
   
   randomPosition(): number {
     return Math.floor(13 + Math.random() * (87 + 1 - 13));

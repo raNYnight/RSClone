@@ -100,7 +100,6 @@ export interface Icommon {
   recentResults: string;
   averageUsers: string;
   loading: string;
-
 }
 
 export interface Ireaction {
@@ -163,4 +162,7 @@ export interface Ityping {
   discr: string;
   typingText: string;
   startTyping: string;
+  time: string;
+  sec: string;
+  errors: string;
 }

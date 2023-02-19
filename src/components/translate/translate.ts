@@ -147,10 +147,13 @@ export const lang: Itranslate = {
       title: 'Typing Test',
       subTitle: 'How many words per minute can you type?',
       discr:
-        'This is a simple test of typing speed, measuring words per minute, or WPM.<br><br>The standard measure of WPM is 50. The recorded score is WPM .',
+        'This is a simple test of typing speed, measuring words per minute, or WPM.<br><br>The standard measure of WPM is (number of characters / 5) / (time taken).<br><br>The recorded score is WPM * Accuracy.',
       typingText:
         "The sun, spring, the delight of the new—fangled blue with white buttons miracle, the upcoming trip - all this in a hundredfold refraction, as if thrown under the feet of a warming May ray, fill the child's heart with the splendor of Life. And even parting with the jackdaw, almost tame, who eats on the kitchen windowsill every morning, and thoughts about his near orphan future do not overshadow expectations of a Miracle — expectations of Life, the Sun, the highest radiant Faith in the goodness of the world, so truthfully and keenly presented at this memorable moment.",
       startTyping: 'Start typing to begin',
+      time: 'Time',
+      sec: 's',
+      errors: 'Errors',
     },
   },
   ru: {
@@ -297,10 +300,13 @@ export const lang: Itranslate = {
       title: 'Скорость печати',
       subTitle: 'Сколько слов в минуту вы сможете напечатать?',
       discr:
-        'Это простой тест скорости набора текста, измеряющий количество слов в минуту.<br><br> Стандартный показатель - 50 слов в минуту. Записанный балл равен количеству слов.',
+        'Это простой тест скорости набора текста, измеряющий количество слов в минуту, так называемый WPM.<br><br> Стандартный показатель: (количество символов / 5) / (затраченное время).<br><br>Записанный балл равен WPM * процент ошибок.',
       typingText:
         'Солнце, весна, восторг от новомодного синего с белыми пуговичками чуда, предстоящая поездка — всё это в стократном преломлении будто брошенного под ноги согревающего майского луча наполняют детское сердечко великолепием Жизни. И даже расставание с галчонком, почти ручным, который каждое утро лакомится на кухонном подоконнике, и мысли о его ближайшем сиротском будущем не омрачают ожидания Чуда — ожидания Жизни, Солнца, наивысшую лучезарную Веру в доброту мира, так правдиво и обострённо представляющуюся в эту памятную минуту.',
       startTyping: 'Начните печатать как будете готовы',
+      time: 'Время',
+      sec: 'сек',
+      errors: 'Ошибки',
     },
   },
 };
