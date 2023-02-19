@@ -40,7 +40,7 @@ export class GameAreaComponent {
         <h1>${gameInfo.name[language]}</h1>
         <h4>${gameInfo.description[language]}</h4>
         <div class="text-container">
-          <input type="text" class="input-field" onchange="this.initTyping()">
+          <input type="text" class="input-field">
           <div class="text-area text-of-typing">
             <p>${typingText}</p>
           </div>
@@ -54,7 +54,7 @@ export class GameAreaComponent {
 
   async setListeners(): Promise<void> {
     const currUser = UsersService.getCookie();
-    const startBTN = document.querySelector('.greeting_btn')! as HTMLButtonElement;
+    const startBTN = document.querySelector('.greeting_btn') as HTMLButtonElement;
     let test: PlayComponent = new ReactionComponent();
     switch (this.id) {
       case 2:
@@ -76,9 +76,11 @@ export class GameAreaComponent {
         new TypingComponent().gameStarter();
         break;
     }
-    startBTN.addEventListener('click', async () => {
-      await test.gameStarter();
-    });
+    if (startBTN) {
+      startBTN.addEventListener('click', async () => {
+        await test.gameStarter();
+      });
+    }
     const graph = new GraphComponent(this.id);
     if (!currUser && localStorage.length === 0) await graph.renderGraph();
     if (!currUser && localStorage.length > 0) await graph.renderGraph();

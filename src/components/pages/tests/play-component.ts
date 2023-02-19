@@ -47,7 +47,7 @@ export class PlayComponent {
     });
     saveScore.addEventListener('click', async () => {
       const currUser = UsersService.getCookie();
-      console.log(currUser);
+      // console.log(currUser);
 
       const playedTest: PlayedTest = {
         user_id: currUser ? currUser.userId! : 36,

@@ -4,6 +4,7 @@ import { Ilanguage } from 'components/translate/translateInterfase';
 import { lang } from '../../../../components/translate/translate';
 import { state } from '../../../../utils/state';
 import { gamesInfo } from '../../../../utils/games-info';
+import { SPINNER_SVG } from '../../../../assets/icons/svg';
 
 
 export class TypingComponent extends PlayComponent {
@@ -15,10 +16,6 @@ export class TypingComponent extends PlayComponent {
   inputField: HTMLInputElement | null = document.querySelector('.input-field');
 
   errorTag: HTMLElement | null = document.querySelector('.typing_errors-span');
-
-  // timeTag: HTMLElement | null = document.querySelector('.typing_time-span');
-
-  // wpmTag: HTMLElement | null = document.querySelector('.typing_wpm-span');
 
   wpm: number = 0;
 
@@ -44,9 +41,11 @@ export class TypingComponent extends PlayComponent {
       this.inputField.addEventListener('input', async () => {
         await this.initTyping();   
       });
-    }    
+    }
+
     document.addEventListener('keydown', () => this.inputField!.focus());
     this.typing_text!.addEventListener('click', () => this.inputField!.focus());
+    
   }
 
   sliceText() {
@@ -82,10 +81,6 @@ export class TypingComponent extends PlayComponent {
   }
 
   async initTyping() {
-
-    // if (this.stats) {
-    //   this.stats.innerHTML = await this.renderStats();
-    // }
 
     const characters = this.typing_text!.querySelectorAll('span');
 
@@ -127,20 +122,28 @@ export class TypingComponent extends PlayComponent {
 
       this.wpm = Math.round((((this.characterIndex - this.errors) / 5) / (this.maxTime - this.timeLeft)) * 60);
       this.wpm = this.wpm < 0 || !this.wpm || this.wpm === Infinity ? 0 : this.wpm;
-      // if (this.wpmTag) {
-      // this.wpmTag.textContent = this.wpm.toString();
-      // }
+
+
     } else {
-      // if (this.inputField) {
-      //   this.inputField.value = '';
-      // }
+      if (this.inputField) {
+        this.inputField.value = '';
+      }
       const greeting = document.querySelector('.greeting') as HTMLElement;
+      clearInterval(this.timer);
+
+      const modal: string = `<div id="loading-modal" class="modal">
+        <div class="modal-content">
+          <p>${this.language.common.loading}   ${SPINNER_SVG}</p>
+        </div>
+      </div>`;
+      greeting.remove();
       const main = document.querySelector('main') as HTMLElement;
       const playField = '<section class="play-field"></section>';
-      greeting.remove();
 
+      main.insertAdjacentHTML('beforeend', modal);
       main.insertAdjacentHTML('afterbegin', playField);
-      clearInterval(this.timer);
+      const lang = state.isEngl ? 'en' : 'ru';
+      super.gameEnd(9, this.wpm, gamesInfo[5].units[lang]);
     }
   }
 
@@ -153,10 +156,14 @@ export class TypingComponent extends PlayComponent {
 
   initTimer() {    
     const timeTag: HTMLElement | null = document.querySelector('.typing_time-span');
+    const curErrors: HTMLElement | null = document.querySelector('.typing_errors-span');
+    const curWpm: HTMLElement | null = document.querySelector('.typing_wpm-span');
+
     if (this.timeLeft > 0) {
-      console.log('timer goes');
       this.timeLeft = this.timeLeft - 1;
       if (timeTag) timeTag.textContent = (this.timeLeft).toString();
+      if (curErrors) curErrors.textContent = (this.errors).toString();
+      if (curWpm) curWpm.textContent = (this.wpm).toString();
     } else {
       clearInterval(this.timer);
       const lang = state.isEngl ? 'en' : 'ru';
@@ -165,8 +172,3 @@ export class TypingComponent extends PlayComponent {
   }
  
 }
-
-
-// if (this.isTyping) {
-//   this.startTimer();
-// }  
