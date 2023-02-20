@@ -63,7 +63,7 @@ export class GraphComponent {
       options: {
         plugins: {
           tooltip: {
-            enabled: true,
+            enabled: false,
           },
         },
         scales: {
