@@ -49,8 +49,6 @@ export class GameAreaComponent {
       </section>`;
     }
   }
-  // <div class="text-area">${lang[language].typing.typingText}</div>
-  //         <button class="greeting_btn greeting-a" id="START">${lang[language].common.start}</button>
 
   async setListeners(): Promise<void> {
     const currUser = UsersService.getCookie();

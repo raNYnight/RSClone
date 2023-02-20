@@ -1,5 +1,3 @@
-import { build } from '../../../app/build';
-import { routerPaths } from '../../../app/routerPaths';
 import { Tests } from '../../../APIs/Tests';
 import { UsersService } from '../../../APIs/UsersService';
 import { lang } from '../../../components/translate/translate';
@@ -47,7 +45,6 @@ export class PlayComponent {
     });
     saveScore.addEventListener('click', async () => {
       const currUser = UsersService.getCookie();
-      // console.log(currUser);
 
       const playedTest: PlayedTest = {
         user_id: currUser ? currUser.userId! : 36,

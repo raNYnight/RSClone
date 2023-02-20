@@ -6,7 +6,6 @@ import { state } from '../../../../utils/state';
 import { gamesInfo } from '../../../../utils/games-info';
 import { SPINNER_SVG } from '../../../../assets/icons/svg';
 
-
 export class TypingComponent extends PlayComponent {
 
   language: Ilanguage = state.isEngl ? lang.en : lang.ru;
@@ -33,7 +32,7 @@ export class TypingComponent extends PlayComponent {
 
   stats: HTMLElement | null = document.getElementById('typingInfo');
 
-  async gameStarter() {
+  async gameStarter(): Promise<void> {
 
     this.sliceText();
 
@@ -48,13 +47,13 @@ export class TypingComponent extends PlayComponent {
     
   }
 
-  sliceText() {
+  sliceText(): void {
     if (this.typing_text) {
       let splitText = this.typing_text.innerHTML;
       this.typing_text.innerHTML = '';
 
       splitText.split('').forEach((span) => {
-        let spanTag = `<span>${span}</span>`;
+        let spanTag: string = `<span>${span}</span>`;
         this.typing_text!.innerHTML += spanTag;
       });
 
@@ -80,11 +79,11 @@ export class TypingComponent extends PlayComponent {
         </div>`;
   }
 
-  async initTyping() {
+  async initTyping(): Promise<void> {
 
-    const characters = this.typing_text!.querySelectorAll('span');
+    const characters: NodeListOf<HTMLSpanElement> = this.typing_text!.querySelectorAll('span');
 
-    let typedCharacter = this.inputField!.value.split('')[this.characterIndex];
+    let typedCharacter: string = this.inputField!.value.split('')[this.characterIndex];
 
     if (this.characterIndex < characters.length - 1 && this.timeLeft > 0) {
 
@@ -128,7 +127,7 @@ export class TypingComponent extends PlayComponent {
       if (this.inputField) {
         this.inputField.value = '';
       }
-      const greeting = document.querySelector('.greeting') as HTMLElement;
+      const greeting: HTMLElement = document.querySelector('.greeting') as HTMLElement;
       clearInterval(this.timer);
 
       const modal: string = `<div id="loading-modal" class="modal">
@@ -137,7 +136,7 @@ export class TypingComponent extends PlayComponent {
         </div>
       </div>`;
       greeting.remove();
-      const main = document.querySelector('main') as HTMLElement;
+      const main: HTMLElement = document.querySelector('main') as HTMLElement;
       const playField = '<section class="play-field"></section>';
 
       main.insertAdjacentHTML('beforeend', modal);
@@ -147,14 +146,14 @@ export class TypingComponent extends PlayComponent {
     }
   }
 
-  async startTimer() {
+  async startTimer(): Promise<void> {
     if (this.stats) {
       this.stats.innerHTML = await this.renderStats();
     }
     this.timer = setInterval(() => this.initTimer(), 1000);
   }
 
-  initTimer() {    
+  initTimer(): void {    
     const timeTag: HTMLElement | null = document.querySelector('.typing_time-span');
     const curErrors: HTMLElement | null = document.querySelector('.typing_errors-span');
     const curWpm: HTMLElement | null = document.querySelector('.typing_wpm-span');
