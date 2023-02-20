@@ -161,6 +161,6 @@ export const gamesInfo: Igame[] = [
       ru: 'слов/мин',
     },
     dataset: typingDataset,
-    datasetStep: 10,
+    datasetStep: 2,
   },
 ];

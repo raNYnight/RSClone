@@ -35,7 +35,7 @@ export class GraphComponent {
     const testsDataset = Object.values(await this.getDataset(testsValues, this.gameInfo.datasetStep));
     testsDataset.unshift(0);
     usersDataset.unshift(0);
-
+    console.log(testsDataset);
     let datasets = [
       {
         label: lang[language].common.averageUsers,
@@ -153,7 +153,7 @@ export class GraphComponent {
 
   async getDataset(values: number[], step: number) {
     const result: { [key: number]: number } = {};
-    const n = 40;
+    const n = 70;
     for (let i = 0; i <= n * step; i += step) {
       if (i === 0) continue;
       result[i] = 0;

@@ -1,4 +1,5 @@
 import './game-area.scss';
+import '../pages/tests/typing/typing.scss';
 import { Igame } from 'utils/types';
 import { state } from '../../utils/state';
 import { lang } from '../translate/translate';
@@ -12,6 +13,7 @@ import { TypingComponent } from '../../components/pages/tests/typing/typing';
 import { PlayComponent } from 'components/pages/tests/play-component';
 import { UsersService } from '../../APIs/UsersService';
 import { GraphComponent } from '../../components/graphic/graphic';
+import { TextGenerator } from '../../APIs/TextGenerator';
 
 export class GameAreaComponent {
   id: number;
@@ -24,7 +26,8 @@ export class GameAreaComponent {
     const gameInfo: Igame = gamesInfo.filter((el) => el.id === this.id)[0];
 
     const language = state.isEngl ? 'en' : 'ru';
-
+    const typingText = state.isEngl ? await TextGenerator.getRandomTextEN() : (await TextGenerator.getRandomTextRU()).text;
+       
     if (gameInfo.name.en !== 'Typing') {
       return `<section class="greeting">
         <div class="greeting_svg-wrap">${gameInfo.svg}</div>
@@ -36,15 +39,20 @@ export class GameAreaComponent {
       return `<section class="greeting">
         <h1>${gameInfo.name[language]}</h1>
         <h4>${gameInfo.description[language]}</h4>
-        <div class="text-area">${lang[language].typing.typingText}</div>
-        <button class="greeting_btn greeting-a" id="START">${lang[language].common.start}</button>
+        <div class="text-container">
+          <input type="text" class="input-field">
+          <div class="text-area text-of-typing">
+            <p>${typingText}</p>
+          </div>
+        </div>
+        <div id="typingInfo">${lang[language].typing.startTyping}</div>
       </section>`;
     }
   }
 
   async setListeners(): Promise<void> {
     const currUser = UsersService.getCookie();
-    const startBTN = document.querySelector('.greeting_btn')! as HTMLButtonElement;
+    const startBTN = document.querySelector('.greeting_btn') as HTMLButtonElement;
     let test: PlayComponent = new ReactionComponent();
     switch (this.id) {
       case 2:
@@ -63,12 +71,14 @@ export class GameAreaComponent {
         test = new VerbalComponent();
         break;
       case 9:
-        test = new TypingComponent();
+        new TypingComponent().gameStarter();
         break;
     }
-    startBTN.addEventListener('click', async () => {
-      await test.gameStarter();
-    });
+    if (startBTN) {
+      startBTN.addEventListener('click', async () => {
+        await test.gameStarter();
+      });
+    }
     const graph = new GraphComponent(this.id);
     if (!currUser && localStorage.length === 0) await graph.renderGraph();
     if (!currUser && localStorage.length > 0) await graph.renderGraph();
