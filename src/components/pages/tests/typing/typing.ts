@@ -126,23 +126,7 @@ export class TypingComponent extends PlayComponent {
     } else {
       if (this.inputField) {
         this.inputField.value = '';
-      }
-      const greeting: HTMLElement = document.querySelector('.greeting') as HTMLElement;
-      clearInterval(this.timer);
-
-      const modal: string = `<div id="loading-modal" class="modal">
-        <div class="modal-content">
-          <p>${this.language.common.loading}   ${SPINNER_SVG}</p>
-        </div>
-      </div>`;
-      greeting.remove();
-      const main: HTMLElement = document.querySelector('main') as HTMLElement;
-      const playField = '<section class="play-field"></section>';
-
-      main.insertAdjacentHTML('beforeend', modal);
-      main.insertAdjacentHTML('afterbegin', playField);
-      const lang = state.isEngl ? 'en' : 'ru';
-      super.gameEnd(9, this.wpm, gamesInfo[5].units[lang]);
+      }      
     }
   }
 
@@ -165,6 +149,19 @@ export class TypingComponent extends PlayComponent {
       if (curWpm) curWpm.textContent = (this.wpm).toString();
     } else {
       clearInterval(this.timer);
+      const greeting: HTMLElement = document.querySelector('.greeting') as HTMLElement;
+      
+      const modal: string = `<div id="loading-modal" class="modal">
+        <div class="modal-content">
+          <p>${this.language.common.loading}   ${SPINNER_SVG}</p>
+        </div>
+      </div>`;
+      greeting.remove();
+      const main: HTMLElement = document.querySelector('main') as HTMLElement;
+      const playField = '<section class="play-field"></section>';
+
+      main.insertAdjacentHTML('beforeend', modal);
+      main.insertAdjacentHTML('afterbegin', playField);
       const lang = state.isEngl ? 'en' : 'ru';
       super.gameEnd(9, this.wpm, gamesInfo[5].units[lang]);
     }
