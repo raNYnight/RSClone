@@ -16,6 +16,8 @@ export class TypingComponent extends PlayComponent {
 
   errorTag: HTMLElement | null = document.querySelector('.typing_errors-span');
 
+  textContainer: HTMLElement | null = document.querySelector('.text-container');
+
   wpm: number = 0;
 
   characterIndex: number = 0;
@@ -39,12 +41,14 @@ export class TypingComponent extends PlayComponent {
     if (this.inputField) {      
       this.inputField.addEventListener('input', async () => {
         await this.initTyping();   
-      });
+      });      
+    }
+    
+    if (window.location.hash.slice(1) === 'typing') {
+      document.addEventListener('keydown', () => this.inputField!.focus());
     }
 
-    document.addEventListener('keydown', () => this.inputField!.focus());
-    this.typing_text!.addEventListener('click', () => this.inputField!.focus());
-    
+    if (this.typing_text) this.typing_text.addEventListener('click', () => this.inputField!.focus());    
   }
 
   sliceText(): void {
@@ -122,7 +126,6 @@ export class TypingComponent extends PlayComponent {
       this.wpm = Math.round((((this.characterIndex - this.errors) / 5) / (this.maxTime - this.timeLeft)) * 60);
       this.wpm = this.wpm < 0 || !this.wpm || this.wpm === Infinity ? 0 : this.wpm;
 
-
     } else {
       if (this.inputField) {
         this.inputField.value = '';
@@ -149,8 +152,11 @@ export class TypingComponent extends PlayComponent {
       if (curWpm) curWpm.textContent = (this.wpm).toString();
     } else {
       clearInterval(this.timer);
-      const greeting: HTMLElement = document.querySelector('.greeting') as HTMLElement;
       
+      document.addEventListener('keydown', () => this.inputField!.focus());
+      
+      const greeting: HTMLElement = document.querySelector('.greeting') as HTMLElement;
+
       const modal: string = `<div id="loading-modal" class="modal">
         <div class="modal-content">
           <p>${this.language.common.loading}   ${SPINNER_SVG}</p>
@@ -159,6 +165,7 @@ export class TypingComponent extends PlayComponent {
       greeting.remove();
       const main: HTMLElement = document.querySelector('main') as HTMLElement;
       const playField = '<section class="play-field"></section>';
+
 
       main.insertAdjacentHTML('beforeend', modal);
       main.insertAdjacentHTML('afterbegin', playField);
