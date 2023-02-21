@@ -64,13 +64,13 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
       <p class="dashboard_user-join">${fullDate}</p>
       <div class="link">
       ${
-        usersCookie
-          ? `<span class="perma-link">${path.dashboard.permalink}</span> `
-          : `
+  usersCookie
+    ? `<span class="perma-link">${path.dashboard.permalink}</span> `
+    : `
         <a href="#login">${path.signUp.login}</a> ${path.dashboard.or} 
         <a href="#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
         `
-      }
+}
         
       </div>
     </div>`;
@@ -108,7 +108,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                 <div class="stats_item percentile_container"><span class='percentile_span'>${played.percentile}</span><div class="percentile-bg" style='width: ${played.percentile};'}"></div></div>
               </div>`;
       return html;
-    })
+    }),
   );
 
   return `<div class="stats-wrap">
@@ -151,7 +151,7 @@ async function getActivityItemHtml(): Promise<string> {
     </div>`;
       })
       .reverse()
-      .slice(0, 10)
+      .slice(0, 10),
   );
   return activityTable.join('');
 }

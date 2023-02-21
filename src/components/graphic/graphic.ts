@@ -53,7 +53,7 @@ export class GraphComponent {
     ];
 
     const ctx = document.querySelector('canvas') as HTMLCanvasElement;
-    const myChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: {
         labels: [0, ...this.gameInfo.dataset].map((el) => el + ` ${this.gameInfo.units[language]}`),
@@ -101,7 +101,7 @@ export class GraphComponent {
     const gameNumbers = data.map((item, index) => index);
 
     const ctx = document.querySelector('#LastGamesGraph') as HTMLCanvasElement;
-    const myChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: {
         labels: gameNumbers,
