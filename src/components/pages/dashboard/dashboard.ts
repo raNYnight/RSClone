@@ -123,8 +123,10 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
 }
 
 async function getActivityItemHtml(): Promise<string> {
-  const played = await Tests.getUserPlayedTests();
-
+  const currUser = UsersService.getCookie();
+  let played: PlayedTest[] = [];
+  if (currUser) played = await Tests.getUserPlayedTests();
+  if (!currUser && localStorage.length > 0) played = await UsersService.getGuestAllTeststDataFromLocalStorage();
   const language = state.isEngl ? 'en' : 'ru';
   const activityTable = await Promise.all(
     played
