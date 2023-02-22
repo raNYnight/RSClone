@@ -84,3 +84,15 @@ export enum Guest {
   GuestLocalStorageNotEmpty,
   authorized,
 }
+
+export interface RandomENTEXT {
+  status: string;
+  code: number;
+  total: string;
+  data: {
+    title: string;
+    author: string;
+    genre: string;
+    content: string;
+  }[];
+}
