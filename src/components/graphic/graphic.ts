@@ -1,7 +1,6 @@
 import Chart from 'chart.js/auto';
 import { Igame } from '../../utils/types';
 import { gamesInfo } from '../../utils/games-info';
-import './graph.css';
 import { Tests } from '../../APIs/Tests';
 import { UsersService } from '../../APIs/UsersService';
 import { lang } from '../../components/translate/translate';
@@ -54,7 +53,7 @@ export class GraphComponent {
     ];
 
     const ctx = document.querySelector('canvas') as HTMLCanvasElement;
-    const myChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: {
         labels: [0, ...this.gameInfo.dataset].map((el) => el + ` ${this.gameInfo.units[language]}`),
@@ -102,7 +101,7 @@ export class GraphComponent {
     const gameNumbers = data.map((item, index) => index);
 
     const ctx = document.querySelector('#LastGamesGraph') as HTMLCanvasElement;
-    const myChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: {
         labels: gameNumbers,
@@ -113,6 +112,7 @@ export class GraphComponent {
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1,
+            fill: 'start',
           },
         ],
       },
@@ -126,6 +126,9 @@ export class GraphComponent {
           y: {
             min: 0,
             max: Math.max(...data) + 5,
+          },
+          x: {
+            display: false,
           },
         },
       },
