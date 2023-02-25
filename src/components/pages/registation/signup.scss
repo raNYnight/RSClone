@@ -100,3 +100,19 @@
     }
   }
 }
+
+@media screen and (max-width: 444px) {
+  .sign-up-field{
+    label{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .sign-up-window .middle-headers h2{
+    font-size: 40px;
+  }
+  
+}

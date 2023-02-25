@@ -31,7 +31,7 @@ export class LoginComponent implements Component {
     <div class="sign-up-window">
     <div class="form-wrapper">
       <div class="middle-headers">
-        <h2>${path.login.login}</h2>
+        <h2>${path.login.title}</h2>
         <p>${path.login.haveAcc} <a href="#signup">${path.login.signUp}</a></p>
         <p class="auth-fail"></p>
         ${form}

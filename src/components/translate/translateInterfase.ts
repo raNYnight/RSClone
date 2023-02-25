@@ -80,6 +80,7 @@ export interface Ilogin {
   forgotPas: string;
   resetPas: string;
   error: string;
+  title: string;
   fields: {
     [key: string]: string;
   };

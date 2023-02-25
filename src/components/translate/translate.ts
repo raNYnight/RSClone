@@ -69,6 +69,7 @@ export const lang: Itranslate = {
       forgotPas: 'Forgot password?',
       resetPas: 'Reset password',
       error: 'Error',
+      title: 'Log in',
       fields: loginFields.en,
     },
     common: {
@@ -187,7 +188,7 @@ export const lang: Itranslate = {
     dashboard: {
       username: 'Имя',
       guest: 'Гость',
-      joined: 'присоединился',
+      joined: 'Присоединился',
       or: 'или',
       save: 'для сохранения результатов',
       permalink: 'Ссылка',
@@ -210,7 +211,7 @@ export const lang: Itranslate = {
       password: 'Пароль',
       passwordConfirm: 'Подтверждение пароля',
       error: 'ошибка ввода',
-      title: 'Зарегистрироваться',
+      title: 'Регистрация',
       fields: signUpFields.ru,
     },
     login: {
@@ -222,6 +223,7 @@ export const lang: Itranslate = {
       forgotPas: 'Забыли пароль?',
       resetPas: 'Сбросить пароль',
       error: 'ошибка',
+      title: 'Авторизация',
       fields: loginFields.ru,
     },
     common: {
