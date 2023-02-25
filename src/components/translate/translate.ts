@@ -102,6 +102,7 @@ export const lang: Itranslate = {
       endGameDiscr: 'Reaction time',
     },
     sequence: {
+      level: 'Level',
       title: 'Sequence Memory Test',
       subTitle: 'Memorize the pattern.',
       discr:
@@ -256,6 +257,7 @@ export const lang: Itranslate = {
       endGameDiscr: 'Скорость реакции',
     },
     sequence: {
+      level: 'Уровень',
       title: 'Тест запоминания последовательности',
       subTitle: 'Запомните последовательность',
       discr:

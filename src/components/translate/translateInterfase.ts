@@ -116,6 +116,7 @@ export interface Ireaction {
 }
 
 export interface Isequence {
+  level: string;
   title: string;
   subTitle: string;
   discr: string;

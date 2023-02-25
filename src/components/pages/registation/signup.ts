@@ -102,7 +102,7 @@ export class SignupComponent implements Component {
 
   setError(initName: string, field: Field, result: boolean, errorMsg: string) {
     if (!result) field.label.innerHTML = initName + `<span class="error"> ${errorMsg}<span>`;
-    else field.label.innerHTML = initName + '</br>';
+    else field.label.innerHTML = initName;
   }
 
   checkEmail(field: Field): boolean {
