@@ -33,7 +33,7 @@ export class PlayComponent {
     <div class="greeting_svg-wrap game-end_svg-wrap">${gameInfo.svg}</div>
     <h3>${gameInfo.name[language]}</h3>
     <h2>${lang[language].dashboard.score}: ${score} ${scoreUnits}</h2>
-    <div clas="game-end_btns">
+    <div class="game-end_btns">
     <div class="greeting_btn greeting-a" id="SaveScore">${lang[language].common.saveScore}</div>
     <div class="greeting_btn greeting-a try-again_btn" id="tryAgain" href="#${gameInfo.href}">${lang[language].common.tryAgain}</div>
       </div>

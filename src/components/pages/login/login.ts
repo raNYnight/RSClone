@@ -5,13 +5,14 @@ import { Component } from '../../../components/component';
 import { Field } from '../../../constants/field';
 import { fieldsErrors } from '../../../constants/fieldsErrors';
 import { UsersService } from '../../../APIs/UsersService';
+import { SPINNER_SVG } from '../../../assets/icons/svg';
 import './login.css';
+import { ModalWindow } from '../modalWindow';
 
-export class LoginComponent implements Component {
+export class LoginComponent extends ModalWindow implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
-
   async getHtml(): Promise<string> {
-    const path = state.isEngl ? lang.en : lang.ru;
+    const path = this.lang;
     let form = '';
     for (const key in path.login.fields as Fields) {
       const field = key;
@@ -31,7 +32,7 @@ export class LoginComponent implements Component {
     <div class="sign-up-window">
     <div class="form-wrapper">
       <div class="middle-headers">
-        <h2>${path.login.login}</h2>
+        <h2>${path.login.title}</h2>
         <p>${path.login.haveAcc} <a href="#signup">${path.login.signUp}</a></p>
         <p class="auth-fail"></p>
         ${form}
@@ -58,6 +59,7 @@ export class LoginComponent implements Component {
       (authFailBlock as HTMLElement).textContent = '';
       if (this.checkUsername(fields[0]) && this.checkPassword(fields[1])) {
         (loginBtn as HTMLElement).classList.add('btn-pending');
+        this.showModal();
         UsersService.authorizeWithCookie({
           user_name: (fields[0].field as HTMLInputElement).value,
           password: (fields[1].field as HTMLInputElement).value,
@@ -75,7 +77,10 @@ export class LoginComponent implements Component {
                 : 'Имя пользователя и пароль не соответствуют';
             }
           })
-          .finally(() => (loginBtn as HTMLElement).classList.remove('btn-pending'));
+          .finally(() => {
+            (loginBtn as HTMLElement).classList.remove('btn-pending');
+            this.hideModal();
+          });
       }
     });
   }

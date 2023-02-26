@@ -12,7 +12,9 @@ import { UsersService } from '../../../APIs/UsersService';
 import { strict } from 'assert';
 import { getRandomString } from '../../../utils/randomString';
 import { Authorization, User } from '../../../utils/types';
-export class SignupComponent implements Component {
+import { SPINNER_SVG } from '../../../assets/icons/svg';
+import { ModalWindow } from '../modalWindow';
+export class SignupComponent extends ModalWindow implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
 
   async getHtml(): Promise<string> {
@@ -80,7 +82,7 @@ export class SignupComponent implements Component {
           permalink: await getRandomString(10),
           registration_date: new Date(new Date().getTime()).toISOString(),
         };
-
+        this.showModal();
         UsersService.registerNewUser(newUser)
           .then(async (data) => {
             await UsersService.authorizeWithCookie({ user_name: newUser.user_name, password: newUser.password });
@@ -95,7 +97,10 @@ export class SignupComponent implements Component {
                 regFailBlock.innerHTML += element + '</br>';
               });
           })
-          .finally(() => RegButton.classList.remove('btn-pending'));
+          .finally(() => {
+            RegButton.classList.remove('btn-pending');
+            this.hideModal();
+          });
       }
     });
   }

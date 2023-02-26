@@ -80,6 +80,7 @@ export interface Ilogin {
   forgotPas: string;
   resetPas: string;
   error: string;
+  title: string;
   fields: {
     [key: string]: string;
   };
@@ -115,6 +116,7 @@ export interface Ireaction {
 }
 
 export interface Isequence {
+  level: string;
   title: string;
   subTitle: string;
   discr: string;

@@ -1,4 +1,6 @@
 import { rejects } from 'assert';
+import { lang } from '../../../../components/translate/translate';
+import { state } from '../../../../utils/state';
 import { getRandomInt } from '../../../../utils/random';
 import { PlayComponent } from '../play-component';
 import './sequence.scss';
@@ -9,6 +11,7 @@ export class SequenceComponent extends PlayComponent {
   level = 1;
   levelElement: HTMLElement | null = null;
   isGameStarted = false;
+  lang = state.isEngl ? lang.en : lang.ru;
   async gameStarter() {
     super.gameStarter();
     console.log('SequenceComponent');
@@ -17,7 +20,7 @@ export class SequenceComponent extends PlayComponent {
     level.textContent = String(this.level);
     const levelLabel = document.createElement('p');
     levelLabel.className = 'level-label';
-    levelLabel.textContent = 'Level: ';
+    levelLabel.textContent = `${this.lang.sequence.level}: `;
     levelLabel.append(level);
     this.levelElement = level;
     if (playField)
@@ -85,6 +88,6 @@ export class SequenceComponent extends PlayComponent {
     const playField: HTMLElement | null = document.querySelector('.play-field');
     if (playField)
     this.animateBGwrong(playField);
-    this.gameEnd(3,score,"Level");
+    this.gameEnd(3, score, this.lang.sequence.level);
   }
 }

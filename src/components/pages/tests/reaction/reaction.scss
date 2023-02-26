@@ -17,19 +17,20 @@
 .reaction-wrapper{
   color: white;
   text-align: center;
-  .main-msg{
   font-size: 80px;
+  .main-msg{
+  font-size: 1em;
   color: inherit;
   }
 
   .sub-msg{
-    font-size: 22px;
+    font-size: 0.3em;
     color: inherit;
   }
 
   .end-title{
     color: inherit;
-    font-size: 25px;
+    font-size: 0.3em;
   }
 
   .end-btns{
@@ -58,4 +59,24 @@
     }
   }
 
+}
+
+@media screen and (max-width: 444px) {
+
+  .reaction-wrapper{
+    font-size: 60px;
+  }
+
+  .end-btns{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    .greeting_btn{
+      max-width: 150px;
+      font-size: 20px;
+      padding: 5px 10px;
+      margin: 10px auto;
+    }
+  }
 }

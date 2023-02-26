@@ -32,7 +32,8 @@ $plate-color: rgb(0, 0, 102);
   flex-wrap: wrap;
   width: $fieldSize;
   height: $fieldSize;
-  gap: 3%;
+  justify-content: center;
+  gap: 3.33%;
 }
 
 .plate-animation-long{
@@ -59,5 +60,23 @@ $plate-color: rgb(0, 0, 102);
   100% {
     background: $plate-color;
     opacity: 0.15;
+  }
+}
+
+@media screen and (max-width: 444px) {
+  $fieldSize: 300px;
+
+  .memory-field{
+    width: $fieldSize;
+    height: $fieldSize;
+  }
+  
+  .game-end_btns {
+    .greeting_btn{
+      max-width: 150px;
+      font-size: 14px;
+      padding: 5px 10px;
+      margin: 10px auto;
+    }
   }
 }

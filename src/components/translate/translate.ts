@@ -69,6 +69,7 @@ export const lang: Itranslate = {
       forgotPas: 'Forgot password?',
       resetPas: 'Reset password',
       error: 'Error',
+      title: 'Log in',
       fields: loginFields.en,
     },
     common: {
@@ -101,6 +102,7 @@ export const lang: Itranslate = {
       endGameDiscr: 'Reaction time',
     },
     sequence: {
+      level: 'Level',
       title: 'Sequence Memory Test',
       subTitle: 'Memorize the pattern.',
       discr:
@@ -187,7 +189,7 @@ export const lang: Itranslate = {
     dashboard: {
       username: 'Имя',
       guest: 'Гость',
-      joined: 'присоединился',
+      joined: 'Присоединился',
       or: 'или',
       save: 'для сохранения результатов',
       permalink: 'Ссылка',
@@ -210,7 +212,7 @@ export const lang: Itranslate = {
       password: 'Пароль',
       passwordConfirm: 'Подтверждение пароля',
       error: 'ошибка ввода',
-      title: 'Зарегистрироваться',
+      title: 'Регистрация',
       fields: signUpFields.ru,
     },
     login: {
@@ -222,6 +224,7 @@ export const lang: Itranslate = {
       forgotPas: 'Забыли пароль?',
       resetPas: 'Сбросить пароль',
       error: 'ошибка',
+      title: 'Авторизация',
       fields: loginFields.ru,
     },
     common: {
@@ -232,7 +235,7 @@ export const lang: Itranslate = {
       next: 'Следующий',
       ms: 'мс',
       pts: 'балл',
-      saveDiscr: 'Сохранить свой результат или попробуйте еще раз.',
+      saveDiscr: 'Сохраните свой результат или попробуйте еще раз.',
       saveScore: 'Сохранить',
       tryAgain: 'Попробовать снова',
       level: 'Уровень',
@@ -254,6 +257,7 @@ export const lang: Itranslate = {
       endGameDiscr: 'Скорость реакции',
     },
     sequence: {
+      level: 'Уровень',
       title: 'Тест запоминания последовательности',
       subTitle: 'Запомните последовательность',
       discr:
