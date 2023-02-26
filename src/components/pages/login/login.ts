@@ -5,12 +5,12 @@ import { Component } from '../../../components/component';
 import { Field } from '../../../constants/field';
 import { fieldsErrors } from '../../../constants/fieldsErrors';
 import { UsersService } from '../../../APIs/UsersService';
-import { SPINNER_SVG } from '../../../assets/icons/svg';
 import './login.css';
 import { ModalWindow } from '../modalWindow';
 
 export class LoginComponent extends ModalWindow implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
+
   async getHtml(): Promise<string> {
     const path = this.lang;
     let form = '';
