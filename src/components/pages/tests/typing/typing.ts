@@ -121,15 +121,13 @@ export class TypingComponent extends PlayComponent {
 
       if (this.errorTag) {
         this.errorTag.textContent = (this.errors).toString();
-      }
-
-      this.wpm = Math.round((((this.characterIndex - this.errors) / 5) / (this.maxTime - this.timeLeft)) * 60);
-      this.wpm = this.wpm < 0 || !this.wpm || this.wpm === Infinity ? 0 : this.wpm;
+      }     
 
     } else {
       if (this.inputField) {
         this.inputField.value = '';
-      }      
+      }
+      this.gameEnding();    
     }
   }
 
@@ -144,34 +142,37 @@ export class TypingComponent extends PlayComponent {
     const timeTag: HTMLElement | null = document.querySelector('.typing_time-span');
     const curErrors: HTMLElement | null = document.querySelector('.typing_errors-span');
     const curWpm: HTMLElement | null = document.querySelector('.typing_wpm-span');
-
+   
     if (this.timeLeft > 0) {
       this.timeLeft = this.timeLeft - 1;
+      this.wpm = Math.round((((this.characterIndex - this.errors) / 5) / (this.maxTime - this.timeLeft)) * 60);
+      this.wpm = this.wpm < 0 || !this.wpm || this.wpm === Infinity ? 0 : this.wpm;
       if (timeTag) timeTag.textContent = (this.timeLeft).toString();
       if (curErrors) curErrors.textContent = (this.errors).toString();
       if (curWpm) curWpm.textContent = (this.wpm).toString();
     } else {
-      clearInterval(this.timer);
-      
-      document.addEventListener('keydown', () => this.inputField!.focus());
-      
-      const greeting: HTMLElement = document.querySelector('.greeting') as HTMLElement;
-
-      const modal: string = `<div id="loading-modal" class="modal">
-        <div class="modal-content">
-          <p>${this.language.common.loading}   ${SPINNER_SVG}</p>
-        </div>
-      </div>`;
-      greeting.remove();
-      const main: HTMLElement = document.querySelector('main') as HTMLElement;
-      const playField = '<section class="play-field"></section>';
-
-
-      main.insertAdjacentHTML('beforeend', modal);
-      main.insertAdjacentHTML('afterbegin', playField);
-      const lang = state.isEngl ? 'en' : 'ru';
-      super.gameEnd(9, this.wpm, gamesInfo[5].units[lang]);
+      this.gameEnding();
     }
+  }
+
+  gameEnding() {
+    clearInterval(this.timer);
+      
+    document.addEventListener('keydown', () => this.inputField!.focus());
+    
+    const greeting: HTMLElement = document.querySelector('.greeting') as HTMLElement;
+    const modal: string = `<div id="loading-modal" class="modal">
+      <div class="modal-content">
+        <p>${this.language.common.loading}   ${SPINNER_SVG}</p>
+      </div>
+    </div>`;
+    greeting.remove();
+    const main: HTMLElement = document.querySelector('main') as HTMLElement;
+    const playField = '<section class="play-field"></section>';
+    main.insertAdjacentHTML('beforeend', modal);
+    main.insertAdjacentHTML('afterbegin', playField);
+    const lang = state.isEngl ? 'en' : 'ru';
+    super.gameEnd(9, this.wpm, gamesInfo[5].units[lang]);
   }
  
 }
