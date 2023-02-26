@@ -6,6 +6,7 @@ import { Field } from '../../../constants/field';
 import { fieldsErrors } from '../../../constants/fieldsErrors';
 import { UsersService } from '../../../APIs/UsersService';
 import './login.css';
+import { ModalComponent } from '../../../components/modal';
 
 export class LoginComponent implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
@@ -52,12 +53,14 @@ export class LoginComponent implements Component {
       }
     const loginBtn = document.querySelector('.submit-btn');
     loginBtn?.addEventListener('click', async (event: Event) => {
+      const modal = new ModalComponent();
       const authFailBlock = document.querySelector('.auth-fail');
       const loginBtn = event.target as HTMLElement;
       (authFailBlock as HTMLElement).style.visibility = 'hidden';
       (authFailBlock as HTMLElement).textContent = '';
       if (this.checkUsername(fields[0]) && this.checkPassword(fields[1])) {
         (loginBtn as HTMLElement).classList.add('btn-pending');
+        modal.showModal();
         UsersService.authorizeWithCookie({
           user_name: (fields[0].field as HTMLInputElement).value,
           password: (fields[1].field as HTMLInputElement).value,

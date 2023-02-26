@@ -5,16 +5,13 @@ import { gamesInfo } from '../../../utils/games-info';
 import { state } from '../../../utils/state';
 import { Igame, PlayedTest } from '../../../utils/types';
 import { GamePageComponent } from '../game-page/game-page';
-import { SPINNER_SVG } from '../../../assets/icons/svg';
 import { LocalGameStorage } from '../../../utils/localGameStorage';
+import { ModalComponent } from '../../../components/modal';
 
 export class PlayComponent {
   async gameStarter(): Promise<void> {
-    const language = state.isEngl ? 'en' : 'ru';
     const modal: string = `<div id="loading-modal" class="modal">
-    <div class="modal-content">
-      <p>${lang[language].common.loading}   ${SPINNER_SVG}</p>
-    </div>
+    ${new ModalComponent().getHTML()}
   </div>`;
     const greeting = document.querySelector('.greeting') as HTMLElement;
     const main = document.querySelector('main') as HTMLElement;
@@ -45,7 +42,7 @@ export class PlayComponent {
     });
     saveScore.addEventListener('click', async () => {
       const currUser = UsersService.getCookie();
-
+      const modal = new ModalComponent();
       const playedTest: PlayedTest = {
         user_id: currUser ? currUser.userId! : 36,
         tests_id: gameID,
@@ -55,10 +52,10 @@ export class PlayComponent {
       if (!currUser) {
         LocalGameStorage.addGame(playedTest);
       }
-      this.showModal();
+      modal.showModal();
       await Tests.addTestInDB(playedTest).then(() => {
         window.location.hash = 'dashboard';
-        this.hideModal();
+        modal.hideModal();
       });
     });
   }
@@ -68,16 +65,6 @@ export class PlayComponent {
     const newGame = new GamePageComponent(gameID);
     main.innerHTML = await newGame.getHtml();
     newGame.setListeners();
-  }
-
-  showModal() {
-    const modalNode = document.querySelector('#loading-modal') as HTMLElement;
-    modalNode.style.display = 'block';
-  }
-
-  hideModal() {
-    const modalNode = document.querySelector('#loading-modal') as HTMLElement;
-    modalNode.style.display = 'none';
   }
 
   animateBGright(bg: HTMLElement) {

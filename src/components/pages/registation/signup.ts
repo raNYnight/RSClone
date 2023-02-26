@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-shadow */
 import { Component } from '../../../components/component';
@@ -11,7 +12,8 @@ import { fieldsErrors } from '../../../constants/fieldsErrors';
 import { UsersService } from '../../../APIs/UsersService';
 import { strict } from 'assert';
 import { getRandomString } from '../../../utils/randomString';
-import { Authorization, User } from '../../../utils/types';
+import { User } from '../../../utils/types';
+import { ModalComponent } from '../../../components/modal';
 export class SignupComponent implements Component {
   public errors = state.isEngl ? fieldsErrors.ru : fieldsErrors.en;
 
@@ -57,6 +59,7 @@ export class SignupComponent implements Component {
       }
     const signUpBtn = document.querySelector('.submit-btn');
     signUpBtn?.addEventListener('click', async (event: Event) => {
+      const modal = new ModalComponent();
       const regFailBlock = document.querySelector('.reg-fail');
       const RegButton = event.target as HTMLElement;
       (regFailBlock as HTMLElement).style.visibility = 'hidden';
@@ -66,6 +69,7 @@ export class SignupComponent implements Component {
         this.checkPassword(fields[2]) &&
         this.arePasswordsEqual(fields[2], fields[3])
       ) {
+        modal.showModal();
         const userData = {
           email: (fields[0].field as HTMLInputElement).value,
           userName: (fields[1].field as HTMLInputElement).value,
@@ -82,7 +86,7 @@ export class SignupComponent implements Component {
         };
 
         UsersService.registerNewUser(newUser)
-          .then(async (data) => {
+          .then(async () => {
             await UsersService.authorizeWithCookie({ user_name: newUser.user_name, password: newUser.password });
             window.location.hash = 'dashboard';
           })
@@ -91,7 +95,7 @@ export class SignupComponent implements Component {
             (regFailBlock as HTMLElement).style.visibility = 'visible';
             (regFailBlock as HTMLElement).textContent = '';
             if (regFailBlock)
-              error.data['denyReasons'][lang].forEach((element: string) => {
+              error.data.denyReasons[lang].forEach((element: string) => {
                 regFailBlock.innerHTML += element + '</br>';
               });
           })
