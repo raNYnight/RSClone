@@ -2,14 +2,18 @@ import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { PageMarkup } from 'interfaces/paths';
 import { StatsPageComponent } from '../components/pages/statsPage/statsPage';
+import { ModalWindow } from '../components/pages/modalWindow';
 
 export async function build(page: PageMarkup): Promise<void> {
   const main: HTMLElement = document.createElement('main');
+  const modal = new ModalWindow();
   main.classList.add('main');
   document.body.innerHTML = '';
   main.innerHTML = '';
   document.body.insertAdjacentHTML('afterbegin', await new HeaderComponent().getHtml());
   HeaderComponent.setListeners();
+  document.body.insertAdjacentHTML('afterbegin', modal.getHTML());
+  modal.showModal();
   document.body.insertAdjacentElement('beforeend', main);
   document.body.insertAdjacentHTML('beforeend', await new FooterComponent().getHtml());
 
@@ -17,4 +21,5 @@ export async function build(page: PageMarkup): Promise<void> {
   main.innerHTML = await pageComponent.getHtml();
   if (pageComponent.setListeners) pageComponent.setListeners();
   if (pageComponent instanceof StatsPageComponent) pageComponent.renderGraph();
+  modal.hideModal();
 }

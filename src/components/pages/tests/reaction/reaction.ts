@@ -10,6 +10,7 @@ import { routerPaths } from '../../../../app/routerPaths';
 import { build } from '../../../../app/build';
 import { lang } from 'components/translate/translate';
 import { LocalGameStorage } from '../../../../utils/localGameStorage';
+import { ModalWindow } from '../../../../components/pages/modalWindow';
 
 export class ReactionComponent extends PlayComponent {
   defaultFieldColor = 'rgb(43, 135, 209)';
@@ -41,14 +42,14 @@ export class ReactionComponent extends PlayComponent {
       <p class="main-msg">${time ? time + data.text : data.text}</p>
       <p class="sub-msg">${data.sub || ''}</p>
       ${
-  page === 'end'
-    ? `
+        page === 'end'
+          ? `
       <div class="end-btns">
       <button class="greeting_btn greeting-a save">${data.btnSave || ''}</button>
       <button class="greeting_btn greeting-a try-again_btn">${data.btnTry || ''}</button>
       </div>`
-    : ''
-}
+          : ''
+      }
     </div>
     `;
     if (this.playField && this.language) {
@@ -130,20 +131,20 @@ export class ReactionComponent extends PlayComponent {
   async saveScore(): Promise<void> {
     const userData = await UsersService.getCookie();
     const score = this.results.reduce((acc, curr) => acc + curr, 0);
-
+    const modal = new ModalWindow();
     const playedTest: PlayedTest = {
-      user_id: userData ? userData.userId!: 36,
+      user_id: userData ? userData.userId! : 36,
       tests_id: 2,
       date: new Date().toISOString(),
       score: parseInt((score / 5).toString()),
     };
-    if (!userData){
+    if (!userData) {
       LocalGameStorage.addGame(playedTest);
     }
-    this.showModal();
+    modal.showModal();
     await Tests.addTestInDB(playedTest).then(() => {
       window.location.hash = 'dashboard';
-      this.hideModal();
+      modal.hideModal();
     });
   }
 }

@@ -26,16 +26,24 @@ export class Tests {
 
   static getUserAverageStats = async (testID: number) => {
     const currUser = UsersService.getCookie();
+    const location = document.location.hash.slice(1).split('/');
     let testStats = {
       score: '?',
       percentile: '?',
     };
     let testData: PlayedTest[] = [];
-    if (currUser) {
+    if (location[1] === 'users') {
+      const allUsers = await UsersService.getAllUsers();
+      const userFromLink = allUsers.find((user) => user.permalink === location[2]);
+      testData = await UsersService.getUserTestData(userFromLink?.id!, testID);
+      console.log('permalink user', userFromLink);
+      console.log('permalink data', testData);
+    }
+    if (currUser && location[1] !== 'users') {
       testData = await UsersService.getUserTestData(currUser.userId!, testID);
     }
-    if (!currUser && localStorage.length === 0) testStats.score = '?';
-    if (!currUser && localStorage.length > 0) {
+    if (!currUser && location[1] !== 'users' && localStorage.length === 0) testStats.score = '?';
+    if (!currUser && location[1] !== 'users' && localStorage.length > 0) {
       testData = await UsersService.getGuestTestDataFromLocalStorage(testID);
     }
     const lastFive = testData.slice(Math.max(testData.length - 5, 0));
