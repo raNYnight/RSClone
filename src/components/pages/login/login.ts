@@ -68,8 +68,6 @@ export class LoginComponent extends ModalWindow implements Component {
             window.location.hash = 'dashboard';
           })
           .catch(() => {
-            console.log('error');
-
             if (authFailBlock) {
               (authFailBlock as HTMLElement).style.visibility = 'visible';
               authFailBlock.innerHTML = state.isEngl

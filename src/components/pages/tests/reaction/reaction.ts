@@ -23,7 +23,6 @@ export class ReactionComponent extends PlayComponent {
 
   async gameStarter(): Promise<void> {
     await super.gameStarter();
-    console.log('ReactionComponent');
     this.language = state.isEngl ? 'en' : 'ru';
     this.playField = document.querySelector('.play-field') as HTMLElement;
     this.playField.className = 'play-field pointer';

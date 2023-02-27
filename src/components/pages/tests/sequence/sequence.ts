@@ -14,7 +14,6 @@ export class SequenceComponent extends PlayComponent {
   lang = state.isEngl ? lang.en : lang.ru;
   async gameStarter() {
     super.gameStarter();
-    console.log('SequenceComponent');
     const playField = document.querySelector('.play-field');
     const level = document.createElement('span');
     level.textContent = String(this.level);
