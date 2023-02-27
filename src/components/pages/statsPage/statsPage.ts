@@ -5,6 +5,7 @@ import { state } from '../../../utils/state';
 import { lang } from '../../translate/translate';
 import { GraphComponent } from '../../../components/graphic/graphic';
 import { Tests } from '../../../APIs/Tests';
+import { UsersService } from '../../../APIs/UsersService';
 
 export class StatsPageComponent {
   id: number;
@@ -28,16 +29,19 @@ export class StatsPageComponent {
 
   async getUserTitleHtml(gameInfo: Igame): Promise<string> {
     const language = state.isEngl ? 'en' : 'ru';
+    const linkDiv = `<div class="link">
+                    <a href="/#login">${lang[language].signUp.login}</a> ${lang[language].dashboard.or} 
+                    <a href="/#signup">${lang[language].signUp.signUp}</a> ${lang[language].dashboard.save}
+                  </div>`;
+    const currUser = UsersService.getCookie();
     return `<div class=" dashboard_user-wrap statistic-media">
         <p class="statistic-title">
-          <a href="#dashboard" class="statistic-page-link">${state.user.name}</a>
-           > 
+          <a href="#dashboard" class="statistic-page-link">${currUser ? currUser.userName : state.user.name}</a>
+           >
           <span class="statistic-span">${gameInfo.name[language]}</span>
+          
         </p>
-        <div class="link">
-          <a href="/#login">${lang[language].signUp.login}</a> ${lang[language].dashboard.or} 
-          <a href="/#signup">${lang[language].signUp.signUp}</a> ${lang[language].dashboard.save}
-        </div>
+        ${!currUser ? linkDiv : ''} 
       </div>`;
   }
 
