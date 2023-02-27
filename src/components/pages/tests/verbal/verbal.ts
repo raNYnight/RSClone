@@ -42,12 +42,10 @@ export class VerbalComponent extends PlayComponent {
         case index < 0:
           current.textContent! = await this.getWord(language, seenArr);
           seenArr.push(current.textContent!);
-          console.log('нажали БЫЛО, но слово новое', seenArr);
           lives.textContent = (+lives.textContent! - 1).toString();
           break;
         case index >= 0:
           current.textContent! = await this.getWord(language, seenArr);
-          console.log('НАЖАЛИ БЫЛО, СЛОВО БЫЛО', seenArr);
           score.textContent = (+score.textContent! + 1).toString();
           break;
       }
@@ -59,13 +57,11 @@ export class VerbalComponent extends PlayComponent {
         case index < 0:
           seenArr.push(current.textContent!);
           current.textContent! = await this.getWord(language, seenArr);
-          console.log('Новое слово, нажали НОВОЕ', seenArr);
           score.textContent = (+score.textContent! + 1).toString();
           break;
 
         case index >= 0:
           current.textContent! = await this.getWord(language, seenArr);
-          console.log('слово БЫЛО, нажали НОВОЕ ', seenArr);
           lives.textContent = (+lives.textContent! - 1).toString();
           break;
       }

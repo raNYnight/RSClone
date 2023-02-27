@@ -34,7 +34,6 @@ export class GraphComponent {
     const testsDataset = Object.values(await this.getDataset(testsValues, this.gameInfo.datasetStep));
     testsDataset.unshift(0);
     usersDataset.unshift(0);
-    console.log(testsDataset);
     let datasets = [
       {
         label: lang[language].common.averageUsers,

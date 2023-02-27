@@ -11,7 +11,6 @@ export async function getRandomString(length: number): Promise<string>{
   const users = await UsersService.getAllUsers();
   const isUnique = users.every((user) => user.permalink !== randomString)
   if (isUnique) {
-    console.log("I've made a string");
     return randomString;
 
   }
