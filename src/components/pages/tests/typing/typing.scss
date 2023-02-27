@@ -51,11 +51,13 @@
 }
 
 .text-of-typing p span.correct {
-  color: rgb(29, 160, 29);
+  background: rgba(35, 222, 35, 0.5);
+  color: rgb(51, 51, 51);
 }
 
 .text-of-typing p span.incorrect {
-  color: rgb(236, 25, 25);
+  background: rgba(255, 0, 0, 0.5);
+  color: white;
 }
 
 .text-of-typing p span.active {
