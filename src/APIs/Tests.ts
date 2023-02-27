@@ -36,8 +36,6 @@ export class Tests {
       const allUsers = await UsersService.getAllUsers();
       const userFromLink = allUsers.find((user) => user.permalink === location[2]);
       testData = await UsersService.getUserTestData(userFromLink?.id!, testID);
-      console.log('permalink user', userFromLink);
-      console.log('permalink data', testData);
     }
     if (currUser && location[1] !== 'users') {
       testData = await UsersService.getUserTestData(currUser.userId!, testID);
