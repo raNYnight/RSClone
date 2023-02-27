@@ -16,12 +16,10 @@ let sharedUser: UserData | undefined;
 async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
   sharedUser = undefined;
   const location = document.location.hash.slice(1).split('/');
-  console.log(location);
   if (location[1] === 'users') {
     const userLink = location[2];
     const users = await UsersService.getAllUsers();
     const user = users.find((user) => user.permalink === userLink);
-    console.log(user);
     if (user) {
       const UserData: UserData = {
         userId: user.id,
@@ -29,7 +27,6 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
         regDate: new Date(user.registration_date),
         permalink: user.permalink,
       };
-      console.log(UserData);
       sharedUser = UserData;
     }
   }
@@ -64,13 +61,13 @@ async function getUserTitleWrapHtml(path: Ilanguage): Promise<string> {
       <p class="dashboard_user-join">${fullDate}</p>
       <div class="link">
       ${
-  usersCookie
-    ? `<span class="perma-link">${path.dashboard.permalink}</span> `
-    : `
+        usersCookie
+          ? `<span class="perma-link">${path.dashboard.permalink}</span> `
+          : `
         <a href="#login">${path.signUp.login}</a> ${path.dashboard.or} 
         <a href="#signup">${path.signUp.signUp}</a> ${path.dashboard.save}
         `
-}
+      }
         
       </div>
     </div>`;
@@ -108,7 +105,7 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
                 <div class="stats_item percentile_container"><span class='percentile_span'>${played.percentile}</span><div class="percentile-bg" style='width: ${played.percentile};'}"></div></div>
               </div>`;
       return html;
-    }),
+    })
   );
 
   return `<div class="stats-wrap">
@@ -124,7 +121,14 @@ async function getStatsHtml(arr: Igame[], path: Ilanguage): Promise<string> {
 
 async function getActivityItemHtml(): Promise<string> {
   const currUser = UsersService.getCookie();
+  const location = document.location.hash.slice(1).split('/');
   let played: PlayedTest[] = [];
+  if (currUser && location[1] !== 'users') played = await Tests.getUserPlayedTests();
+  if (location[1]) {
+    const allUsers = await UsersService.getAllUsers();
+    const userFromLink = allUsers.find((user) => user.permalink === location[2]);
+    played = await UsersService.getUserPlayedTests(userFromLink?.id!);
+  }
   if (currUser) played = await Tests.getUserPlayedTests();
   if (!currUser && localStorage.length > 0) played = await UsersService.getGuestAllTeststDataFromLocalStorage();
   const language = state.isEngl ? 'en' : 'ru';
@@ -151,7 +155,7 @@ async function getActivityItemHtml(): Promise<string> {
     </div>`;
       })
       .reverse()
-      .slice(0, 10),
+      .slice(0, 10)
   );
   return activityTable.join('');
 }
