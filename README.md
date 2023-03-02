@@ -12,3 +12,8 @@
 - express
 - webpack
 - typescript-cookie
+
+### Authors:
+ - [ranynight](https://github.com/raNYnight)<br/>
+ - [AlmondChips](https://github.com/almondchips)<br/>
+ - [Iliasov Damir](https://github.com/IliasovDamir)<br/>
