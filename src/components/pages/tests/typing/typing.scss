@@ -1,0 +1,98 @@
+.text-container {
+  position: relative;
+  user-select: text !important;
+}
+
+.input-field {
+  z-index: -999;
+  opacity: 0;
+  position: absolute;
+}
+
+.text-of-typing {
+  user-select: text !important;
+}
+
+#typingInfo {
+  color: #ffffff;
+  display: flex;
+  margin: 10px;
+  min-width: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+.typing_time,
+.typing_errors,
+.typing_wpm {
+  display: flex;
+  box-sizing: content-box;
+  gap: 5px;
+  color: #ffffff;
+  padding: 0 20px;
+}
+
+.typing_time,
+.typing_errors {
+  border-right: #ffffff 1px solid;
+}
+
+.typing_time p,
+.typing_errors p,
+.typing_wpm p {
+  color: #ffffff;
+}
+.typing_time span,
+.typing_errors span,
+.typing_wpm span {
+  display: block;  
+  color: #ffffff;
+  width: 25px;
+}
+
+.text-of-typing p span.correct {
+  background: rgba(35, 222, 35, 0.5);
+  color: rgb(51, 51, 51);
+}
+
+.text-of-typing p span.incorrect {
+  background: rgba(255, 0, 0, 0.5);
+  color: white;
+}
+
+.text-of-typing p span.active {
+  color: #979494;
+}
+
+.text-of-typing p span.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: rgb(29, 160, 29);
+  animation: blink 1s ease-in-out infinite;
+  opacity: 0;
+}
+@keyframes blink {
+  50% {
+      opacity: 1;
+  }
+}
+.text-of-typing p span {
+  position: relative;
+}
+
+@media (max-width: 424px) {
+  #typingInfo {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+.typing_time,
+.typing_errors {
+  border: none;
+  border-bottom: #ffffff 1px solid;
+}
+}

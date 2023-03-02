@@ -1,0 +1,10 @@
+.verbal-stats {
+  width: 200px;
+  display: flex;
+  color: rgba(255, 255, 255, 0.6);
+}
+.verbal-stats_span {
+  font-size: 1.17em;
+  margin: 10px auto;
+  color: rgba(255, 255, 255, 0.6);
+}

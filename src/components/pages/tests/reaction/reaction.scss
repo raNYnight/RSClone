@@ -1,0 +1,83 @@
+.reaction-red{
+  background-color: rgb(206, 38, 54);
+}
+
+.reaction-green{
+  background-color: rgb(75, 219, 106);
+}
+
+.reaction-blue{
+  background-color: rgb(43, 135, 209);
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.reaction-wrapper{
+  color: white;
+  text-align: center;
+  font-size: 80px;
+  .main-msg{
+  font-size: 1em;
+  color: inherit;
+  }
+
+  .sub-msg{
+    font-size: 0.3em;
+    color: inherit;
+  }
+
+  .end-title{
+    color: inherit;
+    font-size: 0.3em;
+  }
+
+  .end-btns{
+    font-size: 0.3em;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    
+  }
+
+  .decor{
+    svg{
+      width: 80px;
+      filter:brightness(100)
+    }
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0;
+    .dot{
+      color: inherit;
+  
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: white;
+    }
+  }
+
+}
+
+@media screen and (max-width: 444px) {
+
+  .reaction-wrapper{
+    font-size: 60px;
+  }
+
+  .end-btns{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    .greeting_btn{
+      max-width: 150px;
+      font-size: 20px;
+      padding: 5px 10px;
+      margin: 10px auto;
+    }
+  }
+}

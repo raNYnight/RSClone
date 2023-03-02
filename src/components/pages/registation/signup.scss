@@ -1,0 +1,118 @@
+@import "../../../constants/sizes.scss";
+
+.sign-up-window{
+  background-color: white;
+  border-radius: 5px;
+  font-family: Helvetica,Arial,sans-serif;
+  max-width: $wrapWide;
+  margin: 20px auto;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
+  border-radius: 5px;
+
+  .form-wrapper{
+    max-width: 463px;
+    margin: 0 auto;
+
+    .form-field{
+      font-size: 16px;
+    }
+
+    .btn-pending{
+      cursor:progress;
+      background-color: gray;
+      border-bottom-color: rgb(88, 85, 85);
+      &:hover{
+        background-color: gray;
+        border-bottom-color: rgb(88, 85, 85);
+      }
+    }
+
+  }
+
+  .middle-headers{
+  text-align: center;
+
+    .reg-fail{
+      visibility: hidden;
+      background: rgba(252, 177, 177, 0.774);
+      width: 100%;
+      min-height: 30px;
+      color: red;
+      border-bottom: 5px solid rgb(255, 56, 56);
+    }
+
+
+    h2{
+      font-size: 48px;
+      font-weight: 300;
+      margin: 15px 0px;
+    }
+
+    p{
+      font-size: 18px;
+      margin: 15px 0px;
+    }
+
+    a{
+      padding: 0;
+      color: rgb(69, 177, 255);
+    }
+
+    .sign-up-field{
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+
+      .error{
+        color: red;
+        font-size: 14px;
+      }
+
+      input{
+        padding: 10px;
+        border: 1px solid rgb(204, 204, 204);
+      }
+
+      label:first-child{
+        align-self: flex-start;
+      }
+
+    }
+
+  }
+  
+  .submit-btn{
+    appearance: none;
+    width: 100%;
+    border-style: none none solid;
+    border-width: medium medium 4px;
+    color: white !important;
+    cursor: pointer;
+    padding: 12px;
+    border-bottom: 4px solid rgb(30, 129, 236);
+    background: rgb(77, 155, 240);
+    font-size: inherit;
+
+    &:hover{
+      background: rgb(30, 129, 236);
+      border-bottom: 4px solid rgb(19, 106, 200);
+    }
+  }
+}
+
+@media screen and (max-width: 444px) {
+  .sign-up-field{
+    label{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .sign-up-window .middle-headers h2{
+    font-size: 40px;
+  }
+  
+}

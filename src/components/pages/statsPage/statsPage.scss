@@ -1,0 +1,85 @@
+.statistic {
+  &-title {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+  }
+
+  &-page-link {
+    display: block;
+    padding: 10px 10px 10px 0;
+    border: none;
+    cursor: pointer;
+    color: rgb(43, 135, 209);
+  }
+
+  &-title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-span {
+    padding: 10px;
+  }
+
+  &-link {
+    display: block;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    color: rgb(43, 135, 209);
+    font-size: 24px;
+  }
+
+  &-link-svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &-link-svg:hover {
+    padding: 1px;
+    border-radius: 50%;
+    box-shadow: rgb(69, 177, 255, 0.8) 0px 0px 5px 3px;
+  }
+
+  &-score {
+    padding: 5px;
+    font-size: 60px;
+    font-weight: 600;
+  }
+
+  &-pts {
+    font-size: 24px;
+  }
+
+  &-percent {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+
+.active-svg {
+  fill: rgb(255, 209, 84);
+}
+.user-stats-canvas {
+  width: 100%;
+  height: 310px;
+}
+@media (max-width: 520px) {
+  .statistic {
+    &-media {
+      width: 95%;
+      padding: 10px;
+    }
+
+    &-page-link,
+    &-title,
+    &-span {
+      font-size: 20px;
+    }
+  }
+}
